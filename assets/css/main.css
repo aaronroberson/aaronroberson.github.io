@@ -57,6 +57,14 @@ a:after {
     transition: color 0.1s ease-in, background 0.1s ease-in;
 }
 
+.page a {
+    color: #428bca;
+}
+
+.page a:hover {
+    color: purple;
+}
+
  hr {
     display: block;
     height: 1px;

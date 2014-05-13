@@ -1,1 +1,21 @@
 <h1>Day 1 - Introduction to AngularJS</h1>
+<p>Be sure to install the dependencies listed on the <a ui-sref="geekwise">Geekwise landing page</a>.</p>
+<p>
+    If you haven't already, log into <a href="http://github.com">Github</a> and fork the <a href="https://github.com/aaronroberson/geekwise">boilerplate template</a>.
+    Once you've forked the project to your own account, clone it to a directory on your system using <a href="http://sourcetreeapp.com">SourceTree</a> (or a Git client of your choosing).
+</p>
+<p>To serve up the app using GRUNT, in the Windows console or Mac Terminal change to the directory you cloned the boilerplate app into and run the following command:</p>
+    <pre>grunt</pre>
+<p>You can now open your browser and go to <code>http://localhost:9001</code> to access the app.</p>
+<p>To get started with AngularJS, add the source from the Google CDN:</p>
+<pre class="prettyprint lang-html">
+    &lt;head&gt;
+        ...
+        &lt;script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js">&lt;/script&gt;
+    &lt;/head&gt;
+</pre>
+<p>To initialize AngularJS in the app, add the <code>ng-app</code> directive to the html tag:</p>
+<pre class="prettyprint lang-html">
+    &lt;html ng-app&gt;
+</pre>
+<p>Congratulations, you have now initialized your first AngularJS application!</p>

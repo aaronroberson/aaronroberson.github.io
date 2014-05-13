@@ -19,7 +19,8 @@ module.exports = function(grunt) {
         }
     });
 
-    // Load the plugin used to start a connect web server.
+    // Load the grunt-contrib-connect plugin used to start a connect web server.
+    // https://github.com/gruntjs/grunt-contrib-connect
     grunt.loadNpmTasks('grunt-contrib-connect');
 
     // Default task(s).

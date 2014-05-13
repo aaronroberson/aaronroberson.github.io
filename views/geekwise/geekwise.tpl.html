@@ -1,16 +1,53 @@
 <div class="row">
 
-    <section class="col-sm-10 col-sm-offset-2" ui-view>
+    <section class="col-sm-10 col-sm-offset-1" ui-view>
         <h1>JavaScript II with AngularJs</h1>
 
         <ul class="nav nav-sidebar">
             <li><a ui-sref="geekwise.page({page_id: 1})">Day 1 - Introduction to AngularJS</a></li>
         </ul>
 
-        <h3>Course Resources</h3>
+        <h3>Development Environment</h3>
         <p>
-            <a href="http://angularjs.org">AngularJS</a>
+            Throughout this course we will be developing the MyStore e-commerce application.
+            I've created a <a href="https://github.com/aaronroberson/geekwise">boilerplate template</a> and have added it to <a href="http://github.com">Github</a>.
+            If you don't have one already, you'll be <a href="http://github.com">creating an account</a> and forking the boilerplate template so that you can commit your work to <a href="http://github.com">Github</a>.
         </p>
+        <h4>Install Git</h4>
+        <p>Download and install <a href="http://git-scm.com/">Git</a>, selecting the option to add the PATH to your system path.</p>
+        <h4>Install SourceTree</h4>
+        <p>Download and install <a href="http://www.sourcetreeapp.com/">SourceTree</a>, a Git <abbr title="Graphical User Interface">GUI</abbr> client for Windows or Mac.</p>
+        <p>
+            We will be referencing Angular and other third-party scripts and resources that are hosted on a <abbr title="Content Delivery Network">CDN</abbr>.
+            We will also be making <abbr title="Representational state transfer">REST</abbr>ful API calls and will require that our web application is served up in the browser.
+            To facilitate this, we will be using <a href="http://nodejs.org">Node.js</a> and <a href="http://gruntjs.com">GRUNT</a> to serve up a local instance of the application in the browser.</p>
+
+        <h4>Install Node.js</h4>
+        <p>Download and install <a href="http://nodejs.org/">Node.js</a> on your system.</p>
+        <h4>Install GRUNT</h4>
+        <p>
+            <a href="http://gruntjs.com">GRUNT</a> and GRUNT plugins are installed and managed via <a href="https://www.npmjs.org/">npm</a>, the Node.js package manager.
+            Once Node.js has been installed, you can install GRUNT from the Windows Console or Mac Terminal (You may need to use sudo (for OSX, *nix, BSD etc) or run your command shell as Administrator for Windows).
+        </p>
+        <pre>npm install -g grunt-cli</pre>
+        <p>The command above will put the grunt command in your system path, allowing it to be run from any directory.</p>
+
+        <h3>Course Resources</h3>
+        <ul>
+            <li>The <a href="http://angularjs.org">AngularJS website</a></li>
+            <li>The <a href="https://docs.angularjs.org/api">AngularJS API Docs</a></li>
+            <li>The <a href="https://www.youtube.com/channel/UCbn1OgGei-DV7aSRo_HaAiw">Official AngualrJS YouTube channel</a></li>
+            <li>O'Reilly's <a href="http://it-ebooks.info/book/2076/">AngularJS PDF book</a></li>
+            <li>Learn AngularJS with <a href="https://egghead.io/">Egghead.io video tutorials</a></li>
+            <li>Douglas Crawford's, <a href="http://it-ebooks.info/book/274/">"JavaScript: The Good Parts"</a></li>
+            <li><a href="http://eloquentjavascript.net/">Elloquent JavaScript</a> by Marijn Haverbeke</li>
+            <li>The Mozilla Developer Network <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">JavaScript Reference</a></li>
+            <li><a href="http://www.jshint.com/">JSHint</a> code quality tool</li>
+            <li>Online <a href="http://www.jsoneditoronline.org/">JSON Editor</a></li>
+            <li>Chrome <a href="https://chrome.google.com/webstore/detail/jsonview/chklaanhfefbnpoihckbnefhakgolnmc?hl=en">JSONView</a> extension.</li>
+            <li>Firefox <a href="https://addons.mozilla.org/en-us/firefox/addon/jsonview/">JSONView</a> add-on.</li>
+        </ul>
+        <p>Additional resource will be referenced throughout the course.</p>
     </section>
 
 </div>
