@@ -144,16 +144,16 @@ Finally, let's add the <code>ui-view</code> directive to the outer div with the 
 &lt;/div&gt;
 
 &lt;ul class="nav navbar-nav"&gt;
-	&lt;li class="active"&gt;
+	&lt;li ui-sref-active="active"&gt;
 		&lt;a ui-sref="home"&gt;Home&lt;/a&gt;
 	&lt;/li&gt;
-	&lt;li&gt;
+	&lt;li ui-sref-active="active"&gt;
 		&lt;a ui-sref="products"&gt;Products&lt;/a&gt;
 	&lt;/li&gt;
-	&lt;li&gt;
+	&lt;li ui-sref-active="active"&gt;
 		&lt;a ui-sref="about"&gt;About&lt;/a&gt;
 	&lt;/li&gt;
-	&lt;li&gt;
+	&lt;li ui-sref-active="active"&gt;
 		&lt;a ui-sref="contact"&gt;Contact&lt;/a&gt;
 	&lt;/li&gt;
 &lt;/ul&gt;
@@ -163,3 +163,4 @@ as it did before, except that now it is being injected into the index.html page.
 <p>In SourceTree, commit your changes and push them to the remote Github repository.</p>
 <h3>On your own</h3>
 <p>In your own time, add a contact and about page to the views directory and update the templateUrl for each state to point to the respective template.</p>
+<a ui-sref="geekwise.page({page_id: 2})" class="btn btn-default">Continue to Day 2</a>

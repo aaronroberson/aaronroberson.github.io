@@ -1,0 +1,126 @@
+<h1>Day 2 - AngularJS Controllers</h1>
+
+<p>Change directories to your app directory and start the web server:</p>
+<pre>grunt</pre>
+<p>You can now open your browser and go to <a href="http://localhost:9001">http://localhost:9001</a> to access the app.</p>
+<a href="https://gist.github.com/aaronroberson/b4dd3babbbce814ecd68">Day 2 Project Assetts</a>
+<h3>Creating the product listings page</h3>
+<p>Create a new file in the assetts/css/ directory and name it 'product-list.css' and then navigate to:</p>
+<a href="https://gist.github.com/aaronroberson/b4dd3babbbce814ecd68#file-product-list-css">Day 2 Project Assets</a>
+<p>Copy the product-list.css contents and paste them into the file you just created in your project.</p>
+<p>
+	Now create a new file in the views directory and name it 'product-list.html' and copy and paste the product-list.html content from
+	<a href="https://gist.github.com/aaronroberson/b4dd3babbbce814ecd68#file-product-list-html">Day 2 Project Assetts</a>
+</p>
+<p>Update the index.html page so that it links to the product-list.css in the head:</p>
+<pre class="prettyprint lang-html">
+&lt;head&gt;
+...
+	&lt;link href="assets/css/product-list.css rel="stylesheet" &gt;
+...
+&lt;head&gt;
+</pre>
+<p>Let's update the routes.js file to include the product list view to the products state:</p>
+<pre class="prettyprint lang-javascript">
+...
+.state('products', {
+	url: '/products',
+	templateUrl: 'views/product-list.html'
+})
+...
+</pre>
+<p>Refresh your browser and click through to the products page to see your updates.</p>
+<h3>Adding the product list controller</h3>
+<p>Create a new directory in the root of the project and name it 'controllers'. Now create a new file and name it 'product-list-controller.js'.</p>
+<p>Now let's create our controller by initializing a controller on our app and naming it 'ProductList':</p>
+<pre>
+(function(angular) {
+	"use strict";
+
+	var app = angular.module('MyStore');
+
+	app.controller('ProductList', function($scope) {
+
+	});
+
+})(window.angular);
+</pre>
+<p>Now we need to add the product-list-controller to the index.html page:</p>
+<pre class="prettyprint lang-html">
+&lt;body&gt;
+    ...
+	&lt;script src="controllers/product-list-controller.js">&lt;/script&gt;
+&lt;/body&gt;
+</pre>
+<p>Finally, let's update the routes.js file to include the product list controller to the products state:</p>
+<pre class="prettyprint lang-javascript">
+...
+.state('products', {
+	url: '/products',
+	controller: 'ProductList',
+	templateUrl: 'views/product-list.html'
+})
+...
+</pre>
+<h3>Adding the JSON data</h3>
+<p>Create a new directory in the 'assets' directory and name it 'json'. Now let's create two files, 'products.json' and 'product-filters.json' and
+	copy the respective json from the <a href="https://gist.github.com/aaronroberson/b4dd3babbbce814ecd68#file-products-json">Day 2 Project Assets</a> page.</p>
+<p>We want to use this json in our product listing page. To do so, we are going to use Angular's built-in '$http' service in our controller. Update the ProductList controller:</p>
+<pre>
+(function(angular) {
+	"use strict";
+
+	var app = angular.module('MyStore');
+
+	app.controller('ProductList', function($scope, $http) {
+
+		$http.get('/assets/json/product-filters.json').then(function(response) {
+			$scope.filters = response.data;
+		});
+
+		$http.get('/assets/json/products.json').then(function(response) {
+			$scope.products = response.data;
+		});
+
+	});
+
+})(window.angular);
+</pre>
+<p>Now that the filters array and products array our available to our products page, let's update the product list page:</p>
+<pre class="prettyprint lang-html">
+&lt;div&gt;
+	&lt;div class=&quot;filters&quot;&gt;
+		&lt;div class=&quot;filter-block&quot; ng-repeat=&quot;filter in filters&quot;&gt;
+			&lt;div class=&#39;filter&#39;&gt;{{filter.name}}&lt;/div&gt;
+			&lt;div class=&quot;property&quot;
+			     ng-repeat=&quot;property in filter.properties&quot;
+			     ng-click=&quot;selectUnselect(filter, property)&quot;&gt;
+				&lt;span&gt;{{property.name}}&lt;/span&gt;
+				&lt;input type=&#39;checkbox&#39;
+				       ng-model=&quot;property.selected&quot; /&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;div class=&quot;products&quot;&gt;
+		&lt;div class=&quot;product-box&quot;
+		     ng-repeat=&quot;product in products&quot;&gt;
+			&lt;div class=&#39;title&#39;&gt;{{product.title}}&lt;/div&gt;
+			&lt;div class=&#39;show-base&#39;&gt;
+				&lt;img ng-src=&quot;{{product.thumbnail}}&quot; alt=&quot;{{product.title}}&quot; /&gt;
+				&lt;div class=&quot;mask&quot;&gt;
+					&lt;h2&gt;{{product.title}}&lt;/h2&gt;
+					&lt;p ng-class=&quot;{old:product.specialPrice}&quot;&gt;{{product.price}}&lt;/p&gt;
+					&lt;p ng-show=&quot;product.isSpecial&quot;&gt;{{product.specialPrice}}&lt;/p&gt;
+					&lt;div class=&quot;description&quot;&gt;
+						{{product.description}}
+					&lt;/div&gt;
+					&lt;div&gt;
+						&lt;a href=&quot;#&quot; class=&quot;more&quot;&gt;Details&lt;/a&gt;
+						&lt;a href=&quot;#&quot; class=&quot;tocart&quot;&gt;To Cart&lt;/a&gt;
+					&lt;/div&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+</pre>
