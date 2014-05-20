@@ -12,7 +12,6 @@
 <p>Change directories to your local app directory and start the web server:</p>
 <pre>grunt</pre>
 <p>You can now open your browser and go to <a href="http://localhost:9001">http://localhost:9001</a> to access the app.</p>
-<a href="https://gist.github.com/aaronroberson/b4dd3babbbce814ecd68">Day 2 Project Assetts</a>
 
 <h3>Creating a product service</h3>
 <p>In the previous class we injected the $http service into our product list controller and used it get fetch JSON from the server.
@@ -39,6 +38,7 @@ using the <code>new</code> operator. The <code>new</code> operator creates an in
 <div class="alert alert-info">
     Learn more about the <code>new</code> operator on the <a href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/new">Mozilla Developer Network</a></div>
 </div>
+
 <h3>Object-oriented Programming</h3>
 <p>When creating objects in JavaScript, we can create an object-literal, for example:</p>
 <pre class="prettyprint lang-javascript">
@@ -73,6 +73,7 @@ console.log(truck.model); // Outputs Tacoma
 var car = new Vehicle('Honda', 'Accord', 2, 'white');
 console.log(
 </pre>
+
 <h3>Object inheritance and prototype</h3>
 <p>Unlike most other Object-oriented languages, JavaScript does not have classical inheritance based on Classes. JavaScript has a prototype-based inheritance mechanism.</p>
 <p>To create methods on our Vehicle object that will be shared with all instances of it, we add the methods to the Vehicle's prototype:</p>
@@ -114,6 +115,7 @@ var myTruck = new Truck('Dodge', 'Ram', 2, 'red');
 // Call the startEngine method of the Vehicle object from the Truck instance
 myTruck.startEngine();
 </pre>
+
 <h3>Product service revisited</h3>
 <p>Using app.service(name, constructor function) to register a service object, Angular expects a constructor function as the second parameter and will invoke it using
 the <code>new</code> operator. To use app.service() we need to create a function that has it's properties and methods set with the <code>this</code> keyword:</p>
@@ -128,6 +130,7 @@ the <code>new</code> operator. To use app.service() we need to create a function
 	});
 ...
 </pre>
+
 <h3>Angular Factory</h3>
 <p>Alternatively, we can use angular.factory(name, factory function) to create our service objects. An angular factory function can return an object literal like so:</p>
 <pre class="prettyprint lang-javascript">
@@ -146,6 +149,7 @@ the <code>new</code> operator. To use app.service() we need to create a function
 </pre>
 <p>The service factory function generates the single object or function that represents the service to the rest of the application.
 The object or function returned by the service is injected into any component (controller, service, filter or directive) that specifies a dependency on the service.</p>
+
 <h3>Adding $http to the service</h3>
 <p>Currently, our ProductList controller has the $http service injected into so that we can fetch the JSON from our server. To reduce code duplication, we are going to move those calls to our factory service object:</p>
 <pre class="prettyprint lang-javascript">
@@ -172,6 +176,7 @@ The object or function returned by the service is injected into any component (c
 	});
 ...
 </pre>
+        
 <h3>Refactoring the controller</h3>
 <p>Now it is time to refactor our ProductList controller to use the ProductService above. Let's begin by specifying a dependency upon the ProductService and removing the dependency upon the $http service:</p>
 <pre>
