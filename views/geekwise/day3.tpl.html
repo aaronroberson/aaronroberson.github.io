@@ -65,7 +65,6 @@ console.log(car.make); // Outputs Honda
 </pre>
 <p>The keyword <code>this</code> inside the function refers to the current object.
     By assigning variables using <code>this</code> we are adding properties to the object that will exist for every instance of the object.
-    However, setting a property value on once instance remains unique to that instance alone. For example:
 </p>
 <pre class="prettyprint lang-javascript">
 var truck = new Vehicle('Toyota', 'Tacoma', 4, 'grey');
@@ -176,7 +175,7 @@ The object or function returned by the service is injected into any component (c
 	});
 ...
 </pre>
-        
+
 <h3>Refactoring the controller</h3>
 <p>Now it is time to refactor our ProductList controller to use the ProductService above. Let's begin by specifying a dependency upon the ProductService and removing the dependency upon the $http service:</p>
 <pre>
