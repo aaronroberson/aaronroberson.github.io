@@ -56,6 +56,8 @@ function Vehicle(make, model, doorCount, color) {
     this.model = model;
     this.doors = doorCount;
     this.color = color;
+
+	this.running = false;
 }
 
 var truck = new Vehicle('Toyota', 'Tacoma', 4, 'grey');
@@ -78,7 +80,7 @@ console.log(
 <p>To create methods on our Vehicle object that will be shared with all instances of it, we add the methods to the Vehicle's prototype:</p>
 <pre class="prettyprint lang-javascript">
 Vehicle.prototype.startEngine = function() {
-    // code to start the engine
+    this.running = true;
 }
 </pre>
 <p>All objects in JavaScript have a prototype. For instance, we can create a new Array and log it to the console to inspect it's prototype:</p>
@@ -107,12 +109,14 @@ Truck.prototype = new Vehicle();
 // Correct the constructor pointer because it points to Vehicle
 Truck.prototype.constructor = Truck;
 
-var myTruck = new Truck('Dodge', 'Ram', 2, 'red');
+// Create an instance of a truck with the properties from the Truck and Vehicle constructor functions
+var myTruck = new Truck('Fleetside', 'Dodge', 'Ram', 2, 'red');
 </pre>
 <p>Because we set the Truck object's prototype to the Vehicle, we can now access the startEngine method on it:</p>
 <pre class="prettyprint lang-javascript">
 // Call the startEngine method of the Vehicle object from the Truck instance
 myTruck.startEngine();
+console.log(myTruck.running)' // Outputs true
 </pre>
 
 <h3>Product service revisited</h3>
