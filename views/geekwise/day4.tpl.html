@@ -1,133 +1,266 @@
 
-<h1>Day 3 - AngularJS Services</h1>
+<h1>Day 4 - AngularJS Two-way Data Binding & URL Parameters</h1>
 
-<p>In this class we will be:</p>
+<p>In this class we will:</p>
 <ul>
-    <li>Creating a product details state</li>
-    <li>Creating a product details controller</li>
-    <li>Creating a product details page</li>
-    <li>Creating an AngularJS service object</li>
-    <li>Learning about object prototypes</li>
-    <li>Learning about Object Oriented Programming in JavaScript</li>
+    <li>Learn about two-way data binding</li>
+    <li>Learn about Angular's built-in filtering</li>
+    <li>Learn about URL parameters</li>
+    <li>Add a search field to our product listing page</li>
+    <li>Create a product details state</li>
+    <li>Create a product details controller</li>
+    <li>Create a product details page</li>
 </ul>
 
 <h3>Setting up</h3>
 <p>Change directories to your local app directory and start the web server:</p>
 <pre>grunt</pre>
 <p>You can now open your browser and go to <a href="http://localhost:9001">http://localhost:9001</a> to access the app.</p>
-<a href="https://gist.github.com/aaronroberson/b4dd3babbbce814ecd68">Day 2 Project Assetts</a>
 
+<h3>Two-way data binding</h3>
+<p>Up until now, we've seen how easily we can bind objects from a controller and to our view using AngularJS.
+    In addition to binding data to the view, the view can also update the data in the controller. This is called two-way data binding.
+To see it in action, let's update our product list view with a search form input.</p>
+
+<h3>Adding search to the products page</h3>
+<p>Open the 'product-list.html' page from the 'views' directive and add the following HTML after the opening <code>&lt;div class="products"&gt;</code> element:</p>
+<pre class="prettyprint lang-html">
+&lt;div class=&quot;row form-group&quot;&gt;
+    &lt;div class=&quot;input-group&quot;&gt;
+        &lt;input type=&quot;text&quot; class=&quot;form-control&quot;&gt;
+            &lt;span class=&quot;input-group-btn&quot;&gt;
+              &lt;button type=&quot;button&quot; class=&quot;btn btn-default&quot;&gt;search&lt;/button&gt;
+            &lt;/span&gt;
+    &lt;/div&gt;
+    &lt;p class=&quot;help-block&quot;&gt;Showing results for &lt;strong&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;/div&gt;
+</pre>
+<p>Now that we have the search form input on the page, let's update it using Angular's built-in <code>ng-model</code> directive:</p>
+<pre class="prettyprint lang-html">
+...
+    &lt;input type=&quot;text&quot; class=&quot;form-control&quot; ng-model=&quot;productSearch&quot;&gt;
+...
+</pre>
+<p>We've create a model object on the scope called 'productSearch' and we've bound that object to our form input.
+Now we can bind the 'productSearch' object to the view just like we've done before:</p>
+<pre class="prettyprint lang-html">
+..
+    &lt;p class=&quot;help-block&quot;&gt;Showing results for &lt;strong ng-bind=&quot;productSearch&quot;&gt;&lt;/strong&gt;&lt;/p&gt;
+..
+</pre>
+<p>In the browser, type any text into the search form and observe how Angular updates the productSearch object on the scope and immediately displays the updated value
+in the page where the view object has been bound. This is two-way data binding in action!</p>
+
+<h3>Angular JS Filters</h3>
+<p>In order to filter our product listing with the search form, we need to add a filter to the <code>ng-repeat</code> directive that loops through the product list, displaying them on the page.
+   We can add a filter by separating our <code>ng-repeat</code> code with a pipe (|) and specifying the filter we want to filter by.
+        In this case, we want to filter by the productSearch object. Locate the <code>div</code> element with the <code>.product-box</code> and add the filter:</p>
+<pre class="prettyprint lang-html">
+...
+    &lt;div class=&quot;product-box&quot; ng-repeat=&quot;product in products | filter:productSearch&quot;&gt;
+...
+</pre>
+<p>Now when we enter text into the search form the product list will filter the products, displaying only the products that have a properties with values matching the values in the ProductSearch model.
+What if we want to limit the search to matching in the product title only? All we have to do is add the property to search by onto the model object: </p>
+<pre class="prettyprint lang-html">
+..
+    &lt;p class=&quot;help-block&quot;&gt;Showing results for &lt;strong ng-bind=&quot;productSearch.title&quot;&gt;&lt;/strong&gt;&lt;/p&gt;
+..
+</pre>
+<p>Let's also update the search results string to display the productSearch.title.
+    Additionally, we only want this string to display if a search has been entered.
+    We can hide and show elements using Angular's built-in <code>ng-hide</code> and <code>ng-show</code> directives which evaluate a truthy/falsey expression.
+The completed search form and search results string code should look like this:</p>
+<pre class="prettyprint lang-html">
+ &lt;div class=&quot;row form-group&quot;&gt;
+    &lt;div class=&quot;input-group&quot;&gt;
+        &lt;input type=&quot;text&quot; class=&quot;form-control&quot; ng-model=&quot;productSearch.title&quot;&gt;
+            &lt;span class=&quot;input-group-btn&quot;&gt;
+              &lt;button type=&quot;button&quot; class=&quot;btn btn-default&quot;&gt;search&lt;/button&gt;
+            &lt;/span&gt;
+    &lt;/div&gt;
+    &lt;p class=&quot;help-block&quot; ng-show=&quot;productSearch.title.length&quot;&gt;Showing results for &lt;strong ng-bind=&quot;productSearch.title&quot;&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;/div&gt;
+</pre>
+
+<h3>Adding a product details page</h3>
+<p>In the 'views' directory of our MyStore app, create a new html page named 'product-detail.html' and add the following HTML:</p>
+<pre class="prettyprint lang-html">
+&lt;div class=&quot;row&quot;&gt;
+
+    &lt;div class=&quot;col-sm-3&quot;&gt;
+        &lt;img&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;col-sm-9&quot;&gt;
+        &lt;div class=&quot;alert alert-danger&quot; ng-hide=&quot;product.inventory&quot;&gt;&lt;strong&gt;This item is currently unavailable&lt;/strong&gt;&lt;/div&gt;
+        &lt;h2&gt;&lt;/h2&gt;
+        &lt;p&gt;&lt;/p&gt;
+        &lt;p&gt;&lt;/p&gt;
+        &lt;p&gt;&lt;/p&gt;
+        &lt;div&gt;
+            &lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot;&gt;To Cart&lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;row&quot;&gt;
+     &lt;a&gt;Return to Products&lt;/a&gt;
+&lt;/div&gt;
+</pre>
 <h3>Creating a product details state</h3>
-<p>To get started, let's update the routes.js file to include the product detail state:</p>
+<p>Next, we will update the routes.js file to include an additional state for our product detail page:</p>
 <pre class="prettyprint lang-javascript">
 ...
 .state('product', {
-	url: '/product/:id',
+    url: '/product/:id',
     controller: 'ProductDetail'
-	templateUrl: 'views/product-detail.html'
+    templateUrl: 'views/product-detail.html'
 })
 ...
 </pre>
-<p>In the code above, we have introduced a URL parameter to the product detail state. To specify a URL parameter named 'id', we added <code>:id</code> to the url property of our state.</p>
-<div class="alert alert-info">Learn more about <a href="https://github.com/angular-ui/ui-router/wiki/URL-Routing">/a> URL Routing in Angular UI-Router</a></div>
-<p>Refresh your browser and click through to the products page to see your updates.</p>
-<h3>Adding the product list controller</h3>
-<p>Create a new directory in the root of the project and name it 'controllers'. Now create a new file and name it 'product-list-controller.js'.</p>
-<p>Now let's create our controller by initializing a controller on our app and naming it 'ProductList':</p>
-<pre>
+<p>In the code above, we've added a state named 'product' and we've specified the url, controller and templateURL.
+    We've also introduced a URL parameter to url property of the product detail state.
+    To specify a URL parameter named 'id', we added <code>:id</code> to the url property of our state.</p>
+<div class="alert alert-info">Learn more about <a href="https://github.com/angular-ui/ui-router/wiki/URL-Routing">URL Routing in Angular UI-Router</a>.</div>
+
+<h3>Adding the product detail controller</h3>
+<p>We've specified a 'ProductDetail' controller that doesn't yet exist.
+    To add the 'ProductDetail' controller, create a new file in the 'controllers' directory in the root of your app and name it 'product-detail-controller.js'.</p>
+<p>Now let's create our controller by initializing a controller on our app and naming it 'ProductDetail':</p>
+<pre class="prettyprint lang-javascript">
 (function(angular) {
 	"use strict";
 
 	var app = angular.module('MyStore');
 
-	app.controller('ProductList', function($scope) {
+	app.controller('ProductDetail', function($scope) {
 
 	});
 
 })(window.angular);
 </pre>
-<p>Now we need to add the product-list-controller to the index.html page:</p>
+<p>As before, we've wrapped our code in an <abbr title="Immediately Invoked Function Expression">IIFE</abbr> to give our code private scope.</p>
+<div class="alert alert-info">Learn more about <a href="http://benalman.com/news/2010/11/immediately-invoked-function-expression/">Immediately Invoked Function Expressions</a>.</div>
+<p>We've also informed Angular that we want the $scope service added to our controller so that we can add model objects to the $scope and made available to our view.</p>
+<p>Because our product detail page will be displaying information for a single product, we need to know which product to display and we need to fetch the data for the requested product.</p>
+<h3>UI-Router $stateParams</h3>
+<p>The UI-Router module that we are using to manage the URL routing and state management within our app contains an additional service named $stateParams.
+The $stateParams service is an object that will have one key per url parameter. The $stateParams is a perfect way to provide your controllers or other services with the individual parts of the navigated url.</p>
+<div class="alert alert-info">Learn more about the <a href="https://github.com/angular-ui/ui-router/wiki/URL-Routing">URL Routing and the $stateParams service</a>.</div>
+<p>Let's update our ProductDetail controller, informing Angular that we want the $stateParams service and our ProductService injected into it:</p>
+<pre class="prettyprint lang-javascript">
+...
+	app.controller('ProductDetail', function($scope, <strong>$stateParams, ProductService</strong>) {
+
+        // Set the id from the $stateParams to a local product_guid variable
+        var product_guid = $stateParams.id;
+
+	});
+...
+</pre>
+<p>Because we added the <code>:id</code> parameter to our product detail state in routes.js, the $stateParams object contains an <code>id</code> property (or key) when our product detail state is activated.</p>
+<p>Using the product id passed in from the URL, let's get the product matching the URL from our product service:</p>
+<pre class="prettyprint lang-javascript">
+...
+	app.controller('ProductDetail', function($scope, <strong>$stateParams, ProductService</strong>) {
+
+        // Set the id from the $stateParams to a local product_guid variable
+        var product_guid = $stateParams.id;
+
+        // Initialize an empty product variable on the scope
+        $scope.product;
+
+        // Get the products from the product service
+        ProductService.getProducts().then(function(response) {
+
+            // Add the resulting array of products to a local products variable
+            var products = response.data;
+
+            // Loop through the products array using Angular's built-in forEach function
+            angular.forEach(products, function(product) {
+
+                // Check if the current product's guid property is equal to id from the URL
+                if(product.guid === product_guid) {
+
+                    // We've found a match, add the matching product to the $scope
+                    $scope.product = product;
+                }
+            });
+        });
+
+	});
+...
+</pre>
+<p>Because we are using static json files on the server we've fetched the products list from our product service.
+    Then we've used Angular's built-in <code>.forEach</code> function to loop through the product list array.
+    It is worth noting that <code>.forEach</code> does not iterate over inherited (prototype) properties because it filters using the <code>hasOwnProperty</code> method.</p>
+<p>When we've found a match, we add it to the 'product' variable on the scope, using $scope.product.</p>
+<div class="alert alert-info">
+    <p>The <code>.forEach</code> method takes an optional 'context' argument which is the object referenced by <code>this</code> in the body of the iterator function.
+    An alternative syntax to the code above would be:</p>
+<pre class="prettyprint lang-javascript">
+angular.forEach(products, function(product) {
+
+    if(product.guid === product_guid) {
+
+        // We've found a match, add the matching product to context object ($scope.product, the thrid parameter passed into .forEach)
+        <strong>this</strong> = product;
+    }
+}<strong>, $scope.product</strong>);
+</pre>
+</div>
+<div class="alert alert-info">Learn about more <a href="https://docs.angularjs.org/api/ng/function">built-in functions</a> included in the Angular Core</div>
+<p>Now we need to add the product-detail-controller.js to the index.html page:</p>
 <pre class="prettyprint lang-html">
 &lt;body&gt;
     ...
-	&lt;script src="controllers/product-list-controller.js">&lt;/script&gt;
+	&lt;script src="controllers/product-detail-controller.js">&lt;/script&gt;
 &lt;/body&gt;
 </pre>
-<p>Finally, let's update the routes.js file to include the product list controller to the products state:</p>
-<pre class="prettyprint lang-javascript">
-...
-.state('products', {
-	url: '/products',
-	controller: 'ProductList',
-	templateUrl: 'views/product-list.html'
-})
-...
-</pre>
-<h3>Adding the JSON data</h3>
-<p>Create a new directory in the 'assets' directory and name it 'json'. Now let's create two files, 'products.json' and 'product-filters.json' and
-	copy the respective json from the <a href="https://gist.github.com/aaronroberson/b4dd3babbbce814ecd68#file-products-json">Day 2 Project Assets</a> page.</p>
-<p>We want to use this json in our product listing page. To do so, we are going to use Angular's built-in '$http' service in our controller. Update the ProductList controller:</p>
-<pre>
-(function(angular) {
-	"use strict";
-
-	var app = angular.module('MyStore');
-
-	app.controller('ProductList', function($scope, $http) {
-
-		$http.get('/assets/json/product-filters.json').then(function(response) {
-			$scope.filters = response.data;
-		});
-
-		$http.get('/assets/json/products.json').then(function(response) {
-			$scope.products = response.data;
-		});
-
-	});
-
-})(window.angular);
-</pre>
-<p>Now that the filters array and products array our available to our products page, let's update the product list page:</p>
+<h3>Updating the detail view</h3>
+<p>On your own (but in class) update the product-detail.html page, binding the product to the view:</p>
 <pre class="prettyprint lang-html">
-&lt;div&gt;
-	&lt;div class=&quot;filters&quot;&gt;
-		&lt;div class=&quot;filter-block&quot; ng-repeat=&quot;filter in filters&quot;&gt;
-			&lt;div class="filter" ng-bind="filter.name"&gt;&lt;/div&gt;
-			&lt;div class=&quot;property&quot;
-			     ng-repeat=&quot;property in filter.properties&quot;&gt;
-				&lt;span ng-bind="property.name"&gt;&lt;/span&gt;
-				&lt;input type=&#39;checkbox&#39;
-				       ng-model=&quot;property.selected&quot; /&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-	&lt;div class=&quot;products&quot;&gt;
-		&lt;div class=&quot;product-box&quot;
-		     ng-repeat=&quot;product in products&quot;&gt;
-			&lt;div class=&#39;title&#39; ng-bind="product.title&gt;&lt;/div&gt;
-			&lt;div class=&#39;show-base&#39;&gt;
-				&lt;img ng-src=&quot;{{product.thumbnail}}&quot; /&gt;
-				&lt;div class=&quot;mask&quot;&gt;
-					&lt;h2&gt;{{product.title}}&lt;/h2&gt;
-					&lt;p ng-class=&quot;{old:product.specialPrice}&quot; ng-bind="product.price"&gt;&lt;/p&gt;
-					&lt;p ng-show=&quot;product.isSpecial&quot; ng-bind="product.specialPrice&gt;&lt;/p&gt;
-					&lt;div class=&quot;description&quot; ng-bind="product.description"&gt;
+&lt;div class=&quot;row&quot;&gt;
 
-					&lt;/div&gt;
-					&lt;div&gt;
-						&lt;a href=&quot;#&quot; class=&quot;more&quot;&gt;Details&lt;/a&gt;
-						&lt;a href=&quot;#&quot; class=&quot;tocart&quot;&gt;To Cart&lt;/a&gt;
-					&lt;/div&gt;
-				&lt;/div&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
+    &lt;div class=&quot;col-sm-3&quot;&gt;
+        &lt;!-- Add the product picture using the built-in directive ng-src --&gt;
+        &lt;img&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;col-sm-9&quot;&gt;
+        &lt;!-- Use the built-in ng-hide directive to hide the alert if the product inventory is 0 --&gt;
+        &lt;div class=&quot;alert alert-danger&quot;&gt;&lt;strong&gt;This item is currently unavailable&lt;/strong&gt;&lt;/div&gt;
+        &lt;!-- Use the built-in ng-bind directive to add the product title to the h2 title tag --&gt;
+        &lt;h2&gt;&lt;/h2&gt;
+        &lt;!-- Use the ng-class directive to add the .old class if product isSpecial is truthy, bind the price to the tag --&gt;
+        &lt;p&gt;&lt;/p&gt;
+        &lt;!-- Use the built-in ng-show directive to show the product specialPrice if product isSpecial is truthy, bind the specialPrice to the tag --&gt;
+        &lt;p&gt;&lt;/p&gt;
+        &lt;!-- bind the product description to the tag --&gt;
+        &lt;p&gt;&lt;/p&gt;
+        &lt;div&gt;
+            &lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot;&gt;To Cart&lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;row&quot;&gt;
+    <!-- Add the ui-sref back to the products state -->
+     &lt;a&gt;Return to Products&lt;/a&gt;
 &lt;/div&gt;
 </pre>
-<div class="aler alert-info">
+
+<h3>Updating the list view</h3>
+<p>Find the 'Details' link and add the <code>ui-sref</code> directive, linking it to the detail page for that product:</p>
+<pre class="prettyprint lang-html">
+    &lt;a ui-sref=&quot;product({id: product.guid})&quot; class=&quot;more&quot;&gt;Details&lt;/a&gt;
+</pre>
+<p>The <code>ui-sref</code> directive will accept the name of a state (as we've done in our main navigation) and it can optionally accept the name of a state
+as a function with the url parameters passed in as an object as we've done above.</p>
+<p>In the browser, navigate to the products page and click the 'details' button to view the details for the selected product.</p>
+
+<div class="alert alert-info">
 	<p>Be sure to commit your changes to Github!</p>
 </div>
-<h3>On your own</h3>
-<p>Add a product details state, view and controller to the app following the same steps as above.
-	Don't worry about adding content to the detail html page or any code to the controller, we will do that together in the next class.</p>
-<p><a class="btn btn-default" ui-sref="geekwise.page({page_id: 3})">Continue to Day 3</a></p>
+<!--p><a class="btn btn-default" ui-sref="geekwise.page({page_id: 3})">Continue to Day 5</a></p-->

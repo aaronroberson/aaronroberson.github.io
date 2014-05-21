@@ -36,7 +36,7 @@ register a new service named 'ProductService' on our 'MyStore' module:</p>
 First we register the service's name, followed by the service object. However, unlike a controller, Angular will invoke the function (passed in as the second argument to angular.service())
 using the <code>new</code> operator. The <code>new</code> operator creates an instance of a user-defined object type or of one of the built-in object types that has a constructor function.</p>
 <div class="alert alert-info">
-    Learn more about the <code>new</code> operator on the <a href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/new">Mozilla Developer Network</a></div>
+    Learn more about the <code>new</code> operator on the <a href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/new">Mozilla Developer Network</a>
 </div>
 
 <h3>Object-oriented Programming</h3>
@@ -90,7 +90,7 @@ Vehicle.prototype.whatAmI = function() {
     var myArray = new Array();
     console.log(myArray);
 </pre>
-<p>In the console, note that the myArray has a __proto__ property.</p>The __proto__ “pseudo” property contains an object’s prototype object (the parent object it inherited its methods and properties from).</p>
+<p>In the console, note that the myArray has a __proto__ property.</p>The __proto__ “pseudo” property contains an object’s prototype object (the parent object it inherited its methods and properties from).
 <p>As you would expect, methods such as slice, splice, join and push are on the myArray's prototype.</p>
 <div class="alert alert-info">Learn more about <code>prototype</code> on the <a href="http://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function/prototype">Mozilla Developer Network</a></div>
 <p>In object-oriented programming, what we have demonstrated above is referred to as <strong>Inheritance</strong>.
@@ -217,3 +217,7 @@ The object or function returned by the service is injected into any component (c
 
 ...
 </pre>
+<div class="alert alert-info">
+    <p>Be sure to commit your changes to Github!</p>
+</div>
+<p><a ui-sref="geekwise.page({page_id: 4})" class="btn btn-default">Continue to Day 4</a></p>
