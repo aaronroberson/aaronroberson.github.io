@@ -56,7 +56,6 @@ function Vehicle(make, model, doorCount, color) {
     this.model = model;
     this.doors = doorCount;
     this.color = color;
-
 	this.running = false;
 }
 
@@ -72,7 +71,7 @@ console.log(car.make); // Outputs Honda
 var truck = new Vehicle('Toyota', 'Tacoma', 4, 'grey');
 console.log(truck.model); // Outputs Tacoma
 var car = new Vehicle('Honda', 'Accord', 2, 'white');
-console.log(
+console.log(car.model); // Outputs Honda
 </pre>
 
 <h3>Object inheritance and prototype</h3>
@@ -82,6 +81,9 @@ console.log(
 Vehicle.prototype.startEngine = function() {
     this.running = true;
 }
+Vehicle.prototype.whatAmI = function() {
+	return 'I am a ' + this.color + ' ' + this.make + ' ' + this.model + ' with ' + this.doors + ' doors';
+};
 </pre>
 <p>All objects in JavaScript have a prototype. For instance, we can create a new Array and log it to the console to inspect it's prototype:</p>
 <pre class="prettyprint lang-javascript">
@@ -117,8 +119,16 @@ var myTruck = new Truck('Fleetside', 'Dodge', 'Ram', 2, 'red');
 // Call the startEngine method of the Vehicle object from the Truck instance
 myTruck.startEngine();
 console.log(myTruck.running)' // Outputs true
+console.log(myTruck.whatAmI()); // Outputs I am a red Dodge Ram with 2 doors
+console.log(myTruck.bedType); // Outputs Fleetside
 </pre>
-
+<p>Whe can also override methods using the prototype likse so:</p>
+<pre class="prettyprint lang-javascript">
+Truck.prototype.whatAmI = function() {
+	return 'I am a ' + this.bedType + ' ' + this.color + ' ' + this.make + ' ' + this.model + ' with ' + this.doors + ' doors';
+};
+console.log(myTruck.whatAmI()); // Outputs I am a Fleetside red Dodge Ram with 2 doors
+</pre>
 <h3>Product service revisited</h3>
 <p>Using app.service(name, constructor function) to register a service object, Angular expects a constructor function as the second parameter and will invoke it using
 the <code>new</code> operator. To use app.service() we need to create a function that has it's properties and methods set with the <code>this</code> keyword:</p>
