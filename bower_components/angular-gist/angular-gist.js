@@ -3,6 +3,7 @@ angular.module('gist', []);
 angular.module('gist')
   .directive('gist', function () {
     return {
+      scope: true,
       restrict: 'E',
       replace: true,
       template: '<div></div>',
@@ -14,7 +15,7 @@ angular.module('gist')
         var iframe = document.createElement('iframe');
         iframe.setAttribute('width', '100%');
         iframe.setAttribute('frameborder', '0');
-        iframe.id = "gist-" + gistId;
+        iframe.id = "gist-" + gistId + Math.random() * (5000 - 100) + 100;
         elm[0].appendChild(iframe);
 
         if(gistFile) {
