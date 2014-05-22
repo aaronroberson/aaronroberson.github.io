@@ -1,5 +1,5 @@
 (function(angular) {
 
-    angular.module('aaronroberson', ['ui.router']);
+    angular.module('aaronroberson', ['ui.router', 'gist']);
 
 })(window.angular);
