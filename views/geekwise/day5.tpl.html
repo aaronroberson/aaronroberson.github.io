@@ -1,6 +1,74 @@
 <div class="row">
 
-    <gist id="b4dd3babbbce814ecd68" file="product-filters.json"></gist>
-    <gist id="b4dd3babbbce814ecd68" file="product-list.html"></gist>
+    <!--gist id="b4dd3babbbce814ecd68" file="product-filters.json"></gist-->
+    <h1>Day 5 - Featured Products</h1>
+
+	<p>Tonight's class will be more of a hands-on class.
+		On your own, you will be adding a featured products section to the home page of the 'MyStore' app.
+		During tonight's class you will be:
+	</p>
+
+	<ul>
+		<li>Creating a controller for the home state</li>
+		<li>Using the 'ProductService' to create a featured products array</li>
+		<li>Adding featured products to the home view</li>
+	</ul>
+
+	<h3>Setting up</h3>
+	<p>Change directories to your local app directory and start the web server:</p>
+	<pre>grunt</pre>
+	<p>You can now open your browser and go to <a href="http://localhost:9001" target="_blank">http://localhost:9001</a> to access the app.</p>
+
+	<h3>Step 1 - Create the HomeController</h3>
+	<ol>
+		<li>Create the home controller in the '/controllers' directory</li>
+		<li>Inject the <code>$scope</code> and 'ProductService' dependencies into the controller</li>
+		<li>Initialize a 'featuredProducts' array literal on the <code>$scope</code></li>
+		<li>Loop through the results of the getProducts() method using <code>angular.forEach()</code>:
+			<ul>
+				<li>Write an <code>if</code> statement to see if the 'isFeatured' property is true.</li>
+				<li>When true, <code>push</code> the product to <code>$scope.featuredProducts</code> array</li>
+			</ul>
+		</li>
+		<li>Add the <code>script</code> reference to 'index.html' page</li>
+		<li>Add the HomeController to the 'home' state in 'routes.js'</li>
+	</ol>
+
+	<h3>Step 2 - Copy the HTML and CSS assets</h3>
+	<ol>
+		<li>Go to <a href="http://codepen.io/DavieB/pen/CFywH/" target="blank">http://codepen.io/DavieB/pen/CFywH/</a> and copy the HTML to the 'home.html' page (after the jumbotron) in the '/views' directory</li>
+		<li>Copy the CSS (everything including and after the <code>.featured .full</code> definition) to a new CSS file named 'featured-products.css' in the '/assets/css' directory</li>
+		<li>Update index.html to include a <code>link</code> to the CSS file</li>
+	</ol>
+
+	<h3>Step 3 - Bind the featuredProducts to the view</h3>
+	<ol>
+		<li>Reference the first element in the featuredProducts array (remembering that arrays are 0-based) for the '.featured .full' product</li>
+		<li>Use ng-repeat to loop through the featuredProducts array and build the '.featured_small' product list.</li>
+		<li>Use the built-in Angular filter <a href="https://docs.angularjs.org/api/ng/filter/limitTo">limitTo</a> to only display 3 items in the '.featured_small' list.</li>
+		<li>Use the <a href="https://docs.angularjs.org/api/ng/directive/ngIf" target="_blank">ng-if</a> directive when looping over the 'featured_small' list to only display products with an $index greater than 1
+			(keep in mind, $index is 0-based)</li>
+	</ol>
+	<div class="alert alert-info">
+		<p>The <a href="https://docs.angularjs.org/api/ng/directive/ngRepeat" target="_blank">ng-repeat</a> directive includes the following special properties:</p>
+		<ul>
+			<li>$index</li>
+			<li>$first</li>
+			<li>$middle</li>
+			<li>$last</li>
+			<li>$event</li>
+			<li>$odd</li>
+		</ul>
+	</div>
+
+	<h3>Step 4 - Update the 'read more' links</h3>
+	<ol>
+		<li>Use the <a href="https://angular-ui.github.io/ui-router/site/#/api/ui.router.state.directive:ui-sref" target="_blank">UI-router sref</a> directive to update the 'read more' links to point to the selected product detail page</li>
+	</ol>
+
+	<h3>Step 4 - Commit your code to github</h3>
+	<p>In SourceTree (or the github client or CLI of your choice), commit and push your changes.</p>
+
+	<!--p><a ui-sref="geekwise.page({page_id: 6})" class="btn btn-default">Continue to Day 6</a></p-->
 </div>
 
