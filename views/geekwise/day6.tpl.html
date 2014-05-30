@@ -1,0 +1,64 @@
+<div class="row">
+
+    <h1>Day 6 - Custom Directives</h1>
+
+	<p>During tonight's class you will be:
+	</p>
+
+	<ul>
+		<li>Learning about custom directives</li>
+		<li>Updating the featured products list into a custom directive</li>
+		<li>Adding features products to the product detail view</li>
+	</ul>
+
+	<h3>Setting up</h3>
+	<p>Change directories to your local app directory and start the web server:</p>
+	<pre>grunt</pre>
+	<p>You can now open your browser and go to <a href="http://localhost:9001" target="_blank">http://localhost:9001</a> to access the app.</p>
+
+	<h3>Creating the featured-product template</h3>
+	<p>Create a new directory in the root of your app and name it 'templates'.
+	Open 'views/home.html' and locate the featured product HTML we added during the previous class.
+	We are going to cut the HTML code starting with the 'featured_small' class and paste it into a new file in the 'templates' directory and name it 'featured-product.html':</p>
+	<gist id="f3b54850ca37634ebd92" file="featured-product.html"></gist>
+
+	<p>This will be the template for our first custom directive in Angular.</p>
+
+	<h3>Creating our first directive</h3>
+	<p>Create a new directory in the root of your app and name it 'directives'.
+	Create a new file in the 'directives' directory and name it 'featured-product-directive.js':</p>
+	<gist id="f3b54850ca37634ebd92" file="featured-product-directive.js"></gist>
+
+	<div class="alert alert-info">
+		<p>Learn more about Angular Directives <a href="https://docs.angularjs.org/guide/directive" target="_blank">https://docs.angularjs.org/guide/directive</a></p>
+	</div>
+
+	<div class="alert alert-info">
+		<p>Learn more about <a href="http://umur.io/angularjs-directives-using-isolated-scope-with-attributes/" target="_blank">Using Isolated Scope with Attributes</a></p>
+	</div>
+
+	<p>Be sure to add the script reference to featured-product-directive.js in the index.html page:</p>
+	<gist id="f3b54850ca37634ebd92" file="index.html"></gist>
+
+	<h3>Updating the home page</h3>
+	<p>Returning to 'views/home.html' let's add back our featured products, this time using our new custom directive:</p>
+	<gist id="f3b54850ca37634ebd92" file="home.html"></gist>
+
+	<p>Everything should now appear as it did prior to our updates.</p>
+
+	<h3>Adding featured products to product details</h3>
+	<p>Next we are going to update the product-detail-controller.js to include an array of featured products.</p>
+	<p>Add a <code>featuredProducts</code> model to the <code>$scope</code> and initialize it as an array literal (add immediately after the <code>var product_quid</code> variable assignment):</p>
+<pre class="prettyprint lang-javascript">
+	$scope.featuredProducts = [];
+</pre>
+
+	<p>Now, let's add each featured product to the featuredProducts array:</p>
+	<gist id="f3b54850ca37634ebd92" file="product-detail-controller.js"></gist>
+
+	<p>After the product detail description and before the 'return to products' link, add our featured product directive:</p>
+	<gist id="f3b54850ca37634ebd92" file="product-detail.html"></gist>
+
+	<!--p><a ui-sref="geekwise.page({page_id: 7})" class="btn btn-default">Continue to Day 7</a></p-->
+</div>
+
