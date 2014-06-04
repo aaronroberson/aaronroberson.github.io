@@ -69,7 +69,7 @@ mongodb://[dbuser]:[dbpassword]@[host]:[port]/[database]
 <pre class="prettyprint">
 npm install -g mongodb
 npm install -S mongoose
-npm install -S mongod-uri
+npm install -S mongodb-uri
 </pre>
 	<h3>Adding the E in MEAN</h3>
 	<p>Remaining in the command prompt/terminal, continue entering the following command to install Express and it's dependencies:</p>
@@ -91,8 +91,8 @@ npm install -S static favicon
 	</p>
 
 	<h4>Adding the server-side routes</h4>
-	<p>Create a new directory in the application root and name it 'routes.js'. Copy the contents from below:
-		<gist id="c0774a0c1a1257922f24" file="server.js"></gist>
+	<p>Create a new file in the application root and name it 'routes.js'. Copy the contents from below:
+		<gist id="c0774a0c1a1257922f24" file="routes.js"></gist>
 	</p>
 
 	<p>Add the Mongoose ORM connector to the 'server.js' file:
