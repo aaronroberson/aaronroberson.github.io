@@ -142,12 +142,10 @@ npm install -S static-favicon
 	<p>Navigate to the http://localhost and the port displayed in the terminal response (should be http://localhost:/9001 or http://localhost:/3000)</p>
 
 	<h3>On your own</h3>
-	<h4>Option 1</h4>
-	<p>Add a products/featured route to the routes.js and return all products where isFeatured is true.
-		Create a new getFeaturedProducts method to the ProductService and update the Home Controller to use the getFeaturedproducts method.</p>
-	<h4>Option 2</h4>
-	<p>Add the product filters to the MongoLab database, then update the routes.js and ProductService to use the data from the MongoDB instance.</p>
-
+	<h4>Add featured products to API</h4>
+	<p>Add a new Express route that points to 'api/products/featured' (in the /routes.js file) and return all products where isFeatured is true.
+		Create a new getFeaturedProducts method and add it to the ProductService (in /public/services/product-service.js) and update the Home controller (in /public/controllers/home-controller.js) to use the ProductService.getFeaturedProducts() method.</p>
+	
 	<div class="alert alert-info">
 		<p>Remember to commit your changes to Github!</p>
 	</div>
