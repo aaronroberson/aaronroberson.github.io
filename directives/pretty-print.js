@@ -1,4 +1,4 @@
-App.directive('prettyprint', function() {
+angular.module('aaronroberson').directive('prettyprint', function() {
 	return {
 		restrict: 'C',
 		link: function postLink(scope, element, attrs) {
