@@ -8,6 +8,7 @@
 		<li>Update the products price and specialPrice values in MongoDB to numbers</li>
 		<li>Updating the shopping cart
 			<ul>
+				<li>Update the mini-cart-directive</li>
 				<li>Update the CartController with the methods from the CartService</li>
 				<li>Update the CartService methods</li>
 				<li>Add the ng-repeat to display all the items in the cart on the cart.html view</li>
@@ -22,6 +23,13 @@
 
 	<p>Log into <a href="http://mongolab.com" target="_blank">http://mongolab.com</a> and navigate to your products collection.
 		Click on each product and update the price and specialPrice values, removing the dollar sign ($) and any commas.</p>
+
+	<h3>Update the mini-cart-directive</h3>
+
+	<p>Update the mini-cart-directive by injecting the CartService using Angular's dependency injection annotations.
+		Next, set the cartSubtotal and itemCount variables on the scope to equal the corresponding methods on the cartService:</p>
+
+	<gist id="c666766145a71144ddef" file="mini-cart-directive.js"></gist>
 
 	<h3>Update the CartController</h3>
 
@@ -117,7 +125,7 @@ getCartSubtotal: function() {
 	<div class="alert alert-info">
 		<p>We are using the ternary operator above. To learn more about this conditional operator, visit the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator" target="_blank">Mozilla Developer Network</a></p>
 	</div>
-	
+
 	<h4>Updating the getCartTotal method</h4>
 	<p>For now, copy the code from the getCartSubtotal method and add it to the getCartTotal method. Later we will add shipping to the equation.
 	Your completed CartService should resemble the following code:</p>
