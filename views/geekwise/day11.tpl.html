@@ -1,0 +1,87 @@
+<div class="row">
+
+    <h1>Day 12 - Angular $cookieStore</h1>
+
+	<p>In tonight's class you will:</p>
+
+	<ul>
+		<li>Learn about Angular's $cookieStore</li>
+        <li>Update CartService to persist items to cookie</li>
+		<li>Update CartService to retrieve items from cookie</li>
+		<li>Add the checkout method to the cart controller</li>
+		<li>Replace the checkout button with a PayPal image</li>
+	</ul>
+
+	<h3>Adding $cookieStore dependency</h3>
+
+	<p>In the previous class you added angular-cookies to the index.html page and registered the dependency as a module to the 'MyStore' app.
+	To include the dependency to the CartService inject the $cookieStore service using Angular's dependcey injection annotation:</p>
+<pre class="prettyprint lang-javascript">
+app.factory('CartService', function($cookieStore) {
+</pre>
+
+	<h3>Persisting items to a cookie</h3>
+
+    <p>Add a method to the CartService object named 'updateItemsCookie' that doesn't take any parameters.
+	    You will use this method to update the 'items' cookie.
+	    Unlike arrays in JavaScript, you cannot 'code' push items onto an existing cookie.
+	    To keep the items cookie updated when new items are added, updated or removed from the cart, you will call this function to destroy the existing cookie and rebuilt it:
+    </p>
+
+	<gist id="719ec9627bb75f8ac3f8" file="updateItemsCookie"></gist>
+
+	<h3>Call updateItemsCookie() from other methods</h3>
+
+	<p>To reference the CartService object from within the cart itself, update the service to set the object literal to a variable and then return the variable:</p>
+
+<pre class="prettyprint lang-javascript">
+var cart = {};
+return cart;
+</pre>
+
+	<p>Now you can reference the cart object from within the cart. Update the addItem() and removeItem() methods to call the updateItemsCookie() method at the end of the function (before the closing curly brace):</p>
+<pre class="prettyprint lang-javascript">
+cart.updateItemsCookie();
+</pre>
+
+    <h3>Update getItems method</h3>
+
+    <p>Update the getItems method to look for the items cookie if the cart is empty. If the items cookie exists, rebuild the cart by looking up the product by the guid stored in the cookie:</p>
+
+	<gist id="719ec9627bb75f8ac3f8" file="getItems"></gist>
+
+	<p>When looping through the itemsCookie the ProductService is being called to fetch the details for each object.
+		In order for this to work, you must first inject the ProductService into the CartService:</p>
+
+<pre class="prettyprint lang-javascript">
+app.factory('CartService', function($cookieStore, ProductService) {
+</pre>
+
+    <h3>Update the emptyCart method</h3>
+
+	<gist id="719ec9627bb75f8ac3f8" file="emptyCart"></gist>
+
+	<h3>On your own</h3>
+
+	<p>Part 1: Add a getItemPrice method to the CartService and update the getCartSubtotal method to use it:</p>
+
+	<gist id="719ec9627bb75f8ac3f8" file="getItemPrice"></gist>
+
+	<p>Part 2: Update getCartTotal to return getCartSubtotal:</p>
+
+	<gist id="719ec9627bb75f8ac3f8" file="getCartTotal"></gist>
+
+	<h3>Completed CartService</h3>
+
+	<p>If you've done everything correctly, your completed CartService should resemble the following:</p>
+
+	<gist id="719ec9627bb75f8ac3f8" file="cart-service.js"></gist>
+
+	<div class="alert alert-info">
+		<p>Remember to commit your changes to Github!</p>
+	</div>
+
+	<p><a ui-sref="geekwise.page({page_id: 10})" class="btn btn-default">Continue to Day 10</a></p>
+
+</div>
+
