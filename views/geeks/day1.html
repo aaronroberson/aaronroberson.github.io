@@ -48,13 +48,17 @@ world(hello); // throws undefined exception
 
 	<p>In JavaScript, the default scope for all variables and functions is the global scope, which is the DOM <code>window</code>.
 		When developing large applications, you should limit what is added to the global scope.
-		To do that, you can an <abbr title="Immediately Invoked Function Expression">IIFE</abbr>:</p>
+		To do that, you can create a function that immediately invokes itself, otherwise known as an <abbr title="Immediately Invoked Function Expression">IIFE</abbr>:</p>
 
 <pre class="prettyprint lang-javascript">
 (function(){
 
 })();
 </pre>
+
+	<div class="alert alert-info">
+		Learn more about <a href="http://benalman.com/news/2010/11/immediately-invoked-function-expression/" target="_blank">IIFE</a>s
+	</div>
 
 	<h2>Constructor Functions</h2>
 
@@ -75,9 +79,13 @@ var truck = new Vehicle('Toyota', 'Tacoma', 4, 'grey');
 		By assigning variables using <code>this</code> you are adding properties to the object that will exist for every instance of the object.
 	</p>
 
+	<div class="alert alert-info">
+		Learn more about the <code>this</code> keyword, <a href="http://toddmotto.com/understanding-the-this-keyword-in-javascript/" target="_blank">Understanding the 'this' keyword in JavaScript</a>
+	</div>
+
 	<p>The <code>new</code> operator creates an instance of a user-defined object type or of one of the built-in object types that has a constructor function.</p>
 	<div class="alert alert-info">
-		Learn more about the <code>new</code> operator on the <a href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/new">Mozilla Developer Network</a>
+		Learn more about the <code>new</code> operator on the <a href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/new" target="_blank">Mozilla Developer Network</a>
 	</div>
 
 <pre class="prettyprint lang-javascript">
