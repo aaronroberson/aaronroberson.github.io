@@ -1,0 +1,111 @@
+<div>
+
+	<h1>Day 1 - JavaScript Objects</h1>
+
+	<p>In this class you will learn about:</p>
+	<ul>
+		<li>Function scope</li>
+		<li>Callbacks and closures</li>
+		<li>Immediately Invoked Function Expressions (IIFE)</li>
+		<li>Constructor functions</li>
+	    <li>Object literals</li>
+		<li>JSON (JavaScript Object Notation)</li>
+	</ul>
+
+	<h2>Function scope</h2>
+
+	<p>Unlike traditional programming languages such as C, JavaScript does NOT have block level scope.
+	JavaScript has function scope, meaning that variables defined within a function body are not accessible outside of the function body:</p>
+
+<pre class="prettyprint lang-javascript">
+var x = 10;
+function hello() {
+	var y = 5;
+	console.log(x); // logs 10
+}
+console.log(y); // throws undefined exception
+</pre>
+
+	<p>In the code above, the variable <code>y</code> which is defined within the function body is not accessible outside of the function.</p>
+
+	<h2>Callbacks and closures</h2>
+
+	<p>A closure in JavaScript provides a convenient way to share function scope between two ore more functions:</p>
+
+<pre class="prettyprint lang-javascript">
+
+function hello() {
+	var y = 5;
+	return y;
+}
+function world(callback) {
+	console.log(callback());
+}
+world(hello); // throws undefined exception
+</pre>
+
+	<h2>Immediately Invoked Function Expressions</h2>
+
+	<p>In JavaScript, the default scope for all variables and functions is the global scope, which is the DOM <code>window</code>.
+		When developing large applications, you should limit what is added to the global scope.
+		To do that, you can an <abbr title="Immediately Invoked Function Expression">IIFE</abbr>:</p>
+
+<pre class="prettyprint lang-javascript">
+(function(){
+
+})();
+</pre>
+
+	<h2>Constructor Functions</h2>
+
+	<p>In JavaScript you can define classes (or objects) much like you define a function:</p>
+
+<pre class="prettyprint lang-javascript">
+function Vehicle(make, model, doorCount, color) {
+    this.make = make;
+    this.model = model;
+    this.doors = doorCount;
+    this.color = color;
+}
+
+var truck = new Vehicle('Toyota', 'Tacoma', 4, 'grey');
+</pre>
+
+	<p>The keyword <code>this</code> inside the function refers to the current object.
+		By assigning variables using <code>this</code> you are adding properties to the object that will exist for every instance of the object.
+	</p>
+
+	<p>The <code>new</code> operator creates an instance of a user-defined object type or of one of the built-in object types that has a constructor function.</p>
+	<div class="alert alert-info">
+		Learn more about the <code>new</code> operator on the <a href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/new">Mozilla Developer Network</a>
+	</div>
+
+<pre class="prettyprint lang-javascript">
+var truck = new Vehicle('Toyota', 'Tacoma', 4, 'grey');
+console.log(truck.model); // Outputs Tacoma
+var car = new Vehicle('Honda', 'Accord', 2, 'white');
+console.log(car.model); // Outputs Honda
+</pre>
+
+	<h2>Object literals</h2>
+
+	<p>When creating objects in JavaScript, you can create an object-literal, for example:</p>
+
+<pre class="prettyprint lang-javascript">
+var Vehicle = {
+    make: 'Toyota',
+    model: 'Tacoma',
+    doors: 4,
+    color: 'grey'
+};
+</pre>
+
+	<h2>JSON</h2>
+
+	<p>JSON is a data-interchange format akin to XML and SOAP. Unlike XML and SOAP, it is extremely light-weight and is based upon a Object literals in Javascript.</p>
+
+	<div class="alert alert-info">
+		Learn more about JSON at <a href="http://json.org" target="_blank">http://json.org</a>
+	</div>
+
+</div>

@@ -22,7 +22,17 @@
                     templateUrl: function(stateParams) {
                         return 'views/geekwise/day' + stateParams.page_id + '.tpl.html';
                     }
-                });
+                })
+	            .state('geek', {
+		            url: '/geek',
+		            templateUrl: 'views/geeks/geek.html'
+	            })
+	            .state('geek.page', {
+		            url: '/:page_id',
+		            templateUrl: function(stateParams) {
+			            return 'views/geeks/day' + stateParams.page_id + '.html';
+		            }
+	            });
 
         });
 
