@@ -2,14 +2,38 @@
 
 	<h1>Day 1 - JavaScript Objects</h1>
 
-	<p>In this class you will learn about:</p>
+	<p>In this class you will:</p>
 	<ul>
+		<li>Review JavaScript types</li>
 		<li>Function scope</li>
 		<li>Callbacks and closures</li>
 		<li>Immediately Invoked Function Expressions (IIFE)</li>
 		<li>Constructor functions</li>
 	    <li>Object literals</li>
 		<li>JSON (JavaScript Object Notation)</li>
+	</ul>
+
+	<h2>JavaScript Types</h2>
+
+	<p>The name 'JavaScript' was decided upon to capitalize on the popularity of Sun Microsystem's Java language, but has very little in common with Java except that both are object-oriented languages.
+		The JavaScript syntax is modeled after the Java and C languages, meaning that many of the structures from Java and C apply to JavaScript as well.
+		JavaScript has types and operators, core objects and methods. JavaScript types include:</p>
+
+	<ul>
+		<li><a href="http://developer.mozilla.org/En/Core_JavaScript_1.5_Reference/Global_Objects/Number" target="_blank" title="Number">Numbers</a></li>
+		<li><a href="http://developer.mozilla.org/En/Core_JavaScript_1.5_Reference/Global_Objects/String" target="_blank" title="String">Strings</a></li>
+		<li><a href="http://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" target="_blank" title="Boolean">Booleans</a></li>
+		<li><a href="http://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" target="_blank" title="Object">Objects</a>
+			<ul>
+				<li><a href="http://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" target="_blank" title="Function">Functions</a></li>
+				<li><a href="http://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array" target="_blank" title="Array">Arrays</a></li>
+				<li><a href="http://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Date" target="_blank" title="Date">Date</a></li>
+				<li><a href="http://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/RegExp" target="_blank" title="Regular Expressions"></a></li>
+			</ul>
+		</li>
+		<li>Null</li>
+		<li>Undefined</li>
+		<li><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Error" target="_blank" title="Errors">Errors</a></li>
 	</ul>
 
 	<h2>Function scope</h2>
@@ -62,7 +86,7 @@ world(hello); // throws undefined exception
 
 	<h2>Constructor Functions</h2>
 
-	<p>In JavaScript you can define classes (or objects) much like you define a function:</p>
+	<p>Unlike Java and C, JavaScript does not have classes. In JavaScript, functions are objects that can encapsulate executable code and be inherited and extended:</p>
 
 <pre class="prettyprint lang-javascript">
 function Vehicle(make, model, doorCount, color) {
@@ -97,20 +121,52 @@ console.log(car.model); // Outputs Honda
 
 	<h2>Object literals</h2>
 
-	<p>When creating objects in JavaScript, you can create an object-literal, for example:</p>
+	<p>JavaScript objects, particularly object literals, can be thought of as collections of name-value pairs which are similar to:</p>
+
+	<ul>
+		<li>Dictionaries in Python</li>
+		<li>Hashes in Perl and Ruby</li>
+		<li>Hash tables in C and C++</li>
+		<li>HashMaps in Java</li>
+		<li>Associative arrays in PHP</li>
+	</ul>
+
+	<p>The name (in name-value pair) consists of a JavaScript string, while the value can be any JavaScript value. For example:</p>
 
 <pre class="prettyprint lang-javascript">
 var Vehicle = {
     make: 'Toyota',
     model: 'Tacoma',
     doors: 4,
-    color: 'grey'
+    color: 'grey',
+	startEngine: function() {
+		this.engine = 'running';
+	}
 };
+</pre>
+
+	<p>Once an Object literal has been created, it's properties can be accessed in one of two ways. The first is the 'dot' notation:</p>
+
+<pre class="prettyprint">
+var manufacturer = Vehicle.make;
+</pre>
+
+	<p>Or through the 'array' or 'bracket' notation:</p>
+
+<pre class="prettyprint">
+var manufacturer = Vehicle['make'];
+</pre>
+
+	<p>The advantage of the 'dot' notation is that is it convenient and easy to read. However, the advantage of the 'bracket' notation is that the string can be calculated at run-time which is helpful when looping through properties of an array or escaping <a href="https://developer.mozilla.org/en/JavaScript/Reference/Reserved_Words" target="_blank">reserved words</a>:</p>
+
+<pre class="prettyprint">
+obj.for = "Aaron"; // Syntax error, because 'for' is a reserved word
+obj["for"] = "Aaron"; // works fine
 </pre>
 
 	<h2>JSON</h2>
 
-	<p>JSON is a data-interchange format akin to XML and SOAP. Unlike XML and SOAP, it is extremely light-weight and is based upon a Object literals in Javascript.</p>
+	<p>JSON is a data-interchange format akin to XML and SOAP. Unlike XML and SOAP, it is extremely light-weight and is based upon Object literals in Javascript.</p>
 
 	<div class="alert alert-info">
 		Learn more about JSON at <a href="http://json.org" target="_blank">http://json.org</a>
