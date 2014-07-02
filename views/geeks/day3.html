@@ -18,6 +18,9 @@
 	</p>
 
 	<h3>Install Node.js</h3>
+	<p>The Swagwise application will be interacting with a database using AJAX (Asynchronous JavaScript and XML).
+		In order to overcome XSS (Cross-Site Scripting) limitations in the browser, the application needs to be served up by a web server.
+		Rather than installing and setting up Apache and additional server-side software such as Php, Python, or Ruby, the Swagwise application will use Node.js and Express.js as a web server, thereby streamlining the setup process and remaining more relevant to the course topic: JavaScript.</p>
 	<p>Download and install <a href="http://nodejs.org/">Node.js</a> on your system.</p>
 
 	<h4>Install Bower</h4>
@@ -37,7 +40,7 @@
 		To facilitate this, you will be using <a href="http://nodejs.org">Node.js</a> and <a href="http://expressjs.com">Express</a> to serve up a local instance of the application in the browser.</p>
 
 	<h2>Running Express</h2>
-	<p>In the Windows command prompt or Mac Terminal change (<code>cd [path/to/site/directory]</code>) to the directory you cloned the boilerplate app into and run the following command:</p>
+	<p>In the Windows command prompt or Mac Terminal change (<code>cd [path/to/site/directory]</code>) to the directory you cloned the boilerplate app into and run the following command to add Node middleware registered in package.json:</p>
 	<pre>npm install</pre>
 	<p>To start the web server run the following command:</p>
 <pre>npm start</pre>
