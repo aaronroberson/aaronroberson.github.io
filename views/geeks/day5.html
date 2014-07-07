@@ -1,0 +1,100 @@
+<div class="container">
+
+	<h1>Day 5 - Getting MEAN</h1>
+
+	<p>In this class you will be adding:</p>
+    <ul>
+        <li>Creating a MongoDB database</li>
+        <li>Adding Mongoose <abbr title="Object Document Mapper">ODM</abbr> to Express</li>
+        <li>Creating a RESTful <abbr title="Application Programming Interface">API</abbr></li>
+        <li>Updating the SwagService</li>
+    </ul>
+
+    <h2>What is MEAN?</h2>
+    <p>MEAN is an acronym for MongoDB, Express.js, AngularJS and Node.js.
+        Similar to MAMP, LAMP or WAMP (Mac/Linux/Windows, Apache, MySQL and Php), MEAN is a front-end and backed-end stack for dynamic web application development.</p>
+
+    <h2>Adding the M in MEAN</h2>
+    <p>The Swagwise application will be using a third-party, cloud hosted database to serve up it's data.
+        Go to <a href="http://mongolab.com" target="_blank">http://mongolab.com</a> and create a FREE sandbox account.
+        After verifying your account from the email verification link, log into your new mongolab account and follow the steps below:</p>
+    <ol>
+        <li>Click the "Create new" button to create a new MongoDB instance</li>
+        <li>Select the Google Cloud Platform</li>
+        <li>Select the Single-node (development) plan</li>
+        <li>Give your database a name (such as 'swagwise')</li>
+        <li>Click Create new MongoDB deployment</li>
+    </ol>
+    <p>Congratulations, you just created a new MongoDB instance in the cloud!</p>
+    <h4>Add a database user</h4>
+    <p>With the new database instance selected, click the 'Users' tab and then click the 'Add database user' button.
+        Enter a username and password (different than your mongolab account credentials). You will use this in the mongoose connection string:
+<pre>
+mongodb://[dbuser]:[dbpassword]@[host]:[port]/[database]
+</pre>
+    <div class="alert alert-warning">
+        Since your source code is hosted using a public account on github.com, use a generic database user password that is unrelated to any real accounts you may have elsewhere on the internet.
+    </div>
+    <h2>Create the swag collection</h2>
+    <p>With the new database instance selected, click the 'Add collection" button and create a new collection named 'swag'.
+        Click the 'Add document' button. Paste in a single product from the '/app/assets/json/swag.json' file. Repeat the last two steps above to enter each product as a document in the collection.</p>
+
+    <h3>Adding MongoDB and Mongoose dependencies</h3>
+    <p>Open a command prompt/terminal and change directories to the Swagwise application. Enter the following command to install mongodb drivers globally:</p>
+<pre class="prettyprint">
+npm install -g mongodb
+</pre>
+    <p>Now enter the following command to install the mongoose dependencies to the Swagwise application:</p>
+<pre class="prettyprint">
+npm install -S mongoose mongodb-uri
+</pre>
+
+    <h2>Updating Express</h2>
+    <p>Remaining in the command prompt/terminal, continue entering the following command to install the body-parse and cookie-parser Express middleware dependencies:</p>
+
+    <pre class="prettyprint">
+npm install -S cookie-parser body-parser
+</pre>
+
+    <p>Add the Mongoose ODM connector to the 'server.js' file:
+        <gist id="c0774a0c1a1257922f24" file="mongoose-connection"></gist>
+    </p>
+
+    <div class="alert alert-info">
+        <p>The connection string to your Mongolab instance is displayed on the database page in the Mongolab website.<br/>
+            mongodb://[dbuser]:[dbpassword]@[host]:[port]/[database]</p>
+    </div>
+
+    <h3>Adding a Model</h3>
+    <p>Mongoose needs a database model and schema to fetch the data from our MongoDB.
+        Create a new directory under the application root and name it 'models'.
+        Create a new file named 'Swag.js' and add the following:
+        <gist id="c0774a0c1a1257922f24" file="Product.js"></gist>
+    </p>
+    <p>Include the model in the server.js using the following:
+        <gist id="c0774a0c1a1257922f24" file="models"></gist>
+    </p>
+
+    <h3>Adding an API to the routes</h3>
+    <p>Update the 'routes.js' file, using Mongoose to find the product and products:
+        <gist id="c0774a0c1a1257922f24" file="routes-complete"></gist>
+    </p>
+
+    <h3>Updating the SwagService</h3>
+    <p>Update the SwagService so that it no longer uses the products.json file.
+        Use the new route to the API you created in the step above:
+        <gist id="c0774a0c1a1257922f24" file="product-service.js"></gist>
+    </p>
+
+<div class="alert alert-info">
+	<p>Be sure to commit your changes to Github!</p>
+</div>
+
+<!--p><a ui-sref="geek.page({page_id: 4})" class="btn btn-default">Continue to Day 4</a></p-->
+
+<hr>
+
+<div disqus="'geekwise0105'"></div>
+
+</div>
+
