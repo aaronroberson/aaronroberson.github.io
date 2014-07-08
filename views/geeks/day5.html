@@ -49,16 +49,6 @@
         Click the 'Add document' button. Paste in a single product from the '/app/assets/json/swag.json' file.
 	    Repeat the last two steps above to enter each product as a document in the collection.</p>
 
-	<h2>Updating Express</h2>
-	<p>The Swagwise API will need the ability to parse the body of an HTTP request as well as create and return cookies.
-		To install the Express middleware for body and cookie parsing, open a command prompt/terminal and change directories to the Swagwise application.
-		Enter the following command to install the body-parser and cookie-parser dependencies:</p>
-
-<pre class="prettyprint">
-npm install -S body-parser cookie-parser
-</pre>
-
-	<p>The <code>-S</code> flag informs node to update the package.json file with the dependencies.</p>
 
 	<h2>Adding MongoDB and Mongoose dependencies</h2>
     <p>Enter the following command to install the mongodb drivers globally:</p>
@@ -69,6 +59,8 @@ npm install -g mongodb
 <pre class="prettyprint">
 npm install -S mongoose mongodb-uri
 </pre>
+
+<p>The <code>-S</code> flag informs node to update the package.json file with the dependencies.</p>
 
     <p>Add the Mongoose ODM connector to the 'server.js' file: </p>
 	<gist id="74e27e57013e467c0fde" file="mongoose.js"></gist>
