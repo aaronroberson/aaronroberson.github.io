@@ -51,7 +51,7 @@ $scope.items = CartService.getItems();
 
 	<ul>
 		<li>Controllers are transient objects, meaning they are created and destroyed frequently</li>
-		<li>Controllers are not shared throughout the application, and neighter is the code they contain</li>
+		<li>Controllers are not shared throughout the application, nor is the code they contain</li>
 		<li>Complex controller logic is not easily testable</li>
 	</ul>
 
@@ -66,7 +66,7 @@ var items = {};
 </pre>
 	<h4>Updating the addItem method</h4>
 	<p>Next, build out the addItem method. The addItem method will take an item as a parameter and will check for the existence of the item in the <code>items</code> object.
-		If the item doesn't exist, add a <code>quantity</code> property and intialize it with the value of 1.
+		If the item doesn't exist, add a <code>quantity</code> property and initialize it with the value of 1.
 	Then, add the item to the <code>items</code> object, using the <code>guid</code> as its key:</p>
 <pre class="prettyprint lang-javascript">
 if(!items[item.guid]) {
