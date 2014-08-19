@@ -55,12 +55,20 @@
 <pre class="prettyprint">
 npm install -g mongodb
 </pre>
+
     <p>Now enter the following command to install the mongoose dependencies to the Swagwise application:</p>
 <pre class="prettyprint">
 npm install -S mongoose mongodb-uri
 </pre>
 
-<p>The <code>-S</code> flag informs node to update the package.json file with the dependencies.</p>
+    <p>The <code>-S</code> flag informs node to update the package.json file with the dependencies.</p>
+
+    <p>Require the mongoose and mongodb-uri middleware in the module depenency section at the top of the file in server.js:</p>
+
+<pre class="prettyprint">
+var mongoose     = require('mongoose');
+var uriUtil      = require('mongodb-uri');
+</pre>
 
     <p>Add the Mongoose ODM connector to the 'server.js' file: </p>
 	<gist id="74e27e57013e467c0fde" file="mongoose.js"></gist>
