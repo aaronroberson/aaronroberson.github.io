@@ -133,6 +133,6 @@ npm install --save express-session passport passport-local bcrypt-nodejs
 
 <p><a ui-sref="geek.page({page_id: 11})" class="btn btn-default">Continue to Day 11</a></p>
 
-<hr>
+ 
 
 <div disqus="'geekwise0109'"></div>

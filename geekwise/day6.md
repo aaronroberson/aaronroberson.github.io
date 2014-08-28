@@ -67,6 +67,6 @@ angular.module('Swagwise', ['ngResource', 'ui.router', <bold>'ui.bootstrap'</bol
 
 <p><a ui-sref="geek.page({page_id: 7})" class="btn btn-default">Continue to Day 7</a></p>
 
-<hr>
+ 
 
 <div disqus="'geekwise0106'"></div>

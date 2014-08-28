@@ -237,6 +237,6 @@ templateUrl: 'views/home.html'
 
 <p><a ui-sref="geek.page({page_id: 4})" class="btn btn-default">Continue to Day 4</a></p>
 
-<hr>
+ 
 
 <div disqus="'geekwise0103'"></div>

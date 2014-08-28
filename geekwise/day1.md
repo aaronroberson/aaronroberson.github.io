@@ -172,7 +172,7 @@ JSON is a data-interchange format akin to XML and SOAP. Unlike XML and SOAP, it 
 
 <a ui-sref="geek.page({page_id: 2})" class="btn btn-default">Continue to Day 2</a>
 
-<hr>
+ 
 
 <div disqus="'geekwise0101'"></div>
 

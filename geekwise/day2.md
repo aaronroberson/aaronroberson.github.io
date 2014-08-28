@@ -211,6 +211,6 @@ angular.module('myModule', []);
 
 <p><a ui-sref="geek.page({page_id: 3})" class="btn btn-default">Continue to Day 3</a></p>
 
-<hr>
+ 
 
 <div disqus="'geekwise0102'"></div>

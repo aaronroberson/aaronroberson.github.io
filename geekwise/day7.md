@@ -143,6 +143,6 @@ CartService.addItem(item);
 
 <p><a ui-sref="geek.page({page_id: 8})" class="btn btn-default">Continue to Day 8</a></p>
 
-<hr>
+ 
 
 <div disqus="'geekwise0107'"></div>

@@ -212,6 +212,6 @@ ui-sref=&quot;product({id: item.id})&quot;
 
 <p><a ui-sref="geek.page({page_id: 6})" class="btn btn-default">Continue to Day 6</a></p>
 
-<hr>
+ 
 
 <div disqus="'geekwise0105'"></div>

@@ -245,6 +245,6 @@ app.controller('SwagController', function($scope, SwagService) {
 
 <p><a ui-sref="geek.page({page_id: 4})" class="btn btn-default">Continue to Day 4</a></p>
 
-<hr>
+ 
 
 <div disqus="'geekwise0104'"></div>

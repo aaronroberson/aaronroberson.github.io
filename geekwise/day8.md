@@ -201,6 +201,6 @@ app.factory('CartService', function($cookieStore, <strong>SwagService</strong>) 
 
 <p><a ui-sref="geek.page({page_id: 9})" class="btn btn-default">Continue to Day 9</a></p>
 
-<hr>
+ 
 
 <div disqus="'geekwise0108'"></div>
