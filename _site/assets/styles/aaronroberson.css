@@ -7557,6 +7557,9 @@ li[class*=" icon-"].icon-large:before {
   content: url(https://avatars2.githubusercontent.com/u/440189?s=90);
 }
 /* Post */
+.post a {
+  color: #036;
+}
 .post-header h1 {
   padding-top: 0;
 }

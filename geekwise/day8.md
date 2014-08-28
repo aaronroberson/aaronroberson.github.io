@@ -22,7 +22,38 @@ day: 8
 
 <p>Add a miniCart directive to the directives.js file:</p>
 
-{% gist aaronroberson/a26f85400a3e8818a834 mini-cart-directive.js %}
+{% highlight JavaScript linenos %}
+(function(angular) {
+	"use strict";
+ 
+	var app = angular.module('Swagwise');
+ 
+	// Inject in the CartService
+	app.directive('miniCart', function() {
+ 
+		return {
+			// Create an isolated scope
+			scope: {
+			},
+			restrict: 'E',
+			replace: true,
+			templateUrl: 'templates/mini-cart.html',
+			link: function(scope, elem, attr) {
+ 
+				scope.getCartSubtotal = function() {
+					// Returns subtotal from CartService
+				};
+ 
+				scope.getItemCount = function() {
+					//Returns the item count from the CartService
+				};
+			}
+ 
+		};
+	});
+ 
+})(window.angular);
+{% endhighlight %}
 
 <p>Update the getCartSubtotal and getItemCount functions on the scope to return respective values using the getCartSubtotal and getItemCount methods on the cartService.</p>
 
@@ -43,13 +74,46 @@ day: 8
 </ul>
 <p>The completed code should resemble the following:</p>
 
-{% gist aaronroberson/a26f85400a3e8818a834 add-cart-button.js %}
+{% highlight JavaScript linenos %}
+(function(angular) {
+	"use strict";
+	
+	var app = angular.module('Swagwise');
+	
+	// Inject the CartService
+	app.directive('addCartButton', function() {
+	
+		return {
+			// E for Element
+			// A for Attribute
+			// C for Class
+			restrict: 'E',
+			scope: {
+				// 3 types of bindings for scope properties
+				// @ which is a string
+				// & which is a one-way binding
+				// = which is two-way binding
+			},
+			replace: true,
+			templateUrl: 'templates/add-cart-button.html',
+			link: function(scope, elem, attr) {
+				
+				scope.addItem = function(item) {
+					// Pass the item into the addItem method of the CartService
+				};
+			}
+		
+		};
+	});
+ 
+})(window.angular);
+{% endhighlight %}
 
 <p>Inject the CartService into the AddCartButton directive. Add the item to the scope using the two-way binding syntax and update the addItem function on the scope to use the CartService.</p>
 
 <p>Next, create the 'add-cart-button.html' template in the 'app/templates/' directory. Add the following HTML markup:</p>
 
-{% gist aaronroberson/a26f85400a3e8818a834 add-cart-button.html %}
+    <button class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i> Add to cart</button>
 
 <p>Update the button using the 'ng-click' directive to call the addItem method of the AddCartButton directive, passing the the item to be added to the cart.</p>
 

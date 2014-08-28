@@ -454,7 +454,36 @@
 
 <p>Add a miniCart directive to the directives.js file:</p>
 
-<script src="https://gist.github.com/aaronroberson/a26f85400a3e8818a834.js?file=mini-cart-directive.js"> </script>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="lineno"> 1</span> <span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">angular</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 2</span> 	<span class="s2">&quot;use strict&quot;</span><span class="p">;</span>
+<span class="lineno"> 3</span>  
+<span class="lineno"> 4</span> 	<span class="kd">var</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;Swagwise&#39;</span><span class="p">);</span>
+<span class="lineno"> 5</span>  
+<span class="lineno"> 6</span> 	<span class="c1">// Inject in the CartService</span>
+<span class="lineno"> 7</span> 	<span class="nx">app</span><span class="p">.</span><span class="nx">directive</span><span class="p">(</span><span class="s1">&#39;miniCart&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+<span class="lineno"> 8</span>  
+<span class="lineno"> 9</span> 		<span class="k">return</span> <span class="p">{</span>
+<span class="lineno">10</span> 			<span class="c1">// Create an isolated scope</span>
+<span class="lineno">11</span> 			<span class="nx">scope</span><span class="o">:</span> <span class="p">{</span>
+<span class="lineno">12</span> 			<span class="p">},</span>
+<span class="lineno">13</span> 			<span class="nx">restrict</span><span class="o">:</span> <span class="s1">&#39;E&#39;</span><span class="p">,</span>
+<span class="lineno">14</span> 			<span class="nx">replace</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+<span class="lineno">15</span> 			<span class="nx">templateUrl</span><span class="o">:</span> <span class="s1">&#39;templates/mini-cart.html&#39;</span><span class="p">,</span>
+<span class="lineno">16</span> 			<span class="nx">link</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">scope</span><span class="p">,</span> <span class="nx">elem</span><span class="p">,</span> <span class="nx">attr</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">17</span>  
+<span class="lineno">18</span> 				<span class="nx">scope</span><span class="p">.</span><span class="nx">getCartSubtotal</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+<span class="lineno">19</span> 					<span class="c1">// Returns subtotal from CartService</span>
+<span class="lineno">20</span> 				<span class="p">};</span>
+<span class="lineno">21</span>  
+<span class="lineno">22</span> 				<span class="nx">scope</span><span class="p">.</span><span class="nx">getItemCount</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+<span class="lineno">23</span> 					<span class="c1">//Returns the item count from the CartService</span>
+<span class="lineno">24</span> 				<span class="p">};</span>
+<span class="lineno">25</span> 			<span class="p">}</span>
+<span class="lineno">26</span>  
+<span class="lineno">27</span> 		<span class="p">};</span>
+<span class="lineno">28</span> 	<span class="p">});</span>
+<span class="lineno">29</span>  
+<span class="lineno">30</span> <span class="p">})(</span><span class="nb">window</span><span class="p">.</span><span class="nx">angular</span><span class="p">);</span></code></pre></div>
 
 <p>Update the getCartSubtotal and getItemCount functions on the scope to return respective values using the getCartSubtotal and getItemCount methods on the cartService.</p>
 
@@ -475,13 +504,45 @@
 </ul>
 <p>The completed code should resemble the following:</p>
 
-<script src="https://gist.github.com/aaronroberson/a26f85400a3e8818a834.js?file=add-cart-button.js"> </script>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="lineno"> 1</span> <span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">angular</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 2</span> 	<span class="s2">&quot;use strict&quot;</span><span class="p">;</span>
+<span class="lineno"> 3</span> 	
+<span class="lineno"> 4</span> 	<span class="kd">var</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;Swagwise&#39;</span><span class="p">);</span>
+<span class="lineno"> 5</span> 	
+<span class="lineno"> 6</span> 	<span class="c1">// Inject the CartService</span>
+<span class="lineno"> 7</span> 	<span class="nx">app</span><span class="p">.</span><span class="nx">directive</span><span class="p">(</span><span class="s1">&#39;addCartButton&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+<span class="lineno"> 8</span> 	
+<span class="lineno"> 9</span> 		<span class="k">return</span> <span class="p">{</span>
+<span class="lineno">10</span> 			<span class="c1">// E for Element</span>
+<span class="lineno">11</span> 			<span class="c1">// A for Attribute</span>
+<span class="lineno">12</span> 			<span class="c1">// C for Class</span>
+<span class="lineno">13</span> 			<span class="nx">restrict</span><span class="o">:</span> <span class="s1">&#39;E&#39;</span><span class="p">,</span>
+<span class="lineno">14</span> 			<span class="nx">scope</span><span class="o">:</span> <span class="p">{</span>
+<span class="lineno">15</span> 				<span class="c1">// 3 types of bindings for scope properties</span>
+<span class="lineno">16</span> 				<span class="c1">// @ which is a string</span>
+<span class="lineno">17</span> 				<span class="c1">// &amp; which is a one-way binding</span>
+<span class="lineno">18</span> 				<span class="c1">// = which is two-way binding</span>
+<span class="lineno">19</span> 			<span class="p">},</span>
+<span class="lineno">20</span> 			<span class="nx">replace</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+<span class="lineno">21</span> 			<span class="nx">templateUrl</span><span class="o">:</span> <span class="s1">&#39;templates/add-cart-button.html&#39;</span><span class="p">,</span>
+<span class="lineno">22</span> 			<span class="nx">link</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">scope</span><span class="p">,</span> <span class="nx">elem</span><span class="p">,</span> <span class="nx">attr</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">23</span> 				
+<span class="lineno">24</span> 				<span class="nx">scope</span><span class="p">.</span><span class="nx">addItem</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">item</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">25</span> 					<span class="c1">// Pass the item into the addItem method of the CartService</span>
+<span class="lineno">26</span> 				<span class="p">};</span>
+<span class="lineno">27</span> 			<span class="p">}</span>
+<span class="lineno">28</span> 		
+<span class="lineno">29</span> 		<span class="p">};</span>
+<span class="lineno">30</span> 	<span class="p">});</span>
+<span class="lineno">31</span>  
+<span class="lineno">32</span> <span class="p">})(</span><span class="nb">window</span><span class="p">.</span><span class="nx">angular</span><span class="p">);</span></code></pre></div>
 
 <p>Inject the CartService into the AddCartButton directive. Add the item to the scope using the two-way binding syntax and update the addItem function on the scope to use the CartService.</p>
 
 <p>Next, create the 'add-cart-button.html' template in the 'app/templates/' directory. Add the following HTML markup:</p>
 
-<script src="https://gist.github.com/aaronroberson/a26f85400a3e8818a834.js?file=add-cart-button.html"> </script>
+<pre><code>&lt;button class="btn btn-primary"&gt;&lt;i class="glyphicon glyphicon-plus"&gt;&lt;/i&gt; Add to cart&lt;/button&gt;
+</code></pre>
 
 <p>Update the button using the 'ng-click' directive to call the addItem method of the AddCartButton directive, passing the the item to be added to the cart.</p>
 
