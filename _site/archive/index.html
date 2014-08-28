@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="aaronroberson">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Aaron Roberson software application projects">
+	<meta name="author" content="Aaron Roberson">
+	<link rel="shortcut icon" href="favicon.ico">
+
+	<title>Aaron Roberson</title>
+
+	<!-- Bootstrap core CSS -->
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
+	<link href='//fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic' rel='stylesheet'>
+	<link href='//fonts.googleapis.com/css?family=Raleway:400,300,700' rel='stylesheet'>
+
+	<!-- Custom styles for this template -->
+	<link href="assets/css/main.css" rel="stylesheet">
+	<link href="assets/css/geekwise.css" rel="stylesheet">
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
+
+</head>
+
+<body>
+
+<!-- Fixed navbar -->
+<div id="navigation" class="navbar navbar-default navbar-fixed-top">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" ui-sref="home"><b>Aaron Roberson</b></a>
+		</div>
+		<div class="navbar-collapse collapse">
+			<ul class="nav navbar-nav">
+				<li ui-sref-active="active">
+					<a ui-sref="home">Home</a>
+				</li>
+				<li ui-sref-active="active">
+					<a ui-sref="geek">Geekwise</a>
+				</li>
+			</ul>
+		</div>
+		<!--/.nav-collapse -->
+	</div>
+</div>
+
+<div class="page" ui-view></div>
+
+<footer>
+	<div class="container">
+		<p>Copyright &copy; 2014 Aaron Roberson. All rights reserved.
+			<span class="pull-right">Page design by <a href="http://www.blacktie.co">BLACKTIE.CO</a></span></p>
+	</div>
+</footer>
+
+<script src="app.js"></script>
+<script src="routes.js"></script>
+
+<script src="//google-code-prettify.googlecode.com/svn/loader/prettify.js"></script>
+<script src="//google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
+
+<script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+<script src="bower_components/angular-gist/angular-gist.js"></script>
+<script src="bower_components/angular-disqus/angular-disqus.min.js"></script>
+
+<script src="directives/pretty-print.js"></script>
+<script>
+	window.disqus_shortname = 'aaronrobersongithub';
+</script>
+</body>
+</html>

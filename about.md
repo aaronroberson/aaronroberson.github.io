@@ -1,0 +1,870 @@
+---
+layout: page
+title: About
+permalink: /about/
+---
+
+<div id="content" class="resume hresume">
+
+<div class="section" id="profile-summary" style="display:block">
+<div class="content">
+<p class=" description summary">
+-More than 10 years of experience working as a web application developer and over 5 years as a team lead and project management, including:<br>
+-Developing Object Oriented ColdFusion and PHP web applications using best practices and design patterns.<br>
+-Extensive use of ColdBox (MVC framework), WireBox/LightWire/ColdSpring (dependency injection frameworks) and CF Hibernate/Transfer (ORM frameworks).<br>
+-System Application Architecture design including MS SQL Server design and administration as well as MySQL.<br>
+-Extensive experience using JQuery AJAX framework for interactive interface design<br>
+-Cross-browser compliant CSS (and CSS3), XHTML (and HTML 5), XML, XSLT<br>
+-Implimented Bank of America Merchant Gateway, Google Checkout and PayPal APIs.
+</p>
+</div>
+</div>
+
+<h2 class="section-title">Overview </h2>
+<dl id="overview">
+<dt id="overview-summary-current-title" class="summary-current" style="display:block">
+Current
+</dt>
+<dd class="summary-current" style="display:block">
+<ul class="current">
+<li>
+Senior Software Developer
+<span class="at">at </span>
+<a class="company-profile-public" href="/company/onfarm-systems?trk=ppro_cprof"><span class="org summary">OnFarm Systems</span></a>
+</li>
+<li>
+Instructor
+<span class="at">at </span>
+Geekwise Academy
+</li>
+<li>
+Creator/CEO
+<span class="at">at </span>
+Pixel Polished
+</li>
+</ul>
+<div class="showhide-block" id="morecurr" style="display: none;">
+<ul class="current">
+<li>
+Owner/Co-founder
+<span class="at">at </span>
+Helping Hands
+</li>
+</ul>
+<p class="seeall showhide-link"><a href="#" id="morecurr-hide">see less</a></p>
+</div>
+<p class="seeall showhide-link" style="display: block;"><a href="#" id="morecurr-show">see all</a></p>
+</dd>
+<dt id="overview-summary-past-title" class="summary-past" style="display:block">
+Past
+</dt>
+<dd class="summary-past" style="display:block">
+<ul class="past">
+<li>
+Software Development Manager, Front-end Developer
+<span class="at">at </span>
+<a class="company-profile-public" href="/company/blare-media?trk=ppro_cprof"><span class="org summary">BLARE Media</span></a>
+</li>
+<li>
+Senior ColdFusion Developer
+<span class="at">at </span>
+<a class="company-profile-public" href="/company/nonfat-media?trk=ppro_cprof"><span class="org summary">Nonfat Media</span></a>
+</li>
+<li>
+ColdFusion Application Developer
+<span class="at">at </span>
+<a class="company-profile-public" href="/company/esri?trk=ppro_cprof"><span class="org summary">Esri</span></a>
+</li>
+</ul>
+<div class="showhide-block" id="morepast" style="display: none;">
+<ul class="past">
+<li>
+Sole Proprieter, Owner
+<span class="at">at </span>
+Innocent Innovations
+</li>
+<li>
+Adjunct Web and Graphic Design Instructor
+<span class="at">at </span>
+<a class="company-profile-public" href="/company/institute-of-technology-clovis?trk=ppro_cprof"><span class="org summary">Institute of Technology Clovis</span></a>
+</li>
+<li>
+Regional Web Manager
+<span class="at">at </span>
+<a class="company-profile-public" href="/company/us-fish-and-wildlife-service?trk=ppro_cprof"><span class="org summary">US Fish and Wildlife Service</span></a>
+</li>
+<li>
+Senior Web Developer
+<span class="at">at </span>
+White Horse Media
+</li>
+</ul>
+<p class="seeall showhide-link"><a href="#" id="morepast-hide">see less</a></p>
+</div>
+<p class="seeall showhide-link" style="display: block;"><a href="#" id="morepast-show">see all</a></p>
+</dd>
+<dt id="overview-summary-education-title" class="summary-education" style="display:block">
+Education
+</dt>
+<dd class="summary-education" style="display:block">
+<ul>
+<li>
+<a href="/edu/university-of-phoenix-17787">University of Phoenix</a>
+</li>
+<li>
+<a href="/edu/fresno-city-college-21286">Fresno City College</a>
+</li>
+<li>
+Clovis High School
+</li>
+</ul>
+</dd>
+
+</dl>
+</div>
+
+<div class="section subsection-reorder" id="profile-experience" style="display:block">
+<div class="header">
+<h2>Experience
+</h2>
+</div>
+<div class="content vcalendar">
+<div>
+<div>
+<div class="position  first experience vevent vcard summary-current" style="display:block">
+<a class="include" href="#name"></a>
+<div class="postitle">
+<h3 class="false">
+<span class="title">Senior Software Developer</span>
+</h3>
+<h4><strong>
+<a class="company-profile-public" href="/company/onfarm-systems?trk=ppro_cprof"><span class="org summary">OnFarm Systems</span></a>
+</strong>
+</h4>
+</div>
+<p class="orgstats organization-details current-position">
+Privately Held; 1-10 employees;
+Computer Software industry
+</p>
+<p class="period">
+<abbr class="dtstart" title="2013-07-01">July 2013</abbr>
+– <abbr class="dtstamp" title="2014-08-28">Present</abbr>
+<span class="duration"><span class="value-title" title="P1Y2M"> </span>(1 year 2 months)</span>
+<span class="location">Fresno, California Area</span>
+</p>
+<p class=" description current-position">
+Participate in estimation and execution of project work plans. Direct revisions as appropriate to meet changing needs and requirements.<br>
+Participate in software development across multiple teams and phases to ensure that engineering solutions are aligned with business objectives. Minimize schedule and technical risk by foreseeing and addressing obstacles proactively and aggressively.<br>
+Full life-cycle application development:<br>
+Designing, coding and debugging applications in various software languages.<br>
+Software analysis, code analysis, requirements analysis, software review, identification of code metrics, system risk analysis, software reliability analysis.<br>
+Object-oriented Design and Analysis (OOD and OOA).<br>
+Software modeling and simulation.<br>
+Front end graphical user interface (UI) design.<br>
+Software testing and quality assurance.<br>
+Performance tuning, improvement, balancing, usability, automation.<br>
+Support, maintain and document software functionality. <br>
+Integrate software with existing systems.<br>
+Evaluate and identify new technologies for implementation.
+</p>
+</div>
+</div>
+<div>
+<div class="position   experience vevent vcard summary-current" style="display:block">
+<a class="include" href="#name"></a>
+<div class="postitle">
+<h3 class="false">
+<span class="title">Instructor</span>
+</h3>
+<h4><strong>
+<span class="org summary">Geekwise Academy</span>
+</strong>
+</h4>
+</div>
+<p class="orgstats organization-details current-position">
+</p>
+<p class="period">
+<abbr class="dtstart" title="2014-05-01">May 2014</abbr>
+– <abbr class="dtstamp" title="2014-08-28">Present</abbr>
+<span class="duration"><span class="value-title" title="P4M"> </span>(4 months)</span>
+<span class="location">Bitwise Industries</span>
+</p>
+<p class=" description current-position">
+Teach Advanced JavaScript and AngularJS at Geekwise Academy (http://geekwiseacademy.com). Course covers JavaScript best practices and fullstack developing using MEAN technologies:<br>
+MongoDB<br>
+Express.js<br>
+AngularJS<br>
+Node.js
+</p>
+</div>
+</div>
+<div>
+<div class="position   experience vevent vcard summary-current" style="display:block">
+<a class="include" href="#name"></a>
+<div class="postitle">
+<h3 class="false">
+<span class="title">Creator/CEO</span>
+</h3>
+<h4><strong>
+<span class="org summary">Pixel Polished</span>
+</strong>
+</h4>
+</div>
+<p class="orgstats organization-details current-position">
+</p>
+<p class="period">
+<abbr class="dtstart" title="2012-09-01">September 2012</abbr>
+– <abbr class="dtstamp" title="2014-08-28">Present</abbr>
+<span class="duration"><span class="value-title" title="P2Y"> </span>(2 years)</span>
+<span class="location">Fresno, California Area</span>
+</p>
+<p class=" description current-position">
+-ColdFusion<br>
+I enjoy architecting enterprise applications using best practices and Object–oriented design patterns.<br>
+-JQuery<br>
+I focus on creating sensable AJAX applications that are more interactive and enhance usability.<br>
+-Semantic (X)HTML and CSS<br>
+Cross–browser complient, Section 508 accessible and Search Engine Optimized websites that can be viewed in a browser, on a mobile device or through assistive technology.
+</p>
+</div>
+</div>
+<div>
+<div class="position   experience vevent vcard summary-current" style="display:block">
+<a class="include" href="#name"></a>
+<div class="postitle">
+<h3 class="false">
+<span class="title">Owner/Co-founder</span>
+</h3>
+<h4><strong>
+<span class="org summary">Helping Hands</span>
+</strong>
+</h4>
+</div>
+<p class="orgstats organization-details current-position">
+</p>
+<p class="period">
+<abbr class="dtstart" title="2012-09-01">September 2012</abbr>
+– <abbr class="dtstamp" title="2014-08-28">Present</abbr>
+<span class="duration"><span class="value-title" title="P2Y"> </span>(2 years)</span>
+<span class="location">Fresno, California Area</span>
+</p>
+<p class=" description current-position">
+Owner and co-founder of The Helping Hands Fresno, specializing in communication with individuals facing depression. Our anonymous replies through letters have deceased their isolation and increased their sense of hope. We are here to give you a "helping hand" when life seems to pull you down faster than you can get up.
+</p>
+</div>
+</div>
+<div>
+<div class="position   experience vevent vcard summary-past" style="display:block">
+<a class="include" href="#name"></a>
+<div class="postitle">
+<h3 class="false">
+<span class="title">Software Development Manager, Front-end Developer</span>
+</h3>
+<h4><strong>
+<a class="company-profile-public" href="/company/blare-media?trk=ppro_cprof"><span class="org summary">BLARE Media</span></a>
+</strong>
+</h4>
+</div>
+<p class="orgstats organization-details past-position">
+Privately Held; 11-50 employees;
+Media Production industry
+</p>
+<p class="period">
+<abbr class="dtstart" title="2013-03-01">March 2013</abbr>
+– <abbr class="dtend" title="2013-07-01">July 2013</abbr> <span class="duration"><span class="value-title" title="P5M"> </span>(5 months)</span>
+<span class="location">Fresno, California Area</span>
+</p>
+<p class=" description past-position">
+Manage and assign project tasks to developer teams using Asana task and bug tracking application.<br>
+Use Git, Ruby Gems and Tower for source code control.<br>
+Develop front-end web application interfaces using JQuery, HTML5, CSS3, Sass, Less, Compass, Twitter Bootstrap, UglifyJS, CodeKit, PHP, CodeIgnitor MVC framework and MySQL.
+</p>
+</div>
+</div>
+<div>
+<div class="position   experience vevent vcard summary-past" style="display:block">
+<a class="include" href="#name"></a>
+<div class="postitle">
+<h3 class="false">
+<span class="title">Senior ColdFusion Developer</span>
+</h3>
+<h4><strong>
+<a class="company-profile-public" href="/company/nonfat-media?trk=ppro_cprof"><span class="org summary">Nonfat Media</span></a>
+</strong>
+</h4>
+</div>
+<p class="orgstats organization-details past-position">
+Privately Held; 1-10 employees;
+Internet industry
+</p>
+<p class="period">
+<abbr class="dtstart" title="2011-04-01">April 2011</abbr>
+– <abbr class="dtend" title="2011-11-01">November 2011</abbr> <span class="duration"><span class="value-title" title="P8M"> </span>(8 months)</span>
+</p>
+<p class=" description past-position">
+Application architecture design. I write code: Coldfusion and jQuery back-end and front-end development.
+</p>
+</div>
+</div>
+<div>
+<div class="position   experience vevent vcard summary-past" style="display:block">
+<a class="include" href="#name"></a>
+<div class="postitle">
+<h3 class="false">
+<span class="title">ColdFusion Application Developer</span>
+</h3>
+<h4><strong>
+<a class="company-profile-public" href="/company/esri?trk=ppro_cprof"><span class="org summary">Esri</span></a>
+</strong>
+</h4>
+</div>
+<p class="orgstats organization-details past-position">
+Privately Held; 1001-5000 employees;
+Information Technology and Services industry
+</p>
+<p class="period">
+<abbr class="dtstart" title="2010-04-01">April 2010</abbr>
+– <abbr class="dtend" title="2011-04-01">April 2011</abbr> <span class="duration"><span class="value-title" title="P1Y1M"> </span>(1 year 1 month)</span>
+</p>
+<p class=" description past-position">
+Working on a team with ColdBox Framework creator Luis Majano and other talented individuals doing ColdFusion, MS SQL Server, JQuery and Flex development.
+</p>
+</div>
+</div>
+<div>
+<div class="position   experience vevent vcard summary-past" style="display:block">
+<a class="include" href="#name"></a>
+<div class="postitle">
+<h3 class="false">
+<span class="title">Sole Proprieter, Owner</span>
+</h3>
+<h4><strong>
+<span class="org summary">Innocent Innovations</span>
+</strong>
+</h4>
+</div>
+<p class="orgstats organization-details past-position">
+</p>
+<p class="period">
+<abbr class="dtstart" title="2002">2002</abbr>
+– <abbr class="dtend" title="2011">2011</abbr> <span class="duration"><span class="value-title" title="P9Y"> </span>(9 years)</span>
+</p>
+<p class=" description past-position">
+-More than 7 years of experience working as a Coldfusion Developer/Web Developer/Web Designer, including:<br>
+-Experience developing ColdFusion applications using ColdBox (MVC framework), WireBox/LightWire/ColdSpring (dependency injection frameworks) and Hibernate/Transfer (ORM frameworks).<br>
+-Experience developing Object Oriented ColdFusion and PHP web applications using best practices and design patterns.<br>
+-Extensive experience in Coldfusion, MySQL, AJAX (JQuery, Prototype and Scriptaculous), CSS, HTML, XHTML, XML, XSLT, Apache etc.<br>
+-Experience designing and administering MySQL and MS SQL databases.<br>
+-Implimented Bank of America Merchant Gateway, Google Checkout and PayPal APIs.
+</p>
+</div>
+</div>
+<div>
+<div class="position   experience vevent vcard summary-past" style="display:block">
+<a class="include" href="#name"></a>
+<div class="postitle">
+<h3 class="false">
+<span class="title">Adjunct Web and Graphic Design Instructor</span>
+</h3>
+<h4><strong>
+<a class="company-profile-public" href="/company/institute-of-technology-clovis?trk=ppro_cprof"><span class="org summary">Institute of Technology Clovis</span></a>
+</strong>
+</h4>
+</div>
+<p class="orgstats organization-details past-position">
+Educational Institution; 51-200 employees;
+Graphic Design industry
+</p>
+<p class="period">
+<abbr class="dtstart" title="2008">2008</abbr>
+– <abbr class="dtend" title="2010">2010</abbr> <span class="duration"><span class="value-title" title="P2Y"> </span>(2 years)</span>
+</p>
+<p class=" description past-position">
+Assisted fulltime Web and Graphic Design instructors in creating curriculum to teach students the fundamentals of graphic design, web development, and interactive web interface design. As a substitue teacher I have taught basic skills such as XHTML, CSS, Adobe Flash, Photoshop, Illustrator, Dreamweaver, social media, and cross-browser compliance.
+</p>
+</div>
+</div>
+<div>
+<div class="position   experience vevent vcard summary-past" style="display:block">
+<a class="include" href="#name"></a>
+<div class="postitle">
+<h3 class="false">
+<span class="title">Regional Web Manager</span>
+</h3>
+<h4><strong>
+<a class="company-profile-public" href="/company/us-fish-and-wildlife-service?trk=ppro_cprof"><span class="org summary">US Fish and Wildlife Service</span></a>
+</strong>
+</h4>
+</div>
+<p class="orgstats organization-details past-position">
+Government Agency; 5001-10,000 employees;
+Government Administration industry
+</p>
+<p class="period">
+<abbr class="dtstart" title="2005-11-01">November 2005</abbr>
+– <abbr class="dtend" title="2009-02-01">February 2009</abbr> <span class="duration"><span class="value-title" title="P3Y4M"> </span>(3 years 4 months)</span>
+</p>
+<p class=" description past-position">
+•	Manage 67 websites in the Pacific Southwest Region (California, Nevada and the Klamath Basin in Oregon)<br>
+•	Provide training, consulting and management to approximately 15-20 local web managers<br>
+•	Design and administer several MySQL and MS SQL databases<br>
+•	Convert ASP and MS Access web applications to ColdFusion and MS SQL Server<br>
+•	Develop ColdFusion applications using ColdBox (MVC framework), ColdSpring (dependency injection framework) and Transfer (ORM framework)<br>
+•	Redesign the Pacific Southwest Region website providing better usability and UI using JQuery.
+</p>
+</div>
+</div>
+<div>
+<div class="position   experience vevent vcard summary-past" style="display:block">
+<a class="include" href="#name"></a>
+<div class="postitle">
+<h3 class="false">
+<span class="title">Senior Web Developer</span>
+</h3>
+<h4><strong>
+<span class="org summary">White Horse Media</span>
+</strong>
+</h4>
+</div>
+<p class="orgstats organization-details past-position">
+</p>
+<p class="period">
+<abbr class="dtstart" title="2003-04-01">April 2003</abbr>
+– <abbr class="dtend" title="2008-01-01">January 2008</abbr> <span class="duration"><span class="value-title" title="P4Y10M"> </span>(4 years 10 months)</span>
+</p>
+<p class=" description past-position">
+•	Setup dedicated and semi-dedicated Red Hat Linux servers with Apache, MySQL, PHP, ColdFusion and Wowza Media Server software<br>
+•	Setup and administered almost a dozen MySQL databases<br>
+•	Developed Object Oriented PHP and ColdFusion web applications using best practices and design patterns<br>
+•	Create e-commerce solutions including shopping carts from scratch<br>
+•	Use Bank of America Merchant Gateway, Google Checkout and PayPal<br>
+•	Developed a Custom Content Management System and polling application<br>
+•	Configured and developed video and audio streaming applications using Flash Communication Server and Wowza Media Server.<br>
+•	Designed several website and web application interfaces utilizing usability principles as well as Photoshop, prototype and scriptaculous<br>
+•	Designed Flash animations primarily for website headers and ad campaigns<br>
+•	Designed DVD jacket covers and disc labels for print<br>
+•	Designed lower third titles, slides and transitions using Photoshop and After Effects for video<br>
+•	Periodically operated a studio camera
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="profile-projects" style="display:block">
+<div class="header">
+<h2>Projects
+</h2>
+</div>
+<div class="content">
+<ul class="projects documents">
+<li class="project first">
+<h3>
+<a href="/redir/redirect?url=http%3A%2F%2Fdev%2Ejobminx%2Ecom&amp;urlhash=Qs7Y" target="_blank" title="New window will open" name="projectsite" class="url">
+Jobminx
+</a>
+</h3>
+<ul class="specifics">
+<li>
+April 2013
+to
+Present
+</li>
+</ul>
+<div class="attribution"> Team Members:
+<a href="https://www.linkedin.com/profile/view?id=65442317&amp;authType=name&amp;authToken=Z7UM&amp;goback=%2Enppvan_aaronrobes&amp;trk=member">Aaron Roberson</a>, Thai Pham, Christopher Martinez, <a href="https://www.linkedin.com/profile/view?id=41587527&amp;authType=name&amp;authToken=1-iS&amp;goback=%2Enppvan_aaronrobes&amp;trk=member">James Morgan</a>
+</div>
+<div>
+<p class=" ''" id="yui-gen1">
+Job application and resume optimization application current under development (See http://dev.jobminx.com ). Overseeing design and development of the entire application. Some of the technologies in use are JQuery, HTML5, CSS3, Sass, Less, Compass, Twitter Bootstrap, UglifyJS, CodeKit, PHP, CodeIgnitor MVC framework and MySQL. Wrote technical specifications, outlined sub-task goals, objectives and...<a href="#" title="Show more" class="toggle-show-more">more</a></p>
+<script id="controlinit-http-12248-4824189-1" type="text/javascript+initialized" class="li-control">LI.i18n.register('ShowMore-see-more','more');LI.i18n.register('ShowMore-see-less','less');LI.i18n.register('ShowMore-see-more-long','Show more');LI.i18n.register('ShowMore-see-less-long','Show less');LI.Controls.addControl('control-http-12248-4824189-1','ShowMore',{charCount:400});</script>
+</div>
+</li>
+<li class="project">
+<h3>
+<a href="/redir/redirect?url=http%3A%2F%2Fsupport%2Eesri%2Ecom&amp;urlhash=Tr1i" target="_blank" title="New window will open" name="projectsite" class="url">
+ESRI Support
+</a>
+</h3>
+<ul class="specifics">
+<li>
+February 2011
+to
+April 2012
+</li>
+</ul>
+<div class="attribution"> Team Members:
+<a href="https://www.linkedin.com/profile/view?id=65442317&amp;authType=name&amp;authToken=Z7UM&amp;goback=%2Enppvan_aaronrobes&amp;trk=member">Aaron Roberson</a>, <a href="https://www.linkedin.com/profile/view?id=197086639&amp;authType=name&amp;authToken=EvuS&amp;goback=%2Enppvan_aaronrobes&amp;trk=member">Kalen Gibbons</a>, Shelby Seid,
+</div>
+<div>
+<p class=" ''" id="yui-gen2">
+Developed public and internal website applications using ColdFusion, JQuery, FLEX 3 and MS<br>
+￼￼￼￼￼Page 2 of 3<br>
+Aaron A. Roberson, Web Application Development Manager<br>
+SQL Server.<br>
+• Maintained support website http://support.esri.com<br>
+◦ Maintained FLEX 3 application using Cairngorm framework clients with support contracts to submit, track and maintain trouble tickets for product offerrings<br>
+◦ Added...<a href="#" title="Show more" class="toggle-show-more">more</a></p>
+<script id="controlinit-http-12248-4824190-2" type="text/javascript+initialized" class="li-control">LI.Controls.addControl('control-http-12248-4824190-2','ShowMore',{charCount:400});</script>
+</div>
+</li>
+<li class="project">
+<h3>
+<a href="/redir/redirect?url=http%3A%2F%2Factorsaccess%2Ecom&amp;urlhash=KNPY" target="_blank" title="New window will open" name="projectsite" class="url">
+Actors Access
+</a>
+</h3>
+<ul class="specifics">
+<li>
+April 2012
+to
+November 2012
+</li>
+</ul>
+<div class="attribution"> Team Members:
+<a href="https://www.linkedin.com/profile/view?id=65442317&amp;authType=name&amp;authToken=Z7UM&amp;goback=%2Enppvan_aaronrobes&amp;trk=member">Aaron Roberson</a>, <a href="https://www.linkedin.com/profile/view?id=15863421&amp;authType=name&amp;authToken=uBNm&amp;goback=%2Enppvan_aaronrobes&amp;trk=member">Steve Gifford</a>, <a href="https://www.linkedin.com/profile/view?id=6346532&amp;authType=name&amp;authToken=-uSf&amp;goback=%2Enppvan_aaronrobes&amp;trk=member">Yury Furman</a>, Kevin Linder, Mike Quach
+</div>
+<div>
+<p class=" ''" id="yui-gen3">
+ColdFusion, MS SQL, Javascript development.
+</p>
+<script id="controlinit-http-12248-4824191-3" type="text/javascript+initialized" class="li-control">LI.Controls.addControl('control-http-12248-4824191-3','ShowMore',{charCount:400});</script>
+</div>
+</li>
+<li class="project">
+<h3>
+<a href="/redir/redirect?url=http%3A%2F%2Ffws%2Egov%2Fstockton&amp;urlhash=9q2i" target="_blank" title="New window will open" name="projectsite" class="url">
+Stockton FWO &amp; AFRP Application
+</a>
+</h3>
+<ul class="specifics">
+<li>
+June 2011
+to
+February 2013
+</li>
+</ul>
+<div class="attribution"> Team Members:
+<a href="https://www.linkedin.com/profile/view?id=65442317&amp;authType=name&amp;authToken=Z7UM&amp;goback=%2Enppvan_aaronrobes&amp;trk=member">Aaron Roberson</a>
+</div>
+<div>
+<p class=" ''" id="yui-gen4">
+◦ Planned, managed and executed the migration of three ASP and web applications<br>
+(AFRP, AIS and DJFM) from the California Fish &amp; Game’s servers to the USFWS<br>
+servers.<br>
+◦ Planned and performed a complete re-write of the Anadromous Fish Restoration<br>
+Program (AFRP) form Classic ASP to Adobe ColdFusion.<br>
+◦ Planned, designed and developed a normalized MS SQL Server database and<br>
+migrated the AFRP,...<a href="#" title="Show more" class="toggle-show-more">more</a></p>
+<script id="controlinit-http-12248-4824191-4" type="text/javascript+initialized" class="li-control">LI.Controls.addControl('control-http-12248-4824191-4','ShowMore',{charCount:400});</script>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="profile-skills" style="display:block">
+<div class="header">
+<h2>Skills &amp; Expertise
+</h2>
+</div>
+<div class="content">
+<ol class="skills" id="skills-list">
+<li class="competency show-bean  ">
+<span class="jellybean">
+AngularJs
+</span>
+</li>
+<li class="competency show-bean  ">
+<span class="jellybean">
+MVVM
+</span>
+</li>
+<li class="competency show-bean  ">
+<span class="jellybean">
+JavaScript
+</span>
+</li>
+<li class="competency show-bean  ">
+<span class="jellybean">
+jQuery
+</span>
+</li>
+<li class="competency show-bean  ">
+<span class="jellybean">
+ColdBox
+</span>
+</li>
+<li class="competency show-bean  ">
+<span class="jellybean">
+ColdFusion
+</span>
+</li>
+<li class="competency show-bean  ">
+<span class="jellybean">
+Web Applications
+</span>
+</li>
+<li class="competency show-bean  ">
+<span class="jellybean">
+OOP
+</span>
+</li>
+<li class="competency show-bean  ">
+<span class="jellybean">
+MVC Architecture
+</span>
+</li>
+<li class="competency show-bean  ">
+<span class="jellybean">
+CSS3
+</span>
+</li>
+<li class="competency show-bean  ">
+<span class="jellybean">
+CSS
+</span>
+</li>
+<li class="competency show-bean  ">
+<span class="jellybean">
+Doing More with Less
+</span>
+</li>
+<li class="competency show-bean  ">
+<span class="jellybean">
+SASS
+</span>
+</li>
+<li class="competency show-bean  ">
+<span class="jellybean">
+HTML 5
+</span>
+</li>
+<li class="competency show-bean  ">
+<span class="jellybean">
+Twitter Bootstrap
+</span>
+</li>
+<li class="competency show-bean  ">
+<span class="jellybean">
+Git
+</span>
+</li>
+<li class="competency show-bean  ">
+<span class="jellybean">
+AJAX
+</span>
+</li>
+<li class="competency show-bean  ">
+<span class="jellybean">
+Web Development
+</span>
+</li>
+<li class="competency show-bean  ">
+<span class="jellybean">
+XHTML
+</span>
+</li>
+<li class="competency show-bean  ">
+<span class="jellybean">
+MySQL
+</span>
+</li>
+<li class="competency show-bean  extra-skill">
+<span class="jellybean">
+MongoDB
+</span>
+</li>
+<li class="competency show-bean  extra-skill">
+<span class="jellybean">
+SQL
+</span>
+</li>
+<li class="competency show-bean  extra-skill">
+<span class="jellybean">
+Database Design
+</span>
+</li>
+<li class="competency show-bean  extra-skill">
+<span class="jellybean">
+XML
+</span>
+</li>
+<li class="competency show-bean  extra-skill">
+<span class="jellybean">
+User Interface Design
+</span>
+</li>
+<li class="competency show-bean  extra-skill">
+<span class="jellybean">
+Microsoft SQL Server
+</span>
+</li>
+<li class="competency show-bean  extra-skill">
+<span class="jellybean">
+CMS
+</span>
+</li>
+<li class="competency show-bean  extra-skill">
+<span class="jellybean">
+Web Design
+</span>
+</li>
+<li class="competency show-bean  extra-skill">
+<span class="jellybean">
+Graphic Design
+</span>
+</li>
+<li class="competency show-bean  extra-skill">
+<span class="jellybean">
+WordPress
+</span>
+</li>
+<li class="competency show-bean  extra-skill">
+<span class="jellybean">
+User Experience
+</span>
+</li>
+<li class="competency show-bean  extra-skill">
+<span class="jellybean">
+Web Servers
+</span>
+</li>
+<li class="competency show-bean  extra-skill">
+<span class="jellybean">
+Object Oriented Design
+</span>
+</li>
+<li class="competency show-bean  extra-skill">
+<span class="jellybean">
+CFML
+</span>
+</li>
+<li class="competency show-bean  extra-skill">
+<span class="jellybean">
+CFCs
+</span>
+</li>
+<li class="competency show-bean  extra-skill">
+<span class="jellybean">
+Agile Methodologies
+</span>
+</li>
+<li class="competency show-bean  extra-skill">
+<span class="jellybean">
+Web Standards
+</span>
+</li>
+<li class="competency show-bean  extra-skill">
+<span class="jellybean">
+VSS
+</span>
+</li>
+<li class="competency show-bean  extra-skill">
+<span class="jellybean">
+Github
+</span>
+</li>
+<li class="competency show-bean  extra-skill">
+<span class="jellybean">
+Eclipse
+</span>
+</li>
+<li class="competency show-bean  extra-skill">
+<span class="jellybean">
+Stored Procedures
+</span>
+</li>
+<li class="competency show-bean  extra-skill">
+<span class="jellybean">
+SVN
+</span>
+</li>
+<li class="competency show-bean  extra-skill">
+<span class="jellybean">
+System Architecture
+</span>
+</li>
+<li class="competency show-bean  extra-skill">
+<span class="jellybean">
+Compass
+</span>
+</li>
+<li class="competency show-bean  extra-skill">
+<span class="jellybean">
+Unit Testing
+</span>
+</li>
+<li class="competency show-bean  extra-skill">
+<span class="jellybean">
+Node.js
+</span>
+</li>
+</ol>
+<p class="see-more-less" id="yui-gen5">
+<a href="#">
+<span class="more-text">View All (46) Skills</span>
+<span class="less-text">View Fewer Skills</span>
+</a>
+</p>
+<script id="controlinit-http-12248-4824196-5" type="text/javascript+initialized" class="li-control">LI.Controls.addControl('control-http-12248-4824196-5','ToggleClass',{classname:'view-all-skills',on:'#profile-skills'});</script>
+</div>
+</div>
+<div class="section subsection-reorder summary-education" id="profile-education" style="display:block">
+<div class="header">
+<h2>
+Education
+</h2>
+</div>
+<div class="content vcalendar">
+<div>
+<div class="position  first education vevent vcard" id="128135153">
+<h3 class="summary fn org">
+<a href="/edu/university-of-phoenix-17787">University of Phoenix</a>
+</h3>
+<h4 class="details-education">
+<span class="degree">Bachelor of Science (B.S.)</span>,
+<span class="major">
+Information Technology Web Development </span>
+</h4>
+<p class="period">
+<abbr class="dtstart" title="2010-01-01">2010</abbr> – <abbr class="dtend" title="2012-12-31">2012</abbr>
+</p>
+<p class=" desc details-education">
+</p>
+</div>
+<div class="position  education vevent vcard" id="44317278">
+<h3 class="summary fn org">
+<a href="/edu/fresno-city-college-21286">Fresno City College</a>
+</h3>
+<h4 class="details-education">
+<span class="degree">Associate of Arts and Sciences (AAS)</span>,
+<span class="major">
+Information Technology Web Development </span>
+</h4>
+<p class="period">
+<abbr class="dtstart" title="2003-01-01">2003</abbr> – <abbr class="dtend" title="2006-12-31">2006</abbr>
+</p>
+<p class=" desc details-education">
+</p>
+</div>
+<div class="position  education vevent vcard" id="139668635">
+<h3 class="summary fn org">
+Clovis High School
+</h3>
+<h4 class="details-education">
+<span class="degree">Diploma</span>,
+<span class="major">
+General Studies </span>
+</h4>
+<p class="period">
+<abbr class="dtstart" title="1996-01-01">1996</abbr> – <abbr class="dtend" title="2000-12-31">2000</abbr>
+</p>
+<p class=" desc details-education">
+</p>
+</div>
+</div>
+</div>
+</div>
+
+
+</div>

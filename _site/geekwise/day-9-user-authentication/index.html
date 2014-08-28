@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Day 10 - User Authentication</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.">
+    <link rel="canonical" href="http://aaronroberson.github.io/geekwise/day-9-user-authentication/">
+
+    <!-- Custom CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/styles/aaronroberson.css">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+
+    <body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="">Aaron Roberson</a>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="/">Home</a></li>
+                
+                    
+                        
+                        <li><a href="/about/">About</a></li>
+                        
+                    
+                
+                    
+                        
+                    
+                
+                    
+                        
+                    
+                
+                    
+                        
+                    
+                
+                    
+                        
+                    
+                
+                    
+                        
+                    
+                
+                    
+                        
+                    
+                
+                    
+                        
+                    
+                
+                    
+                        
+                    
+                
+                    
+                        
+                    
+                
+                    
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                        
+                    
+                
+                    
+                
+            </ul>
+            <ul class="nav navbar-right navbar-nav">
+                <li class="dropdown">
+                    <a href="/geekwise/" class="dropdown-toggle" data-toggle="dropdown">Geekwise <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            <li><a href="/geekwise/">Course overview</a></li>
+        
+    
+        
+    
+
+    
+        
+    
+        
+            <li><a href="/geekwise/day-1-javascript-objects/">Day 1 - JavaScript Objects</a></li>
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+            <li><a href="/geekwise/day-2-intro-to-angularjs/">Day 2 - Intro to AngularJS</a></li>
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            <li><a href="/geekwise/day-3-get-your-swag-on/">Day 3 - Get your swagger on!</a></li>
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            <li><a href="/geekwise/day-4-product-listing/">Day 4 - Product Listing</a></li>
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            <li><a href="/geekwise/day-5-getting-mean/">Day 5 - Getting MEAN</a></li>
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            <li><a href="/geekwise/day-6-directives/">Day 6 - Directives</a></li>
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            <li><a href="/geekwise/day-7-shopping-cart-part-1/">Day 7 - Shopping Cart Part 1</a></li>
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            <li><a href="/geekwise/day-8-shopping-cart-part-2/">Day 8 - Shopping Cart Part 2</a></li>
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+                    </ul>
+                </li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>
+
+    <div class="container">
+
+        <header class="masthead">
+    <div class="container">
+        <div class="row">
+            <div class="col col-sm-12">
+                <div class="social">
+                    <div class="rounded center icon-share"></div>
+                    <div class="share-container rounded">
+                        <a class="share-btn tl icon-google-plus" href='https://plus.google.com/+AaronRoberson'></a>
+                        <a class="share-btn tr icon-twitter" href='https://twitter.com/aaronroberson'></a>
+                        <a class="share-btn bl icon-github" href='https://github.com/aaronroberson'></a>
+                        <a class="share-btn br icon-linkedin" href='https://linkedin.com/in/aaronrobes'></a>
+                    </div>
+                </div>​
+                <h1><a href="/">Aaron Roberson</a>
+                    <p class="lead text-muted">Thickheaded about thick front-end development</p></h1>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <div class="row">
+            <div class="col col-sm-9">
+    <section class="post">
+        <h1>Day 9 - User registration and login</h1>
+
+<p>In tonight's class you will:</p>
+
+<ul>
+    <li>Create an authentication service</li>
+    <li>Add an app controller</li>
+    <li>Add Angular Messages for form validation</li>
+    <li>Add Angular Cookies for user session management</li>
+    <li>Adding user registration:
+        <ul>
+            <li>Create a sign up controller</li>
+            <li>Update the sign up view</li>
+            <li>Add sign up API rest point</li>
+            <li>Add a sign up state to client-side routes</li>
+        </ul>
+    </li>
+    <li>Adding user login:
+        <ul>
+            <li>Create a login controller</li>
+            <li>Update the login view</li>
+            <li>Add a login API rest point</li>
+            <li>Add a login state to client-side routes</li>
+        </ul>
+    </li>
+    <li>Creating a User model (mongoose and mongoDB)</li>
+    <li>Adding <a href="http://passport.js" target="_blank">Passport</a> for user authentication in Express</li>
+</ul>
+
+<h3>Adding the Authentication Service</h3>
+
+<p>Update the service.js file to include a new service named 'AuthService':</p>
+
+<gist id="86391ce601dbaa001bb2" file="auth-service.js"></gist>
+
+<h3>Adding the AppController</h3>
+
+<p>In the controllers.js file, add an 'AppController' for high-level application functions, such as the logout function:</p>
+
+<gist id="86391ce601dbaa001bb2" file="app-controller.js"></gist>
+
+<p>Register the controller on the body tag in index.html:</p>
+
+<pre class="prettyprint">
+&lt;body ng-controller="AppController"&gt;
+</pre>
+
+<h3>Add Angular Messages</h3>
+
+<p>As of Angular 1.3, Angular has added a messages module for simplifying form validation messages.
+    Update index.html to include the CDN reference for ngMessages:</p>
+
+<pre class="prettyprint">
+&lt;script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.11/angular-messages.min.js"&gt;&lt;/script&gt;
+</pre>
+
+<p>Register the ngMessages modules in app.js as a dependencies:</p>
+
+<gist id="86391ce601dbaa001bb2" file="app.js"></gist>
+
+<h3>Update the navigation</h3>
+
+<p>While you're updating index.html, update the navigation with the logout and current user information:</p>
+
+<pre class="prettyprint">
+&lt;ul class="nav navbar-nav pull-right" ng-if="currentUser"&gt;
+    &lt;li class="navbar-text" ng-bind="currentUser.email"&gt;&lt;/li&gt;
+    &lt;li&gt;
+        &lt;a href="javascript:void(0);" ng-click="logout()"&gt;Logout&lt;/a&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+
+<h3>Adding the sign up</h3>
+
+<p>Add the signup controller in the controllers.js file:</p>
+
+<gist id="86391ce601dbaa001bb2" file="signup-controller.js"></gist>
+
+<p>Update the signup.html in the views directory:</p>
+
+<gist id="86391ce601dbaa001bb2" file="signup.html"></gist>
+
+<p>Update the 'signup' state in '/app/states.js' and register the controller and view above on the state.</p>
+
+<h3>Adding the login</h3>
+
+<p>Add the login controller to the 'controllers.js':</p>
+
+<gist id="86391ce601dbaa001bb2" file="login-controller.js"></gist>
+
+<p>Update login.html in the views directory:</p>
+
+<gist id="86391ce601dbaa001bb2" file="login.html"></gist>
+
+<p>Update the 'login' state in '/app/states.js' and register the controller and view above on the state.</p>
+
+<h3>Add the User model</h3>
+
+<p>Create a new file named User.js in the '/models' directory:</p>
+
+<gist id="86391ce601dbaa001bb2" file="User.js"></gist>
+
+<h3>Add API routes</h3>
+
+<p>Add the login and logout API routes to '/routes.js', including the dependency to passport:</p>
+
+<gist id="86391ce601dbaa001bb2" file="routes.js"></gist>
+
+<h3>Add Node.js Dependencies</h3>
+
+<p>In the terminal or console, change directories (cd) to the root of the MyStore app and run the following command:</p>
+<pre class="prettyprint">
+npm install --save express-session passport passport-local bcrypt-nodejs
+</pre>
+
+<h3>Add Passport</h3>
+
+<p>Update the server.js file to include the dependencies from above and to configure them:</p>
+
+<gist id="86391ce601dbaa001bb2" file="server.js"></gist>
+
+<div class="alert alert-info">
+    <p>Remember to commit your changes to Github!</p>
+</div>
+
+<p><a ui-sref="geek.page({page_id: 11})" class="btn btn-default">Continue to Day 11</a></p>
+
+<hr />
+
+<div disqus="'geekwise0109'"></div>
+
+    </section>
+</div>
+
+<div class="col col-sm-3">
+    <div id="sidebar" class="sidebar">
+
+        <h3>Schedule</h3>
+        <ul class="nav nav-list">
+            
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            <li><a href="/geekwise/">Course overview</a></li>
+        
+    
+        
+    
+
+    
+        
+    
+        
+            <li><a href="/geekwise/day-1-javascript-objects/">Day 1 - JavaScript Objects</a></li>
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+            <li><a href="/geekwise/day-2-intro-to-angularjs/">Day 2 - Intro to AngularJS</a></li>
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            <li><a href="/geekwise/day-3-get-your-swag-on/">Day 3 - Get your swagger on!</a></li>
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            <li><a href="/geekwise/day-4-product-listing/">Day 4 - Product Listing</a></li>
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            <li><a href="/geekwise/day-5-getting-mean/">Day 5 - Getting MEAN</a></li>
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            <li><a href="/geekwise/day-6-directives/">Day 6 - Directives</a></li>
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            <li><a href="/geekwise/day-7-shopping-cart-part-1/">Day 7 - Shopping Cart Part 1</a></li>
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            <li><a href="/geekwise/day-8-shopping-cart-part-2/">Day 8 - Shopping Cart Part 2</a></li>
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        </ul>
+
+    </div>
+</div>
+        </div>
+    </div>
+
+    <footer class="footer">
+    <div class="container">
+        <span class="text-muted">&copy; 2014 Aaron Roberson. All rights reserved.</span>
+        <a class="btn btn-linkedin" href="https://linkedin.com/in/aaronrobes" title="LinkedIn">
+            <i class="fa fa-linkedin"></i>
+        </a>
+        <a class="btn btn-google-plus" href="" title="Google+">
+            <i class="fa fa-google-plus"></i>
+        </a>
+        <a class="btn btn-twitter" href="https://twitter.com/aaronroberson" title="Twitter">
+            <i class="fa fa-twitter"></i>
+        </a>
+        <a class="btn btn-github" href="https://github.com/aaronroberson" title="GitHub">
+            <i class="fa fa-github"></i>
+        </a>
+    </div>
+</footer>
+
+
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('#sidebar').affix({
+                offset: {
+                    top: 180
+                }
+            });
+        });
+        window.analytics=window.analytics||[],window.analytics.methods=["identify","group","track","page","pageview","alias","ready","on","once","off","trackLink","trackForm","trackClick","trackSubmit"],window.analytics.factory=function(t){return function(){var a=Array.prototype.slice.call(arguments);return a.unshift(t),window.analytics.push(a),window.analytics}};for(var i=0;i<window.analytics.methods.length;i++){var key=window.analytics.methods[i];window.analytics[key]=window.analytics.factory(key)}window.analytics.load=function(t){if(!document.getElementById("analytics-js")){var a=document.createElement("script");a.type="text/javascript",a.id="analytics-js",a.async=!0,a.src=("https:"===document.location.protocol?"https://":"http://")+"cdn.segment.io/analytics.js/v1/"+t+"/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(a,n)}},window.analytics.SNIPPET_VERSION="2.0.9",
+                window.analytics.load("kqe985dobm");
+        window.analytics.page();
+    </script>
+    </body>
+</html>

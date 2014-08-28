@@ -1,0 +1,18 @@
+---
+layout: home
+---
+{% for post in site.posts %}
+<section class="post">
+    <header class="entry-header">
+        <h2 class="entry-title"><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h2>
+        <p class="entry-meta">
+            Posted by <a class="entry-author" href="author.html">{{ post.author}}</a> on <a class="entry-date" href="date.html">{{ post.date | date: "%b %-d, %Y" }}</a> Tags <a class="label label-primary" href="tag.html">{{ post.categories }}</a>
+        </p>
+    </header>
+    <div class="entry-description">
+        <p>
+            {{ post.short }}
+        </p>
+    </div>
+</section>
+{% endfor %}

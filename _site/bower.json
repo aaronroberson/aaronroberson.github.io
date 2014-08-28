@@ -1,0 +1,36 @@
+{
+  "name": "aaronroberson",
+  "version": "0.0.0",
+  "authors": [
+    "Aaron Roberson <aaronaroberson@gmail.com>"
+  ],
+  "description": "Personal blog and musings of Aaron Roberson",
+  "main": "index.html",
+  "keywords": [
+    "Software",
+    "Developer",
+    "AngularJS",
+    "Front-end",
+    "Developer",
+    "JavaScript",
+    "HTML",
+    "CSS",
+    "ColdFusion",
+    "MongoDB"
+  ],
+  "license": "MIT",
+  "homepage": "http://aaronroberson.github.io",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "assets/lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.2.0",
+    "bootstrap-social": "~4.6.1"
+  }
+}

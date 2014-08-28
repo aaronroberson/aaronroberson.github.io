@@ -1,0 +1,223 @@
+
+<h1>Day 3 - AngularJS Services</h1>
+
+<p>In this class we will be:</p>
+<ul>
+    <li>Creating an AngularJS service object</li>
+    <li>Learning about Object-oriented Programming</li>
+    <li>Learning about object prototypes</li>
+</ul>
+
+<h3>Setting up</h3>
+<p>Change directories to your local app directory and start the web server:</p>
+<pre>grunt</pre>
+<p>You can now open your browser and go to <a href="http://localhost:9001">http://localhost:9001</a> to access the app.</p>
+
+<h3>Creating a product service</h3>
+<p>In the previous class we injected the $http service into our product list controller and used it get fetch JSON from the server.
+This certainly worked, but it's not very modular or reusable. Soon we will start adding more components in our app that rely on the same data, and later
+we will be switching from JSON files to using a database. Having our HTTP requests in our controllers would require that we track down and update every instance in which we
+are making those requests. To make our code more maintainable, we will create a service object that will be responsible for fetching all of our data related to products.</p>
+<p>To get started, create a 'services' directory in the root of your application. Now create a new file and name it 'product-service.js'. In our 'product-service.js' file we will
+register a new service named 'ProductService' on our 'MyStore' module:</p>
+<pre class="prettyprint lang-javascript">
+(function(angular) {
+	"use strict";
+
+	var app = angular.module('MyStore');
+
+	app.service('ProductService', function() {
+
+	});
+
+})(window.angular);
+</pre>
+<p>The code above should be starting to look very familiar to you by now. We register a service object on a module in the same way that we register controllers.
+First we register the service's name, followed by the service object. However, unlike a controller, Angular will invoke the function (passed in as the second argument to angular.service())
+using the <code>new</code> operator. The <code>new</code> operator creates an instance of a user-defined object type or of one of the built-in object types that has a constructor function.</p>
+<div class="alert alert-info">
+    Learn more about the <code>new</code> operator on the <a href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/new">Mozilla Developer Network</a>
+</div>
+
+<h3>Object-oriented Programming</h3>
+<p>When creating objects in JavaScript, we can create an object-literal, for example:</p>
+<pre class="prettyprint lang-javascript">
+var Vehicle = {
+    make: 'Toyota',
+    model: 'Tacoma',
+    doors: 4,
+    color: 'grey'
+};
+</pre>
+<p>Or we can use a constructor function, for example:</p>
+<pre class="prettyprint lang-javascript">
+function Vehicle(make, model, doorCount, color) {
+    this.make = make;
+    this.model = model;
+    this.doors = doorCount;
+    this.color = color;
+	this.running = false;
+}
+
+var truck = new Vehicle('Toyota', 'Tacoma', 4, 'grey');
+console.log(truck.model); // Outputs Tacoma
+var car = new Vehicle('Honda', 'Accord', 2, 'white');
+console.log(car.make); // Outputs Honda
+</pre>
+<p>The keyword <code>this</code> inside the function refers to the current object.
+    By assigning variables using <code>this</code> we are adding properties to the object that will exist for every instance of the object.
+</p>
+<pre class="prettyprint lang-javascript">
+var truck = new Vehicle('Toyota', 'Tacoma', 4, 'grey');
+console.log(truck.model); // Outputs Tacoma
+var car = new Vehicle('Honda', 'Accord', 2, 'white');
+console.log(car.model); // Outputs Honda
+</pre>
+
+<h3>Object inheritance and prototype</h3>
+<p>Unlike most other Object-oriented languages, JavaScript does not have classical inheritance based on Classes. JavaScript has a prototype-based inheritance mechanism.</p>
+<p>To create methods on our Vehicle object that will be shared with all instances of it, we add the methods to the Vehicle's prototype:</p>
+<pre class="prettyprint lang-javascript">
+Vehicle.prototype.startEngine = function() {
+    this.running = true;
+}
+Vehicle.prototype.whatAmI = function() {
+	return 'I am a ' + this.color + ' ' + this.make + ' ' + this.model + ' with ' + this.doors + ' doors';
+};
+</pre>
+<p>All objects in JavaScript have a prototype. For instance, we can create a new Array and log it to the console to inspect it's prototype:</p>
+<pre class="prettyprint lang-javascript">
+    var myArray = new Array();
+    console.log(myArray);
+</pre>
+<p>In the console, note that the myArray has a __proto__ property.</p>The __proto__ “pseudo” property contains an object’s prototype object (the parent object it inherited its methods and properties from).
+<p>As you would expect, methods such as slice, splice, join and push are on the myArray's prototype.</p>
+<div class="alert alert-info">Learn more about <code>prototype</code> on the <a href="http://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function/prototype">Mozilla Developer Network</a></div>
+<p>In object-oriented programming, what we have demonstrated above is referred to as <strong>Inheritance</strong>.
+    Inheritance is a way to create a class as a specialized version of one or more classes. Our 'myArray' instance of the Array object has inherited the properties and methods
+of the built-in JavaScript Array object. </p>
+<p>We can also create objects that inherit from other objects. Let's create a new Truck object that inherits from the Vehicle object:</p>
+<pre class="prettyprint lang-javascript">
+function Truck(bedType, make, model, doorCount, color) {
+    this.bedType = bedType;
+
+    // Call the Vehicle object and set it's properties
+    Vehicle.call(this, make, model, doorCount, color);
+}
+
+// Set the prototype to a new instance of Vehicle to that it inherits all of Vehicle's properties and methods
+Truck.prototype = new Vehicle();
+
+// Correct the constructor pointer because it points to Vehicle
+Truck.prototype.constructor = Truck;
+
+// Create an instance of a truck with the properties from the Truck and Vehicle constructor functions
+var myTruck = new Truck('Fleetside', 'Dodge', 'Ram', 2, 'red');
+</pre>
+<p>Because we set the Truck object's prototype to the Vehicle, we can now access the startEngine method on it:</p>
+<pre class="prettyprint lang-javascript">
+// Call the startEngine method of the Vehicle object from the Truck instance
+myTruck.startEngine();
+console.log(myTruck.running)' // Outputs true
+console.log(myTruck.whatAmI()); // Outputs I am a red Dodge Ram with 2 doors
+console.log(myTruck.bedType); // Outputs Fleetside
+</pre>
+<p>Whe can also override methods using the prototype likse so:</p>
+<pre class="prettyprint lang-javascript">
+Truck.prototype.whatAmI = function() {
+	return 'I am a ' + this.bedType + ' ' + this.color + ' ' + this.make + ' ' + this.model + ' with ' + this.doors + ' doors';
+};
+console.log(myTruck.whatAmI()); // Outputs I am a Fleetside red Dodge Ram with 2 doors
+</pre>
+<h3>Product service revisited</h3>
+<p>Using app.service(name, constructor function) to register a service object, Angular expects a constructor function as the second parameter and will invoke it using
+the <code>new</code> operator. To use app.service() we need to create a function that has it's properties and methods set with the <code>this</code> keyword:</p>
+<pre class="prettyprint lang-javascript">
+...
+	app.service('ProductService', function() {
+
+        this.getProducts = function() {
+
+        };
+
+	});
+...
+</pre>
+
+<h3>Angular Factory</h3>
+<p>Alternatively, we can use angular.factory(name, factory function) to create our service objects. An angular factory function can return an object literal like so:</p>
+<pre class="prettyprint lang-javascript">
+...
+	app.factory('ProductService', function() {
+
+        return {
+
+            getProducts: function() {
+
+            }
+        };
+
+	});
+...
+</pre>
+<p>The service factory function generates the single object or function that represents the service to the rest of the application.
+The object or function returned by the service is injected into any component (controller, service, filter or directive) that specifies a dependency on the service.</p>
+
+<h3>Adding $http to the service</h3>
+<p>Currently, our ProductList controller has the $http service injected into so that we can fetch the JSON from our server. To reduce code duplication, we are going to move those calls to our factory service object:</p>
+<pre class="prettyprint lang-javascript">
+...
+	app.factory('ProductService', function(<strong>$http</strong>) {
+
+        return {
+
+            getProducts: function() {
+
+                // Returns a promise
+                return $http.get('/assets/json/products.json');
+
+            },
+
+            getFilters: function() {
+
+                // Returns a promise
+                return $http.get('/assets/json/product-filters.json');
+
+            }
+        };
+
+	});
+...
+</pre>
+
+<h3>Refactoring the controller</h3>
+<p>Now it is time to refactor our ProductList controller to use the ProductService above. Let's begin by specifying a dependency upon the ProductService and removing the dependency upon the $http service:</p>
+<pre>
+...
+	app.controller('ProductList', function($scope, <strong>ProductService</strong>) {
+		...
+	});
+...
+</pre>
+<p>To finish up, we can switch out the $http calls with method calls on our ProductService:</p>
+<pre>
+...
+
+	app.controller('ProductList', function($scope, <strong>ProductService</strong>) {
+
+		ProductService.getProducts().then(function(response) {
+			$scope.filters = response.data;
+		});
+
+		ProductService.getFilters.then(function(response) {
+			$scope.products = response.data;
+		});
+
+	});
+
+...
+</pre>
+<div class="alert alert-info">
+    <p>Be sure to commit your changes to Github!</p>
+</div>
+<p><a ui-sref="geekwise.page({page_id: 4})" class="btn btn-default">Continue to Day 4</a></p>

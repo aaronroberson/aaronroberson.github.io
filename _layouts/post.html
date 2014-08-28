@@ -1,0 +1,25 @@
+---
+layout: default
+---
+
+<div class="col col-sm-9">
+    <div class="post">
+
+        <header class="post-header">
+            <h1>{{ page.title }}</h1>
+            <p class="meta">{{ page.date | date: "%b %-d, %Y" }}{% if page.author %} • {{ page.author }}{% endif %}{% if page.meta %} • {{ page.meta }}{% endif %}</p>
+        </header>
+
+        <article class="post-content">
+            {{ content }}
+        </article>
+
+    </div>
+</div>
+<div class="col col-sm-3">
+    <div id="sidebar" class="sidebar">
+        {% include post_roll.html %}
+
+        {% include aaron_bio.html %}
+    </div>
+</div>

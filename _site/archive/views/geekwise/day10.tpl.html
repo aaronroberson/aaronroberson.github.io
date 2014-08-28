@@ -1,0 +1,128 @@
+<div class="row">
+
+    <h1>Day 10 - User registration and login</h1>
+
+	<p>In tonight's class you will be:</p>
+
+	<ul>
+		<li>Creating a authentication service</li>
+		<li>Adding an app controller</li>
+		<li>Update Angular to 1.3 Beta 11 for ngMessages support</li>
+		<li>Add Angular Messages for form validation</li>
+		<li>Add Angular Cookies for user session management</li>
+		<li>Adding user registration:
+			<ul>
+				<li>Create a sign up controller</li>
+				<li>Create a sign up view</li>
+				<li>Add sign up API rest point</li>
+				<li>Add a sign up state to client-side routes</li>
+			</ul>
+		</li>
+		<li>Adding user login:
+			<ul>
+				<li>Create a login controller</li>
+				<li>Create a login view</li>
+				<li>Add a login API rest point</li>
+				<li>Add a login state to client-side routes</li>
+			</ul>
+		</li>
+		<li>Creating a User model (mongoose and mongoDB)</li>
+		<li>Adding <a href="http://passport.js" target="_blank">Passport</a> for user authentication in Express</li>
+	</ul>
+
+	<h3>Adding the Authentication Service</h3>
+
+	<p>Create a new file named 'auth-service.js' in the services directory (be sure to add the script to index.html):</p>
+
+	<gist id="86391ce601dbaa001bb2" file="auth-service.js"></gist>
+
+	<h3>Adding the AppController</h3>
+
+    <p>In the controllers directory, add an app-controller.js file (be sure to add the script to index.html).
+	    We will use this controller for high-level application functions, such as our logout function:</p>
+
+    <gist id="86391ce601dbaa001bb2" file="app-controller.js"></gist>
+
+    <p>Register the controller on the body tag in index.html:</p>
+
+<pre class="prettyprint">
+    &lt;body ng-controller="AppController"&gt;
+</pre>
+
+    <h3>Update Angular to 1.3 Beta 11</h3>
+
+    <p>As of Angular 1.3 beta 8 Angular has added a messages module for simplifying form validation messages.
+    Update the CDN reference and include messages and well as the cookie module (we'll address messages and cookies in more detail later).</p>
+
+<pre class="prettyprint">
+&lt;script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.11/angular.min.js"&gt;&lt;/script&gt;
+&lt;script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.11/angular-cookies.min.js"&gt;&lt;/script&gt;
+&lt;script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.11/angular-messages.min.js"&gt;&lt;/script&gt;
+</pre>
+
+	<p>Register the new ngCookies and ngMessages modules in app.js as dependencies:</p>
+
+	<gist id="86391ce601dbaa001bb2" file="app.js"></gist>
+
+    <h3>Update the navigation</h3>
+
+    <p>While you're updating index.html, update the navigation with the login/sign-up/logout and current user information:</p>
+
+	<gist id="86391ce601dbaa001bb2" file="index.html"></gist>
+
+	<h3>Adding the sign up</h3>
+
+	<p>Add the signup controller by creating a new file named 'singup-controller.js in the controllers directory (be sure to add the script to index.html):</p>
+
+	<gist id="86391ce601dbaa001bb2" file="signup-controller.js"></gist>
+
+	<p>Create a new file named signup.html in the views directory:</p>
+
+	<gist id="86391ce601dbaa001bb2" file="signup.html"></gist>
+
+	<p>Add a 'signup' state to '/public/routes.js' and register the controller and view above on the state.</p>
+
+	<h3>Adding the login</h3>
+
+	<p>Add the login controller by creating a new file named 'login-controller.js in the controllers directory (be sure to add the script to index.html):</p>
+
+	<gist id="86391ce601dbaa001bb2" file="login-controller.js"></gist>
+
+	<p>Create a new file named login.html in the views directory:</p>
+
+	<gist id="86391ce601dbaa001bb2" file="login.html"></gist>
+
+	<p>Add a 'login' state to '/public/routes.js' and register the controller and view above on the state.</p>
+
+	<h3>Add the User model</h3>
+
+	<p>Create a new file named User.js in the '/models' directory:</p>
+
+	<gist id="86391ce601dbaa001bb2" file="User.js"></gist>
+
+	<h3>Add API routes</h3>
+
+	<p>Add the login and logout API routes to '/routes.js', including the dependency to passport:</p>
+
+	<gist id="86391ce601dbaa001bb2" file="routes.js"></gist>
+
+	<h3>Add Node.js Dependencies</h3>
+
+	<p>In the terminal or console, change directories (cd) to the root of the MyStore app and run the following command:</p>
+<pre class="prettyprint">
+npm install --save express-session passport passport-local bcrypt-nodejs
+</pre>
+
+	<h3>Add Passport</h3>
+
+	<p>Update the server.js file to include the dependencies from above and to configure them:</p>
+
+	<gist id="86391ce601dbaa001bb2" file="server.js"></gist>
+
+	<div class="alert alert-info">
+		<p>Remember to commit your changes to Github!</p>
+	</div>
+
+	<p><a ui-sref="geekwise.page({page_id: 11})" class="btn btn-default">Continue to Day 11</a></p>
+</div>
+

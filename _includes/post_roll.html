@@ -1,0 +1,12 @@
+<h3>Posts <a href="{{ "/feed.xml" | prepend: site.baseurl }}" class="pull-right" target="_blank"><i class="fa fa-rss"></i></a></h3>
+
+<ul class="nav nav-stacked">
+    {% for post in site.posts %}
+    <li>
+        <a href="{{ post.url | prepend: site.baseurl }}">
+            {{ post.title }}
+            <small class="text-muted pull-right">{{ post.date | date: "%b %-d, %Y" }}</small>
+        </a>
+    </li>
+    {% endfor %}
+</ul>

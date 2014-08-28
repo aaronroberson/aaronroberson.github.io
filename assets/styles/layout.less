@@ -1,0 +1,168 @@
+@black: #423f37;
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  height: 100%;
+  color: #423f37;
+  overflow: auto;
+  background: #ddd url(../images/shattered.png) repeat;
+  margin-bottom: @footer-height;
+
+  > .container {
+    padding: @navbar-height 15px 0;
+    margin-bottom: @grid-gutter-width;
+  }
+}
+
+a, a:hover {
+  color: @black;
+  text-decoration: none;
+}
+
+header {
+  h1 {
+    padding-top: 20px;
+  }
+}
+
+.sidebar {
+  h3 {
+    padding-top: 13px;
+    padding-bottom: 14px;
+    border-bottom: 2px solid @black;
+  }
+
+  .nav >li > a:hover {
+    background: linear-gradient(rgba(245, 245, 245, 0.5) 0%, rgba(220, 220, 220, 0.5) 100%);
+  }
+}
+
+@media (min-width: 979px) {
+  .sidebar.affix-top {
+    position: static;
+  }
+
+  .sidebar.affix {
+    position: fixed;
+    top: 30px;
+    width: 21.2%;
+  }
+}
+
+.affix-top {
+  position: static;
+}
+
+.affix-bottom {
+  position: absolute;
+  bottom: @footer-height;
+}
+
+.navbar-inverse {
+  .navbar-toggle {
+    color: #999;
+    border-width: 0;
+
+    &:hover {
+      background-color: @translucent-background;
+    }
+
+    .icon-bar {
+      background-color: #999;
+    }
+  }
+
+  .navbar-collapse .navbar-nav {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .navbar-nav {
+
+    > li > a {
+      color: #999;
+      padding-left: 20px;
+      padding-right: 20px;
+
+      &:hover, &:focus {
+        color: whitesmoke;
+        background-color: @translucent-background;
+      }
+    }
+
+    > .active > a, > .active > a:hover, > .active > a:focus {
+      color: #999;
+      background-color: transparent;
+    }
+
+    > .open > a, > .open > a:hover, > .open > a:focus {
+      color: #f0f0f0;
+      background-color: transparent;
+      opacity: .9;
+      border-color: @black;
+    }
+
+    > .open > a, > .open > a:hover, > .open > a:focus {
+      background: rgba(50, 50, 50, .5);
+    }
+
+    .dropdown-menu {
+      min-width: 250px;
+      padding: 0;
+      background: #ddd;
+
+      > li > a {
+        padding: 10px 20px;
+
+        &:hover {
+          background: linear-gradient(rgba(245, 245, 245, 0.5) 0%, rgba(220, 220, 220, 0.5) 100%);
+        }
+      }
+
+      .form-inline {
+        padding: 7px;
+
+        .clearfix();
+
+        input {
+          width: auto;
+        }
+      }
+
+      .divider {
+        margin: 0;
+      }
+    }
+  }
+}
+
+.navbar, .footer {
+  background: #333 url(../images/use_your_illusion.png) repeat;
+  color: #999;
+  border: 0;
+  border-radius:0;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: @footer-height;
+  line-height: @footer-height;
+}
+
+.btn-twitter, .btn-linkedin, .btn-google-plus, .btn-github {
+  display: inline-block;
+  background-color: @translucent-background;
+  border: none;
+  margin: 4px;
+  width: 38px;
+}
+
+.btn-github:hover {
+  background-color: #444;
+}

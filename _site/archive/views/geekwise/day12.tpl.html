@@ -1,0 +1,76 @@
+<div class="row">
+
+    <h1>Day 12 - Checkout with PayPal API</h1>
+
+	<p>In tonight's class you will:</p>
+
+	<ul>
+		<li>Adding JQuery to the project</li>
+        <li>Add an application config</li>
+		<li>Add a checkout method to the CartService</li>
+		<li>Add the checkout method to the cart controller</li>
+		<li>Replace the checkout button with a PayPal image</li>
+	</ul>
+
+	<h3>Adding JQuery</h3>
+
+	<p>Angular core ships with a slimmed down version of JQuery it calls <a href="https://docs.angularjs.org/api/ng/function/angular.element" target="_blank">qLite</a>.
+    However, if JQuery is present before the 'DOMContentLoaded' event is fired, Angular will extend 'jqLite' with the full version of JQuery.
+    Add the Google CDN hosted reference to JQuery prior to the inclusion of Angular in the head tag of index.html:</p>
+<pre class="prettyprint">
+&lt;script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"&gt;&lt;/script&gt;
+</pre>
+
+	<h3>Adding an application config</h3>
+
+    <p>In larger applications, it's common to have a configuration script that sets application-settings or variables (such as constants).
+    Angular's <a href="https://docs.angularjs.org/api/ng/type/angular.Module#value" target="_blank">.value()</a> and <a href="https://docs.angularjs.org/api/ng/type/angular.Module#constant" target="_blank">.constant()</a> methods can be used to register variables on an application module and are available as dependencies to controllers and services.
+    Using <code>.value</code> add a config object to the 'MyStore' module in app.js:</p>
+
+    <gist id="fa10ff91ec5cdf1b3111" file="app.js"></gist>
+
+    <h3>Add the checkout method to CartService</h3>
+
+    <p>Update the CartService so that the config is injected into it using Angular's dependency injection annotation.
+        Instead of using a form in the cart view, you will dynamically build a form using JQuery so that the user is less capable of being able to edit the checkout form prior to submitting it to PayPal.
+    Using the <a href="https://www.paypal.com/cgi-bin/webscr?cmd=p/pdn/howto_checkout-outside" target="_blank">Passing Individual Items to PayPal</a> method, you will construct the form data in an object literal.
+    Then you will loop through the items, adding additional properties and values for each item to the <code>data</code> object.
+    Finally, you will append the form to the page and submit it to PayPal:</p>
+
+    <gist id="fa10ff91ec5cdf1b3111" file="cart-service.js"></gist>
+
+	<p>Add the checkout method to the cart controller:</p>
+
+    <p>Make the checkout method available to the cart view by adding it to scope in the CartController:</p>
+
+	<gist id="fa10ff91ec5cdf1b3111" file="cart-controller.js"></gist>
+
+    <h3>Add the checkout button to the cart</h3>
+
+    <p>Replace the checkout button in cart.html with the following PayPal button:</p>
+
+	<gist id="fa10ff91ec5cdf1b3111" file="cart.html"></gist>
+
+    <h3>Deployment</h3>
+
+    <p>Sign up for a free account on <a href="http://heroku.com" target="_blank">Heroku</a>.
+        Download and install the <a href="https://toolbelt.heroku.com/" target="_blank">Heroku Toolbelt</a>.
+        From the terminal, log into Heroku:</p>
+<pre>
+    heroku login
+</pre>
+    <p>Then then create a new Heroku application from the terminal (at the root of your app):</p>
+<pre>
+    heroku create
+</pre>
+    Then run the following command to deploy to Heroku
+<pre>
+    git push -u heroku master
+</pre>
+
+	<div class="alert alert-info">
+		<p>Remember to commit your changes to Github!</p>
+	</div>
+
+</div>
+

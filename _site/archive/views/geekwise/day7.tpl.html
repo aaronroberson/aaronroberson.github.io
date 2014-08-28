@@ -1,0 +1,155 @@
+<div class="row">
+
+    <h1>Day 7 - Getting MEAN</h1>
+
+	<p>During tonight's class you will be refactoring the MyStore application.
+		Until now you have been using static JSON files to serve up the products.
+		While this is convenient and straight-forward, it is not very dynamic.
+		What the application is missing is a database and a server.
+		Since this is a JavaScript class, you will be using JavaScript components for both of these mechanism.</p>
+
+	<h2>What is MEAN?</h2>
+	<p>MEAN is an acronym for MongoDB, Express, AngularJS and Node.js.
+	The MyStore applicaiton is currently leveraging AngularJS and Node.js.
+		In tonight's class, you will be adding:</p>
+	<ul>
+		<li>MongoDB database</li>
+		<li>Mongoose <abbr title="Object Relational Mapper">ORM</abbr></li>
+		<li>Express server</li>
+		<li>An <abbr title="Applicaiton Interface">API</abbr> for fetching data from the MongoDB</li>
+	</ul>
+
+	<h3>Refactoring the architecture</h3>
+	<p>By the end of this class, you will be using Express to serve the MyStore application.
+		The Express server has a routing engine for serving up static and dynamic files.
+		The MyStore application will no longer be served out of the root directory, but will instead be served as a
+		static resource from a 'public' directory.</p>
+	<p>Create a new directory in the root of the MyStore application and name it 'public'.
+		Move all of the application files into the 'public' directory with exception of the following files/directories:</p>
+	<ul>
+		<li>.gitignore</li>
+		<li>Gruntfile.js</li>
+		<li>bower.json</li>
+		<li>package.json</li>
+		<li>README.md</li>
+	</ul>
+
+	<p>The 'bower_components' directory is no longer located in the application root.
+		Next time you run 'bower install' or 'bower update' all the font-end dependencies will be added back to the application root.
+		To manage the directory location of the bower components, create a new file in the application root and name it '.bowerrc':
+		<gist id="c0774a0c1a1257922f24" file=".bowerrc"></gist>
+	</p>
+	<h3>Adding the M in MEAN</h3>
+	<p>The MyStore application will be using a third-party cloud hosted database to serve up it's data.
+	Go to <a href="http://mongolab.com">http://mongolab.com</a> and create a FREE sandbox account.
+		After verifying your account from the email verification link, log into your new mongolab account and follow the steps below:</p>
+	<ol>
+		<li>Click the "Create new" button to create a new MongoDB instance</li>
+		<li>Select the Google Cloud Platform</li>
+		<li>Select the Single-node (development) plan</li>
+		<li>Give your database a name (such as geekwise)</li>
+		<li>Click Create new MongoDB deployment</li>
+	</ol>
+	<p>Congratulations, you just created a new MongoDB instance in the cloud!</p>
+	<h4>Add a database user</h4>
+	<p>With the new database instance selected, click the 'Users' tab and then click the 'Add database user' button.
+		Enter a username and password. You will use this in the mongoose connection string:
+<pre>
+mongodb://[dbuser]:[dbpassword]@[host]:[port]/[database]
+</pre>
+	<h4>Create the products collection</h4>
+	<p>With the new database instance selected, click the 'Add collection" button and create a new collection named 'products'.
+	Click the 'Add document' button. Paste in a sincle product from the '/public/assets/json/products.json' file:
+	<gist id="c0774a0c1a1257922f24" file="products.json"></gist>
+	</p>
+	<p>Repeat the last two steps above to enter each product as a document in the products 'collection'.</p>
+
+	<h4>Adding MongoDB and Mongoose dependencies</h4>
+	<p>Open a command prompt/terminal and change directories to the MyStore application. Enter the following commands:</p>
+<pre class="prettyprint">
+npm install -g mongodb
+npm install -S mongoose
+npm install -S mongodb-uri
+</pre>
+	<h3>Adding the E in MEAN</h3>
+	<p>Remaining in the command prompt/terminal, continue entering the following command to install Express and it's dependencies:</p>
+<pre class="prettyprint">
+npm install -S express
+npm install -S morgan
+npm install -S cookie-parser
+npm install -S body-parser
+npm install -S debug
+npm install -S static-favicon
+</pre>
+	<p>The previous commands installed all the node_modules to the application and saved them to the 'package.json' file.
+	In addition, update the package.json file so that the name is lower-cased and the main points to 'server.js' which you will create next:
+	<gist id="c0774a0c1a1257922f24" file="package.json"></gist>
+	</p>
+	<h4>Creating the Express server</h4>
+	<p>Create a new file in the application root and name it 'server.js'. Copy the contents from below:
+		<gist id="c0774a0c1a1257922f24" file="server.js"></gist>
+	</p>
+
+	<h4>Adding the server-side routes</h4>
+	<p>Create a new file in the application root and name it 'routes.js'. Copy the contents from below:
+		<gist id="c0774a0c1a1257922f24" file="routes.js"></gist>
+	</p>
+
+	<p>Add the Mongoose ORM connector to the 'server.js' file:
+		<gist id="c0774a0c1a1257922f24" file="mongoose-connection"></gist>
+	</p>
+
+	<div class="alert alert-info">
+		<p>The connection string to your Mongolab instance is displayed on the database page in the Mongolab website.<br/>
+		mongodb://[dbuser]:[dbpassword]@[host]:[port]/[database]</p>
+	</div>
+
+	<h4>Adding a Model</h4>
+	<p>Mongoose needs a database model and schema to fetch the data from our MongoDB.
+		Create a new directory under the application root and name it 'models'.
+	Create a new file named 'Product.js' and add the following:
+		<gist id="c0774a0c1a1257922f24" file="Product.js"></gist>
+	</p>
+	<p>Include the model in the server.js using the following:
+		<gist id="c0774a0c1a1257922f24" file="models"></gist>
+	</p>
+
+	<p>The completed server.js file should look similar to the one below:
+		<gist id="c0774a0c1a1257922f24" file="server-complete"></gist>
+	</p>
+
+	<h4>Adding an API to the routes</h4>
+	<p>Update the 'routes.js' file, using Mongoose to find the product and products:
+		<gist id="c0774a0c1a1257922f24" file="routes-complete"></gist>
+	</p>
+
+	<h3>Updating the ProductService</h3>
+	<p>Update the ProductService so that it no longer uses the products.json file.
+		Use the new route to the API you created in the step above:
+		<gist id="c0774a0c1a1257922f24" file="product-service.js"></gist>
+	</p>
+
+	<h3>Updating the ProductDetail controller</h3>
+	<p>Update the ProductDetail Controller to use the new getProduct() method for fetching the requested product:
+		<gist id="c0774a0c1a1257922f24" file="product-detail-controller.js"></gist>
+	</p>
+
+	<h3>Run the app</h3>
+	<p>From the command prompt/terminal, run the following command:</p>
+<pre>
+	npm start
+</pre>
+	<p>Navigate to the http://localhost and the port displayed in the terminal response (should be http://localhost:/9001 or http://localhost:/3000)</p>
+
+	<h3>On your own</h3>
+	<h4>Add featured products to API</h4>
+	<p>Add a new Express route that points to 'api/products/featured' (in the /routes.js file) and return all products where isFeatured is true.
+		Create a new getFeaturedProducts method and add it to the ProductService (in /public/services/product-service.js) and update the Home controller (in /public/controllers/home-controller.js) to use the ProductService.getFeaturedProducts() method.</p>
+	
+	<div class="alert alert-info">
+		<p>Remember to commit your changes to Github!</p>
+	</div>
+
+	<p><a ui-sref="geekwise.page({page_id: 8})" class="btn btn-default">Continue to Day 8</a></p>
+</div>
+

@@ -1,0 +1,195 @@
+<div class="row">
+
+    <h1>Day 9 - Shopping Cart Part 2</h1>
+
+	<p>In tonight's class you will be:</p>
+
+	<ul>
+		<li>Update the products price and specialPrice values in MongoDB to numbers</li>
+		<li>Updating the shopping cart
+			<ul>
+				<li>Update the mini-cart-directive</li>
+				<li>Update the CartController with the methods from the CartService</li>
+				<li>Update the CartService methods</li>
+				<li>Add the ng-repeat to display all the items in the cart on the cart.html view</li>
+				<li>Create am "Add to Cart" directive for adding items to the cart</li>
+			</ul>
+		</li>
+	</ul>
+
+	<p>If you haven't already added the assets from day 8, <a ui-sref="geekwise.page({page_id: 8})" class="btn btn-default">do so now</a></p>
+
+	<h3>Update the database</h3>
+
+	<p>Log into <a href="http://mongolab.com" target="_blank">http://mongolab.com</a> and navigate to your products collection.
+		Click on each product and update the price and specialPrice values, removing the dollar sign ($) and any commas.</p>
+
+	<h3>Update the mini-cart-directive</h3>
+
+	<p>Update the mini-cart-directive by injecting the CartService using Angular's dependency injection annotations.
+		Next, set the cartSubtotal and itemCount variables on the scope to equal the corresponding methods on the cartService:</p>
+
+	<gist id="c666766145a71144ddef" file="mini-cart-directive.js"></gist>
+
+	<h3>Update the CartController</h3>
+
+	<p>First, inject the CartService into the CartController using Angular's buil-in dependency injection annotation.
+		Then, using the getItems() method, set the items from the CartService in a variable named <code>items</code> on the $scope:
+	</p>
+<pre class="prettyprint lang-javascript">
+$scope.items = CartService.getItems();
+</pre>
+
+	<p>Next, set the getItemCount, removeItem, emptyCart, cartSubtotal and cartTotal variables equal to the corresponding methods in the CartService.
+		Be sure sure not to invoke the methods from the CartService:</p>
+
+	<gist id="c666766145a71144ddef" file="cart-controller.js"></gist>
+
+	<p>By design, the controller is very thin, meaning that it is devoid of complex business logic.
+		It is an anti-pattern to put application business logic in the controller for several reasons:
+	</p>
+
+	<ul>
+		<li>Controllers are transient objects, meaning they are created and destroyed frequently</li>
+		<li>Controllers are not shared throughout the application, nor is the code they contain</li>
+		<li>Complex controller logic is not easily testable</li>
+	</ul>
+
+	<p>In your applications, aim to make your controllers anemic, with the sole responsibility of marshalling data from the services and to the view.</p>
+
+	<h3>Update the CartService</h3>
+
+	<p>Services are the ideal place for encapsulating business logic, formatting data and performing calculations prior to presenting them in the view.
+	Add a private <code>items</code> variable in the body of the CartService and initialize it as an Object literal:</p>
+<pre class="prettyprint lang-javascript">
+var items = {};
+</pre>
+	<h4>Updating the addItem method</h4>
+	<p>Next, build out the addItem method. The addItem method will take an item as a parameter and will check for the existence of the item in the <code>items</code> object.
+		If the item doesn't exist, add a <code>quantity</code> property and initialize it with the value of 1.
+	Then, add the item to the <code>items</code> object, using the <code>guid</code> as its key:</p>
+<pre class="prettyprint lang-javascript">
+if(!items[item.guid]) {
+    item.quantity = 1;
+    items[item.guid] = item;
+}
+</pre>
+	<p>If the item already exists in the <code>items</code> object, increment the quantity property by 1:</p>
+<pre class="prettyprint lang-javascript">
+else {
+    items[item.guid].quantity += 1;
+}
+</pre>
+	<h4>Updating the removeItem method</h4>
+	<p>The removeItem method will use the built-in Javascript keyword <code>delete</code> to remove the item from the <code>items</code> object:</p>
+<pre class="prettyprint lang-javascript">
+removeItem: function(item_id) {
+    delete items[item_id];
+},
+</pre>
+	<h4>Updating the EmptyCart method</h4>
+	<p>The emptyCart method overrides the <code>items</code> object with an empty object:</p>
+<pre class="prettyprint lang-javascript">
+emptyCart: function() {
+    items = {};
+},
+</pre>
+	<h4>Updating the getItemCount method</h4>
+	<p>The getItemCount method returns the total quantity of items in the <code>items</code>.
+	Be careful to use the built-in JavaScript <code>parseInt()</code> function to convert strings to numbers:</p>
+<pre class="prettyprint lang-javascript">
+getItemCount: function() {
+	// returns number of items, including item quantity
+    var total = 0;
+    angular.forEach(items, function(item) {
+        total += parseInt(item.quantity);
+    });
+    return total;
+}
+</pre>
+	<h4>Updating the getCartSubtotal method</h4>
+	<p>The getCartSubtotal method returns the quantity of items multiplied by the item price or specialPrice (if isSpecial is true).
+	Once again, be sure to use the <code>parseInt()</code> function to ensure that the item quantity is an integer and not a string.
+	In addition, use the built-in <code>parseFloat()</code> function to ensure that the item price is a double integer:
+	</p>
+<pre class="prettyprint lang-javascript">
+getCartSubtotal: function() {
+    var total = 0;
+    angular.forEach(items, function(item) {
+       total += parseInt(item.quantity) * parseFloat(item.isSpecial ? item.specialPrice : item.price);
+    });
+    return total;
+},
+</pre>
+
+	<div class="alert alert-info">
+		<p>We are using the ternary operator above. To learn more about this conditional operator, visit the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator" target="_blank">Mozilla Developer Network</a></p>
+	</div>
+
+	<h4>Updating the getCartTotal method</h4>
+	<p>For now, copy the code from the getCartSubtotal method and add it to the getCartTotal method. Later we will add shipping to the equation.
+	Your completed CartService should resemble the following code:</p>
+
+	<gist id="c666766145a71144ddef" file="cart-service.js"></gist>
+
+	<h3>Creating an "Add to Cart" directive</h3>
+
+	<p>Create a new directive and name it 'msAddCart' and save it in the 'public/directives/' directory as 'add-cart-button.js'.
+	Next, inject the CartService into the directive using Angular's built-in dependency injection annotations.
+	The directive will have the following properties:</p>
+	<ul>
+		<li>Restrict the directive for use as an element</li>
+		<li>An isolated scope that accepts a product object (using two-way data binding)</li>
+		<li>Specify a templateUrl path of 'templates/add-cart-button.html'</li>
+		<li>Add an addItem method on the scope (using the link function) and set it equal to the CartService addItem method</li>
+	</ul>
+	<p>The completed code should resemble the following:</p>
+
+	<gist id="c666766145a71144ddef" file="add-cart-button.js"></gist>
+
+	<p>Next, create the 'add-cart-button.html' template in the 'public/templates/' directory. Add the following HTML markup:</p>
+
+	<gist id="c666766145a71144ddef" file="add-cart-button.html"></gist>
+
+	<p>Update the 'product-list.html' and 'product-details.html' views by removing the place-holder add-cart link with the directive above.</p>
+
+	<h3>Update the cart.html view</h3>
+
+	<p>Within the div with the 'col-sm-12' class (and before the cart table), add an alert message that is only displayed when the shopping cart is empty:</p>
+<pre class="prettyprint lang-html">
+&lt;div class=&quot;alert alert-warning&quot; ng-show=&quot;!getItemCount()&quot;&gt;
+	&lt;p&gt;There are no items in your cart
+		&lt;a ui-sref=&quot;products&quot; class=&quot;btn btn-default&quot;&gt;
+            &lt;span class=&quot;glyphicon glyphicon-shopping-cart&quot;&gt;&lt;/span&gt; Continue Shopping
+        &lt;/a&gt;
+    &lt;/p&gt;
+&lt;/div&gt;
+</pre>
+
+	<p>Next, add an <code>ng-show</code> directive to the cart table and using the getItemCount method as the evaluated expression:</p>
+<pre class="prettyprint lang-html">
+&lt;table class="table table-hover" ng-show="getItemCount()"&gt;
+</pre>
+
+	<p>Update the cart.html view so that the items in the items are looped over and repeated in the view:</p>
+<pre class="prettyprint lang-html">
+<!-- repeat of the items in the cart -->
+&lt;tr ng-repeat="item in items"&gt;
+</pre>
+
+	<h4>Adding the 'currency' filter</h4>
+
+	<p>Because you've updated each product's price and specialPrice values in the database, you will now need to update the product-list.htl, product-detail.html and cart.html to use Angular's 'currency' filter to display the formatted values.
+	The filter cannot be used in conjunction with the <code>ngBind</code> directive, so you will have to update your code references to use the 'mustache' binding syntax.</p>
+
+	<p>The completed cart.html will resemble the following code:</p>
+
+	<gist id="c666766145a71144ddef" file="cart.html"></gist>
+
+	<div class="alert alert-info">
+		<p>Remember to commit your changes to Github!</p>
+	</div>
+
+	<p><a ui-sref="geekwise.page({page_id: 10})" class="btn btn-default">Continue to Day 10</a></p>
+</div>
+

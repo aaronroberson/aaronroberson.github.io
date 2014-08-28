@@ -1,0 +1,166 @@
+<h1>Day 1 - Introduction to AngularJS</h1>
+<p>Be sure to install the dependencies listed on the <a ui-sref="geekwise">Geekwise landing page</a>.</p>
+<p>
+	If you haven't already, log into <a href="http://github.com">Github</a> and fork the
+	<a href="https://github.com/aaronroberson/geekwise">boilerplate template</a>.
+	Once you've forked the project to your own account, clone it to a directory on your system using
+	<a href="http://sourcetreeapp.com">SourceTree</a> (or a Git client of your choosing).
+</p>
+<p>In the Windows console or Mac Terminal change to the directory you cloned the
+	boilerplate app into and run the following command:</p>
+<pre>npm install</pre>
+<p>To start the web server run the following command:</p>
+<pre>grunt</pre>
+<p>You can now open your browser and go to <a href="http://localhost:9001">http://localhost:9001</a> to access the app.</p>
+
+<h3>Getting Started with AngularJS</h3>
+<p>To get started with AngularJS, add the source from the Google CDN:</p>
+<pre class="prettyprint lang-html">
+&lt;head&gt;
+    ...
+    &lt;script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js">&lt;/script&gt;
+&lt;/head&gt;
+</pre>
+<p>To initialize AngularJS in the app, add the <code>ng-app</code> directive to the html tag:</p>
+<pre class="prettyprint lang-html">
+&lt;html ng-app&gt;
+</pre>
+<div class="alert alert-info">Congratulations, you have now initialized your first AngularJS application!</div>
+<h3>Adding a module</h3>
+<p>As with most applications, we will be needing to configure the MyStore application when it is initialized.
+In the root of the MyStore application, create an app.js file with the following content:</p>
+<pre class="prettyprint lang-javascript">
+var app = angular.module('MyStore', []);
+</pre>
+<p>Include a reference to the app.js script in the index.html just before the closing body tag:</p>
+<pre class="prettyprint lang-html">
+&lt;body&gt;
+    ...
+    &lt;script src="app.js">&lt;/script&gt;
+&lt;/body&gt;
+</pre>
+<p>A module in Angular can be the application itself, or sub-components of the application.
+	In the case above, we will be using our 'MyStore' module for the application.
+	Adding the module to our application is as simple as passing the module name to the <code>ng-app</code> directive.</p>
+<p>In the index.html page, update ng-app to the following:</p>
+<pre class="prettyprint lang-html">
+&lt;html ng-app="MyStore"&gt;
+</pre>
+<p>Before we move on to configuring our application, let's first address the issue of having added the <code>app</code> variable to the global scope.
+In JavaScript, the default scope for all variables and functions is the global scope, which is the DOM window.
+When developing large applications, we want to limit what we add to the global scope.
+	To do that, we are going to use an <abbr title="Immediately Invoked Function Expression">IIFE</abbr>.</p>
+<p>Returning to app.js, let's modify it to give our <code>app</code> variable private scope, excluding it form the global scope.</p>
+<pre class="prettyprint lang-javascript">
+(function(angular) {
+	var app = angular.module('MyStore', []);
+})(window.angular);
+</pre>
+<p><a href="http://benalman.com/news/2010/11/immediately-invoked-function-expression/">Read more about IIFE</a></p>
+<h3>Adding URL Routing</h3>
+<p>The MyStore application will be a <abbr title="Single Page Application">SPA</abbr>.
+	In short, this means that we 'll have a single index.html page that our other pages (or templates) get injected into.
+At the present time, the official AngularJS routing module is very limited in functionality and plans are underway to update it
+to more reflect the <a href="https://github.com/angular-ui/ui-router">UI-Router</a> currently provided by the <a href="https://angular-ui.github.io/">Angular-UI team.</a></p>
+<h4>Bower Package Manager</h4>
+<p>We will be using the Bower package manager for installing, updating and maintaining third-party JavaScript libraries.
+From the console or terminal, change directories to the root of the MyStore application on your local system.
+Before installing any bower components, let's first initialize Bower in our application. In the console or terminal run the following command:</p>
+<pre>bower init</pre>
+<p>Name your project as 'MyStore' and accept the defaults for the remaining prompts. When completed, Bower will have created a <code>bower.json</code> file in the root of the application.</p>
+<p>Now we are ready to install UI-router. Run the following command:</p>
+<pre>bower install --save angular-ui-router</pre>
+<p>The <code>--save</code> flag informs bower that you want to update the bower.json file with a reference to the angular-ui-router dependency.
+By default, Bower installs all packages in the bower_components directory. Let's add the UI-Router source to our index page:</p>
+<pre class="prettyprint lang-html">
+&lt;body&gt;
+	...
+	&lt;script src="bower_components/angular-ui-router/release/angular-ui-router.min.js">&lt;/script&gt;
+	&lt;script src="app.js">&lt;/script&gt;
+&lt;/body&gt;
+</pre>
+<p>Now we need to register the UI-Router module with our module using Angular's Dependency Injection system.
+Let's update <code>app.js</code>:</p>
+<pre class="prettyprint lang-javascript">
+(function(angular) {
+	var app = angular.module('MyStore', ['ui.router']);
+})(window.angular);
+</pre>
+<p>We are now ready to configure the router. To do so, we will add a routes.js file to the root of our application:</p>
+<pre class="prettyprint lang-javascript">
+(function(angular) {
+	var app = angular.module('MyStore');
+
+	app.config(function($stateProvider, $urlRouterProvider) {
+
+        $urlRouterProvider
+            .otherwise('/');
+
+        $stateProvider
+            .state('home', {
+                url: '/',
+                templateUrl: ''
+            })
+            .state('products', {
+                url: '/products',
+                templateUrl: ''
+            })
+			.state('about', {
+                url: '/about',
+                templateUrl: ''
+            })
+            .state('contact', {
+                url: '/contact',
+                templateUrl: ''
+            });
+
+    });
+})(window.angular);
+</pre>
+<p>Our routing is almost complete. But you will notice that the templateUrl property is empty in the configuration above.
+The templateUrl is the path to the html template we want injected into our index.html page.
+	But before we can inject a template into the index.html, we first have to specify where in the page we want it inject.
+We do this with a custom directive named <code>ui-view</code> that comes with UI-Router.</p>
+<p>Let's start by creating a new directory and naming it 'views'. Then, let's create a new file within the views directory
+	and name it 'home.html'. Now, lets open index.html in the root of the application and edit the page,
+cutting the div item with the jumbotron class (and all the HTML it contains) and pasting it into 'views/home.html'.
+Finally, let's add the <code>ui-view</code> directive to the outer div with the class of container:</p>
+<pre class="prettyprint lang-html">
+&lt;div class="jumbotron" ui-view&gt;&lt;/div&gt;
+</pre>
+<p>Now, let's update routes.js to include the home.html path in the templateUrl:</p>
+<pre class="prettyprint lang-javascript">
+...
+.state('home', {
+	url: '/',
+	templateUrl: 'views/home.html'
+})
+...
+</pre>
+<p>Finally, let's update the links in our navigation to use another UI-Router directive named <code>ui-sref</code>.</p>
+<pre class="prettyprint lang-html">
+&lt;div class="navbar-header"&gt;
+	&lt;a class="navbar-brand" ui-sref="home"&gt;MyStore&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;ul class="nav navbar-nav"&gt;
+	&lt;li ui-sref-active="active"&gt;
+		&lt;a ui-sref="home"&gt;Home&lt;/a&gt;
+	&lt;/li&gt;
+	&lt;li ui-sref-active="active"&gt;
+		&lt;a ui-sref="products"&gt;Products&lt;/a&gt;
+	&lt;/li&gt;
+	&lt;li ui-sref-active="active"&gt;
+		&lt;a ui-sref="about"&gt;About&lt;/a&gt;
+	&lt;/li&gt;
+	&lt;li ui-sref-active="active"&gt;
+		&lt;a ui-sref="contact"&gt;Contact&lt;/a&gt;
+	&lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+<p>In your browser, navigate to <a href="http://localhost:9001">http://localhost:9001</a> and the jumbotron should display
+as it did before, except that now it is being injected into the index.html page.</p>
+<div class="alert alert-info">In SourceTree, commit your changes and push them to the remote Github repository.</div>
+<h3>On your own</h3>
+<p>In your own time, add a contact and about page to the views directory and update the templateUrl for each state to point to the respective template.</p>
+<p><a ui-sref="geekwise.page({page_id: 2})" class="btn btn-default">Continue to Day 2</a></p>
