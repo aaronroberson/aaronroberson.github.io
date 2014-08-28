@@ -9,4 +9,4 @@ short: Learn intermediate to advanced JavaScript skills using Google's AngularJS
 
 Learn intermediate to advanced JavaScript skills using Google's AngularJS framework for developing rich internet applications. This class also introduces students to creating an API with JSON, Node.js and MongoDB.
 
-Visit the [http://pixelpolished.com/geekwise/](course overview) page to learn more and getting started learning!
+Visit the [course overview](http://pixelpolished.com/geekwise/) page to learn more and get started learning!
