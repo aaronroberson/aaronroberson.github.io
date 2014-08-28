@@ -38,13 +38,13 @@ day: 9
 
 <p>Update the service.js file to include a new service named 'AuthService':</p>
 
-<gist id="86391ce601dbaa001bb2" file="auth-service.js"></gist>
+{% gist aaronroberson/86391ce601dbaa001bb2 auth-service.js %}
 
 <h3>Adding the AppController</h3>
 
 <p>In the controllers.js file, add an 'AppController' for high-level application functions, such as the logout function:</p>
 
-<gist id="86391ce601dbaa001bb2" file="app-controller.js"></gist>
+{% gist aaronroberson/86391ce601dbaa001bb2 app-controller.js %}
 
 <p>Register the controller on the body tag in index.html:</p>
 
@@ -63,7 +63,7 @@ day: 9
 
 <p>Register the ngMessages modules in app.js as a dependencies:</p>
 
-<gist id="86391ce601dbaa001bb2" file="app.js"></gist>
+{% gist aaronroberson/86391ce601dbaa001bb2 app.js %}
 
 <h3>Update the navigation</h3>
 
@@ -82,11 +82,11 @@ day: 9
 
 <p>Add the signup controller in the controllers.js file:</p>
 
-<gist id="86391ce601dbaa001bb2" file="signup-controller.js"></gist>
+{% gist aaronroberson/86391ce601dbaa001bb2 signup-controller.js %}
 
 <p>Update the signup.html in the views directory:</p>
 
-<gist id="86391ce601dbaa001bb2" file="signup.html"></gist>
+{% gist aaronroberson/86391ce601dbaa001bb2 signup.html %}
 
 <p>Update the 'signup' state in '/app/states.js' and register the controller and view above on the state.</p>
 
@@ -94,11 +94,11 @@ day: 9
 
 <p>Add the login controller to the 'controllers.js':</p>
 
-<gist id="86391ce601dbaa001bb2" file="login-controller.js"></gist>
+{% gist aaronroberson/86391ce601dbaa001bb2 login-controller.js %}
 
 <p>Update login.html in the views directory:</p>
 
-<gist id="86391ce601dbaa001bb2" file="login.html"></gist>
+{% gist aaronroberson/86391ce601dbaa001bb2 login.html %}
 
 <p>Update the 'login' state in '/app/states.js' and register the controller and view above on the state.</p>
 
@@ -106,13 +106,13 @@ day: 9
 
 <p>Create a new file named User.js in the '/models' directory:</p>
 
-<gist id="86391ce601dbaa001bb2" file="User.js"></gist>
+{% gist aaronroberson/86391ce601dbaa001bb2 User.js %}
 
 <h3>Add API routes</h3>
 
 <p>Add the login and logout API routes to '/routes.js', including the dependency to passport:</p>
 
-<gist id="86391ce601dbaa001bb2" file="routes.js"></gist>
+{% gist aaronroberson/86391ce601dbaa001bb2 routes.js %}
 
 <h3>Add Node.js Dependencies</h3>
 
@@ -125,7 +125,7 @@ npm install --save express-session passport passport-local bcrypt-nodejs
 
 <p>Update the server.js file to include the dependencies from above and to configure them:</p>
 
-<gist id="86391ce601dbaa001bb2" file="server.js"></gist>
+{% gist aaronroberson/86391ce601dbaa001bb2 server.js %}
 
 <div class="alert alert-info">
     <p>Remember to commit your changes to Github!</p>

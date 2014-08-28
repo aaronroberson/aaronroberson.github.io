@@ -59,7 +59,7 @@ templateUrl: 'views/swag.html'
 <p>Create a new directory in the 'assets' directory and name it 'json'. Now create a new file and name it 'swag.json'.
     Next, copy the following json and paste it into the file you just created:</p>
 
-<gist id="9dee9b49de40302a58d6" file="swag.json"></gist>
+{% gist aaronroberson/9dee9b49de40302a58d6 swag.json %}
 
 <p>To fetch the data from the JSON file, you are going to use Angular's built-in <a href="https://docs.angularjs.org/api/ng/service/$http" target="_blank">$http</a> service.
     Update the Swagwise controller to include the $http service as a dependency:</p>
@@ -99,7 +99,7 @@ app.controller('SwagController', function($scope, $http) {
 <p>Now that the products are available to the swag page, locate the hard-coded HTML for the each product.
     Remove the first three products, then using the <a href="https://docs.angularjs.org/api/ng/directive/ngRepeat" target="_blank">ng-repeat</a> directive update the remaining product to use as the template for the dynamic list:</p>
 
-<gist id="9dee9b49de40302a58d6" file="swag.html"></gist>
+{% gist aaronroberson/9dee9b49de40302a58d6 swag.html %}
 
 <h2>Adding a service</h2>
 

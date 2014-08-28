@@ -27,7 +27,7 @@ day: 7
 
 <p>Add a CartService to the services.js file:</p>
 
-<gist id="a26f85400a3e8818a834" file="cart-service.js"></gist>
+{% gist aaronroberson/a26f85400a3e8818a834 cart-service.js %}
 
 <h3>Updating the addItem method</h3>
 
@@ -103,7 +103,7 @@ return total;
 
 <p>Add a CartController to the controllers.js file:</p>
 
-<gist id="a26f85400a3e8818a834" file="cart-controller.js"></gist>
+{% gist aaronroberson/a26f85400a3e8818a834 cart-controller.js %}
 
 <p>Inject the CartService into the CartController using Angular's built-in dependency injection annotation.
     Then, using the getItems() method, set the items from the CartService in a variable named <code>items</code> on the $scope:

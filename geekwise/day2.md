@@ -197,7 +197,7 @@ angular.module('myModule', []);
 &lt;html ng-app="myModule"&gt;
 </pre>
 
-<gist id="c1b0edcf57916813dbe2" file="module"></gist>
+{% gist aaronroberson/c1b0edcf57916813dbe2 module %}
 
 <div class="alert alert-info">
     Learn more about <a href="https://docs.angularjs.org/guide/module" target="_blank">Modules</a>
@@ -207,7 +207,7 @@ angular.module('myModule', []);
 
 <p>Rather than a vanilla JavaScript function, you can register your controllers on the module like in the following example:</p>
 
-<gist id="c1b0edcf57916813dbe2" file="modular-controller"></gist>
+{% gist aaronroberson/c1b0edcf57916813dbe2 modular-controller %}
 
 <p><a ui-sref="geek.page({page_id: 3})" class="btn btn-default">Continue to Day 3</a></p>
 

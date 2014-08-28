@@ -77,7 +77,7 @@ var uriUtil      = require('mongodb-uri');
 </pre>
 
 <p>Add the Mongoose ODM connector to the 'server.js' file: </p>
-<gist id="74e27e57013e467c0fde" file="mongoose.js"></gist>
+{% gist aaronroberson/74e27e57013e467c0fde mongoose.js %}
 
 <div class="alert alert-info">
     Learn more about <a href="http://mongoosejs.com/" target="_blank">mongoose</a>
@@ -87,20 +87,20 @@ var uriUtil      = require('mongodb-uri');
 <p>Mongoose needs a database model and schema to fetch the data from our MongoDB.
     Create a new directory under the application root and name it 'models'.
     Create a new file named 'Swag.js' and add the following:</p>
-<gist id="74e27e57013e467c0fde" file="Swag.js"></gist>
+{% gist aaronroberson/74e27e57013e467c0fde Swag.js %}
 
 <p>Include the model in the server.js using the following:</p>
-<gist id="74e27e57013e467c0fde" file="models.js"></gist>
+{% gist aaronroberson/74e27e57013e467c0fde models.js %}
 
 <h2>Adding an API to the routes</h2>
 
 <p>Update the 'routes.js' file by creating the following additional rest points:</p>
-<gist id="74e27e57013e467c0fde" file="routes.js"></gist>
+{% gist aaronroberson/74e27e57013e467c0fde routes.js %}
 
 <h2>Updating the SwagService</h2>
 <p>Update the SwagService so that it no longer uses the products.json file.
     Use the new route to the API you created in the step above:</p>
-<gist id="74e27e57013e467c0fde" file="services.js"></gist>
+{% gist aaronroberson/74e27e57013e467c0fde services.js %}
 
 <h2>Angular $resource</h2>
 <p>Angular $resource creates a resource object that lets you interact with a RESTful API.
@@ -111,11 +111,11 @@ var uriUtil      = require('mongodb-uri');
 &lt;script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.13/angular-resource.min.js"&gt;&lt;/script&gt;
 </pre>
 <p>Update app.js to include ngResource as a dependency:</p>
-<gist id="74e27e57013e467c0fde" file="app.js"></gist>
+{% gist aaronroberson/74e27e57013e467c0fde app.js %}
 
 <p>Update the SwagService, removing the '$http' service as a dependency and adding $resource in its place.
     Remove the object literal and have the SwagService return the $resource directly:</p>
-<gist id="74e27e57013e467c0fde" file="resource.js"></gist>
+{% gist aaronroberson/74e27e57013e467c0fde resource.js %}
 
 <div class="alert alert-info">
     Learn more about <a href="https://docs.angularjs.org/api/ngResource/service/$resource" target="_blank">$resource</a>
