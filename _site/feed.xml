@@ -5,9 +5,66 @@
     <description>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</description>
     <link>http://aaronroberson.github.io/</link>
     <atom:link href="http://aaronroberson.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 28 Aug 2014 20:03:26 -0700</pubDate>
-    <lastBuildDate>Thu, 28 Aug 2014 20:03:26 -0700</lastBuildDate>
+    <pubDate>Thu, 28 Aug 2014 21:58:41 -0700</pubDate>
+    <lastBuildDate>Thu, 28 Aug 2014 21:58:41 -0700</lastBuildDate>
     <generator>Jekyll v2.1.1</generator>
+    
+      <item>
+        <title>Testing FOUC with AngularJS (Mac)</title>
+        <description>&lt;p&gt;At &lt;a href=&quot;http://onfarm.com&quot;&gt;OnFarm Systems&lt;/a&gt; we’ve made it a practice to favor the &lt;code&gt;ng-bind&lt;/code&gt; directive over “mustache” (double curly braces) bindings to avoid &lt;abbr title=&quot;Flash Of Un-styled Content&quot;&gt;FOUC&lt;/abbr&gt; in our application. In the agricultural industry it is not uncommon for farmers to access our app over a cellular connection on their touch pad device as they’re physically walking through the farm. &lt;/p&gt;
+
+&lt;p&gt;Recently, our development team received a bug and screen capture of one of our widgets with all of it’s braces “hanging out”. Turns out, the built-in template for the &lt;a href=&quot;http://angular-ui.github.io&quot;&gt;Angular UI&lt;/a&gt; &lt;a href=&quot;http://angular-ui.github.io/ng-grid/&quot;&gt;NG-Grid&lt;/a&gt; directive is using the “mustache” binding syntax.&lt;/p&gt;
+
+&lt;p&gt;The following steps are the ones I took to reproduce the error on an otherwise decent internet connection.&lt;/p&gt;
+
+&lt;h2 id=&quot;step-1-clear-the-cache&quot;&gt;Step 1: Clear the cache&lt;/h2&gt;
+
+&lt;p&gt;Angular somewhat aggressively caches template partials using the &lt;a href=&quot;https://docs.angularjs.org/api/ng/service/$templateCache&quot;&gt;$templateCache&lt;/a&gt; service. I found that disabling caching (while DevTools is open) was not enough to bust the cache and assist in reproducing the error. In retrospect, I’m giving you the instructions for clearing the file cache history as the first step.&lt;/p&gt;
+
+&lt;p&gt;Navigate to &lt;a href=&quot;chrome://settings/clearBrowserData&quot;&gt;chrome://settings/clearBrowserData&lt;/a&gt; in Chrome. Select “the beginning of time” and check the “Cached images and files” checkbox. Click “Clear browsing data” to clear the cache:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/posts/fouc/chrome-clear-cache.png&quot; title=&quot;Clear Chrome cache&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;step-2-download-hardware-io-tools&quot;&gt;Step 2: Download Hardware IO Tools&lt;/h2&gt;
+
+&lt;p&gt;If you haven’t downloaded and installed &lt;a href=&quot;https://developer.apple.com/xcode/downloads/&quot;&gt;Xcode&lt;/a&gt;, do so now. With Xcode installed, you will need to install the additional Hardware IO tools. Open Xcode, go to Xcode &amp;gt; Open Developer Tool &amp;gt; More Developer Tools. . . select “Hardware IO Tools for Xcode”. From the Apple Developers downloads page, select and download the Hardware IO Tools disk image:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/posts/fouc/hardware-io-download.png&quot; alt=&quot;Hardware IO download&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;step-3-install-the-network-link-conditioner&quot;&gt;Step 3: Install the Network Link Conditioner&lt;/h2&gt;
+
+&lt;p&gt;Once you’ve downloaded the disk image, double click and mount it. Select the Network Link Conditioner.prefPane installer as shown below:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/posts/fouc/hardware-io-dmg.png&quot; alt=&quot;Hardware IO installation&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The Network Link Conditioner and link to it in System Preferences will be installed and will automatically open the Network Link Conditioner as shown below:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/posts/fouc/network-high-latency.png&quot; alt=&quot;Network High Latency&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;step-4-select-or-create-a-profile&quot;&gt;Step 4: Select or create a profile&lt;/h2&gt;
+
+&lt;p&gt;I wasn’t able to reproduce the error using the 3G or network latency profile so I created a custom “Dial-up” profile. Standard Dial-up download speeds are about 52,000 b/s (52K) in perfect laboratory conditions and about 40,000 b/s if you’re close to the telephone office. As distance increases, speed decreases. Upload speeds average about 6 Kb/s and I’ve given a generous packet drop rate of 10%. You can view my profile options below:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/posts/fouc/network-custom-dial-up.png&quot; alt=&quot;Network Dial-up&quot; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;step-5-turn-on-the-network-link-conditioner&quot;&gt;Step 5: Turn on the Network Link Conditioner&lt;/h1&gt;
+
+&lt;p&gt;Using the Dial-up profile was a bit overkill, but it successfully reproduced the FOUC originally reported:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/posts/fouc/crop-protection.png&quot; alt=&quot;FOUC&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;summary&quot;&gt;Summary&lt;/h2&gt;
+
+&lt;p&gt;Unfortunately, the Angular UI team has not provided a templated and non-templated version of the NG-Grid directive as they’ve done with the &lt;a href=&quot;http://angular-ui.github.io/bootstrap/&quot;&gt;UI-Bootstrap&lt;/a&gt; library. To fix the FOUC, we had to download the unminified source update the templates. A pull-request will follow shortly.&lt;/p&gt;
+</description>
+        <pubDate>Thu, 28 Aug 2014 00:00:00 -0700</pubDate>
+        <link>http://aaronroberson.github.io/angularjs/2014/08/28/testing-fouc-angularjs-mac/</link>
+        <guid isPermaLink="true">http://aaronroberson.github.io/angularjs/2014/08/28/testing-fouc-angularjs-mac/</guid>
+        
+        
+        <category>angularjs</category>
+        
+      </item>
     
       <item>
         <title>Geekwise Academy: JavaScript II with AngularJS</title>
