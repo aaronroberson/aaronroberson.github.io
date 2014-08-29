@@ -5,26 +5,9 @@
     <description>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</description>
     <link>http://aaronroberson.github.io/</link>
     <atom:link href="http://aaronroberson.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 28 Aug 2014 19:47:01 -0700</pubDate>
-    <lastBuildDate>Thu, 28 Aug 2014 19:47:01 -0700</lastBuildDate>
+    <pubDate>Thu, 28 Aug 2014 19:49:03 -0700</pubDate>
+    <lastBuildDate>Thu, 28 Aug 2014 19:49:03 -0700</lastBuildDate>
     <generator>Jekyll v2.1.1</generator>
-    
-      <item>
-        <title>Testing FOUC with AngularJS (Mac)</title>
-        <description>&lt;p&gt;&lt;img src=&quot;/assets/images/posts/fouc/chrome-clear-cache.png&quot; alt=&quot;Chrome clear cache modal&quot; /&gt;
-&lt;img src=&quot;/assets/images/posts/fouc/hardware-io-download.png&quot; alt=&quot;Hardware IO download&quot; /&gt;
-&lt;img src=&quot;/assets/images/posts/fouc/hardware-io-dmg.png&quot; alt=&quot;Hardware IO installation&quot; /&gt;
-&lt;img src=&quot;/assets/images/posts/fouc/network-high-latency.png&quot; alt=&quot;Network High Latency&quot; /&gt;
-&lt;img src=&quot;/assets/images/posts/fouc/network-custom-dial-up.png&quot; alt=&quot;Network Dial-up&quot; /&gt;&lt;/p&gt;
-</description>
-        <pubDate>Thu, 28 Aug 2014 00:00:00 -0700</pubDate>
-        <link>http://aaronroberson.github.io/angularjs/2014/08/28/testing-fouc-angularjs-mac/</link>
-        <guid isPermaLink="true">http://aaronroberson.github.io/angularjs/2014/08/28/testing-fouc-angularjs-mac/</guid>
-        
-        
-        <category>angularjs</category>
-        
-      </item>
     
       <item>
         <title>Geekwise Academy: JavaScript II with AngularJS</title>
