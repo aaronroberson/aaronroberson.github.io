@@ -4,6 +4,7 @@ title: Day 7 - Shopping Cart Part 1
 permalink: /geekwise/day-7-shopping-cart-part-1/
 tags: geekwise
 day: 7
+comments: true
 ---
 
 <h1>Day 7 - Shopping Cart Part 1</h1>

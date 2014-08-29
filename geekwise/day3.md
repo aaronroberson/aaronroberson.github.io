@@ -4,6 +4,7 @@ title: Day 3 - Get your swagger on!
 permalink: /geekwise/day-3-get-your-swag-on/
 tags: geekwise
 day: 3
+comments: true
 ---
 
 <h1>Day 3 - Get your swagger on!</h1>

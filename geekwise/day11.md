@@ -4,6 +4,7 @@ title: Day 11 - HTTPS and Stripe
 permalink: /geekwise/day-11-https-and-stripe/
 tags: geekwise
 day: 11
+comments: true
 ---
 
 <h1>Day 11 - HTTPS and Stripe</h1>

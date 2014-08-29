@@ -4,6 +4,7 @@ title: Day 5 - Getting MEAN
 permalink: /geekwise/day-5-getting-mean/
 tags: geekwise
 day: 5
+comments: true
 ---
 
 <h1>Day 5 - Getting MEAN</h1>

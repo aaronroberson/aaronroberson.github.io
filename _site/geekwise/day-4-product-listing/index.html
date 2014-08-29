@@ -7,6 +7,7 @@
     <title>Day 4 - Product Listing</title>
     <meta name="viewport" content="width=device-width">
     <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.">
+    <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
     <link rel="canonical" href="http://aaronroberson.github.io/geekwise/day-4-product-listing/">
 
     <!-- Custom CSS -->
@@ -32,7 +33,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="">Aaron Roberson</a>
+            <a class="navbar-brand" href="/">Pixel Polished</a>
         </div>
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
@@ -491,7 +492,7 @@ templateUrl: 'views/swag.html'
 <p>Create a new directory in the 'assets' directory and name it 'json'. Now create a new file and name it 'swag.json'.
     Next, copy the following json and paste it into the file you just created:</p>
 
-<gist id="9dee9b49de40302a58d6" file="swag.json"></gist>
+<script src="https://gist.github.com/aaronroberson/9dee9b49de40302a58d6.js?file=swag.json"> </script>
 
 <p>To fetch the data from the JSON file, you are going to use Angular's built-in <a href="https://docs.angularjs.org/api/ng/service/$http" target="_blank">$http</a> service.
     Update the Swagwise controller to include the $http service as a dependency:</p>
@@ -531,7 +532,7 @@ app.controller('SwagController', function($scope, $http) {
 <p>Now that the products are available to the swag page, locate the hard-coded HTML for the each product.
     Remove the first three products, then using the <a href="https://docs.angularjs.org/api/ng/directive/ngRepeat" target="_blank">ng-repeat</a> directive update the remaining product to use as the template for the dynamic list:</p>
 
-<gist id="9dee9b49de40302a58d6" file="swag.html"></gist>
+<script src="https://gist.github.com/aaronroberson/9dee9b49de40302a58d6.js?file=swag.html"> </script>
 
 <h2>Adding a service</h2>
 
@@ -674,8 +675,6 @@ app.controller('SwagController', function($scope, SwagService) {
 </div>
 
 <p><a ui-sref="geek.page({page_id: 4})" class="btn btn-default">Continue to Day 4</a></p>
-
-<hr />
 
 <div disqus="'geekwise0104'"></div>
 
@@ -998,6 +997,20 @@ app.controller('SwagController', function($scope, SwagService) {
 
     </div>
 </div>
+
+
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'pixelpolished'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+
         </div>
     </div>
 

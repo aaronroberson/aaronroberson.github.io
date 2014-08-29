@@ -4,6 +4,7 @@ title: Day 1 - JavaScript Objects
 permalink: /geekwise/day-1-javascript-objects/
 tags: geekwise
 day: 1
+comments: true
 ---
 
 #Day 1 - JavaScript Objects

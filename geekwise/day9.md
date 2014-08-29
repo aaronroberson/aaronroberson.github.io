@@ -4,6 +4,7 @@ title: Day 10 - User Authentication
 permalink: /geekwise/day-9-user-authentication/
 tags: geekwise
 day: 9
+comments: true
 ---
 <h1>Day 9 - User registration and login</h1>
 

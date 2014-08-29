@@ -4,6 +4,7 @@ title: Day 4 - Product Listing
 permalink: /geekwise/day-4-product-listing/
 tags: geekwise
 day: 4
+comments: true
 ---
 
 <h1>Day 4 - Swag Product Listing</h1>

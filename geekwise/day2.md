@@ -4,6 +4,7 @@ title: Day 2 - Intro to AngularJS
 permalink: /geekwise/day-2-intro-to-angularjs/
 tags: geekwise
 day: 2
+comments: true
 ---
 
 <h1>Day 2 - Intro to AngularJS</h1>

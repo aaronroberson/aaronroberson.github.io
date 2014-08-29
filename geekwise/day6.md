@@ -4,6 +4,7 @@ title: Day 6 - Directives
 permalink: /geekwise/day-6-directives/
 tags: geekwise
 day: 6
+comments: true
 ---
 
 <h1>Day 6 - Directives</h1>

@@ -4,6 +4,7 @@ title: Course overview
 permalink: /geekwise/
 tags: geekwise
 day: 0
+comments: false
 ---
 
 #JavaScript II with AngularJS
