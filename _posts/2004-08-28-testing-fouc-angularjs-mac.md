@@ -8,7 +8,7 @@ short: Short tutorial on downloading, configuring and using the Network Link Con
 comments: true
 ---
 
-At [OnFarm Systems](http://onfarm.com) we've made it a practice to favor the <code>ng-bind</code> directive over "mustache" (double curly braces) bindings to avoid <abbr title="Flash Of Un-styled Content">FOUC</abbr> in our application. In the agricultural industry it is not uncommon for farmers to access our app over a cellular connection on their touch pad device as they're physically walking through the farm. 
+At [OnFarm Systems](http://onfarm.com) we've made it a practice to favor the [ngBind](https://docs.angularjs.org/api/ng/directive/ngBind) directive over "mustache" (double curly braces) bindings to avoid <abbr title="Flash Of Un-styled Content">FOUC</abbr> in our application. In the agricultural industry it is not uncommon for farmers to access our app over a cellular connection on their touch pad device as they're physically walking through the farm. 
 
 Recently, our development team received a bug and screen capture of one of our widgets with all of it's braces "hanging out". Turns out, the built-in template for the [Angular UI](http://angular-ui.github.io) [NG-Grid](http://angular-ui.github.io/ng-grid/) directive is using the "mustache" binding syntax.
 
@@ -52,4 +52,4 @@ Using the Dial-up profile was a bit overkill, but it successfully reproduced the
 
 ##Summary
 
-Unfortunately, the Angular UI team has not provided a templated and non-templated version of the NG-Grid directive as they've done with the [UI-Bootstrap](http://angular-ui.github.io/bootstrap/) library. To fix the FOUC, we had to download the unminified source update the templates. A pull-request will follow shortly.
+Unfortunately, the Angular UI team has not provided both a templated and non-templated version of the NG-Grid directive as they've done with the [UI-Bootstrap](http://angular-ui.github.io/bootstrap/) library. To fix the FOUC, the [ngCloack](https://docs.angularjs.org/api/ng/directive/ngCloak) directive on the parent element was not sufficient.  We had to download the un-minified source, update the templates and then concatenate and minify a custom build. A pull-request to the NG-Grid repo will follow shortly.
