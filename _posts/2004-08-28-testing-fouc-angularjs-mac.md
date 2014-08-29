@@ -5,6 +5,7 @@ date: 2014-08-28
 author: Aaron Roberson
 categories: angularjs
 short: Short tutorial on downloading, configuring and using the Network Link Conditioner in Mac to test Flash Of Unstyled Content (FOUC) with AngularJS
+comments: true
 ---
 
 At [OnFarm Systems](http://onfarm.com) we've made it a practice to favor the <code>ng-bind</code> directive over "mustache" (double curly braces) bindings to avoid <abbr title="Flash Of Un-styled Content">FOUC</abbr> in our application. In the agricultural industry it is not uncommon for farmers to access our app over a cellular connection on their touch pad device as they're physically walking through the farm. 
