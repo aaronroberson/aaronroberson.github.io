@@ -4,11 +4,11 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Testing FOUC with AngularJS (Mac)</title>
+    <title>Speaking</title>
     <meta name="viewport" content="width=device-width">
     <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.">
     <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
-    <link rel="canonical" href="http://aaronroberson.github.io/angularjs/2014/08/28/testing-fouc-angularjs-mac/">
+    <link rel="canonical" href="http://aaronroberson.github.io/speaking/">
 
     <!-- Custom CSS -->
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
@@ -463,108 +463,52 @@
 
 
         <div class="row">
-            <div class="col col-sm-9">
-    <div class="post">
+            <div class="page">
 
-        <header class="post-header">
-            <h1>Testing FOUC with AngularJS (Mac)</h1>
-            <p class="meta">Aug 28, 2014 • Aaron Roberson</p>
-        </header>
+    <header class="page-header">
+        <h1>Speaking</h1>
+    </header>
 
-        <article class="post-content">
-            <p>At <a href="http://onfarm.com">OnFarm Systems</a> we’ve made it a practice to favor the <a href="https://docs.angularjs.org/api/ng/directive/ngBind">ngBind</a> directive over “mustache” (double curly braces) bindings to avoid <abbr title="Flash Of Un-styled Content">FOUC</abbr> in our application. In the agricultural industry it is not uncommon for farmers to access our app over a cellular connection on their touch pad device as they’re physically walking through the farm. </p>
-
-<p>Recently, our development team received a bug and screen capture of one of our widgets with all of it’s braces “hanging out”. Turns out, the built-in template for the <a href="http://angular-ui.github.io">Angular UI</a> <a href="http://angular-ui.github.io/ng-grid/">NG-Grid</a> directive is using the “mustache” binding syntax.</p>
-
-<p>The following steps are the ones I took to reproduce the error on an otherwise decent internet connection.</p>
-
-<h2 id="step-1-clear-the-cache">Step 1: Clear the cache</h2>
-
-<p>Angular somewhat aggressively caches template partials using the <a href="https://docs.angularjs.org/api/ng/service/$templateCache">$templateCache</a> service. I found that disabling caching (while DevTools is open) was not enough to bust the cache and assist in reproducing the error. In retrospect, I’m giving you the instructions for clearing the file cache history as the first step.</p>
-
-<p>Navigate to <a href="chrome://settings/clearBrowserData">chrome://settings/clearBrowserData</a> in Chrome. Select “the beginning of time” and check the “Cached images and files” checkbox. Click “Clear browsing data” to clear the cache:</p>
-
-<p><img src="/assets/images/posts/fouc/chrome-clear-cache.png" title="Clear Chrome cache" /></p>
-
-<h2 id="step-2-download-hardware-io-tools">Step 2: Download Hardware IO Tools</h2>
-
-<p>If you haven’t downloaded and installed <a href="https://developer.apple.com/xcode/downloads/">Xcode</a>, do so now. With Xcode installed, you will need to install the additional Hardware IO tools. Open Xcode, go to Xcode &gt; Open Developer Tool &gt; More Developer Tools. . . select “Hardware IO Tools for Xcode”. From the Apple Developers downloads page, select and download the Hardware IO Tools disk image:</p>
-
-<p><img src="/assets/images/posts/fouc/hardware-io-download.png" alt="Hardware IO download" /></p>
-
-<h2 id="step-3-install-the-network-link-conditioner">Step 3: Install the Network Link Conditioner</h2>
-
-<p>Once you’ve downloaded the disk image, double click and mount it. Select the Network Link Conditioner.prefPane installer as shown below:</p>
-
-<p><img src="/assets/images/posts/fouc/hardware-io-dmg.png" alt="Hardware IO installation" /></p>
-
-<p>The Network Link Conditioner and link to it in System Preferences will be installed and will automatically open the Network Link Conditioner as shown below:</p>
-
-<p><img src="/assets/images/posts/fouc/network-high-latency.png" alt="Network High Latency" /></p>
-
-<h2 id="step-4-select-or-create-a-profile">Step 4: Select or create a profile</h2>
-
-<p>I wasn’t able to reproduce the error using the 3G or network latency profile so I created a custom “Dial-up” profile. Standard Dial-up download speeds are about 52,000 b/s (52K) in perfect laboratory conditions and about 40,000 b/s if you’re close to the telephone office. As distance increases, speed decreases. Upload speeds average about 6 Kb/s and I’ve given a generous packet drop rate of 10%. You can view my profile options below:</p>
-
-<p><img src="/assets/images/posts/fouc/network-custom-dial-up.png" alt="Network Dial-up" /></p>
-
-<h1 id="step-5-turn-on-the-network-link-conditioner">Step 5: Turn on the Network Link Conditioner</h1>
-
-<p>Using the Dial-up profile was a bit overkill, but it successfully reproduced the FOUC originally reported:</p>
-
-<p><img src="/assets/images/posts/fouc/crop-protection.png" alt="FOUC" /></p>
-
-<h2 id="summary">Summary</h2>
-
-<p>Unfortunately, the Angular UI team has not provided both a templated and non-templated version of the NG-Grid directive as they’ve done with the <a href="http://angular-ui.github.io/bootstrap/">UI-Bootstrap</a> library. To fix the FOUC, the <a href="https://docs.angularjs.org/api/ng/directive/ngCloak">ngCloack</a> directive on the parent element was not sufficient.  We had to download the un-minified source, update the templates and then concatenate and minify a custom build. A pull-request to the NG-Grid repo will follow shortly.</p>
-
-        </article>
-
-    </div>
-
-    <div id="disqus_thread" class="comments"></div>
-    
-</div>
-<div class="col col-sm-3">
-    <div id="sidebar" class="sidebar">
-        <h3>Posts <a href="/feed.xml" class="pull-right" target="_blank"><i class="fa fa-rss"></i></a></h3>
-
-<ul class="nav nav-stacked">
-    
-    <li>
-        <a href="/angularjs/2014/08/28/testing-fouc-angularjs-mac/">
-            Testing FOUC with AngularJS (Mac)
-            <small class="text-muted pull-right">Aug 28, 2014</small>
-        </a>
-    </li>
-    
-    <li>
-        <a href="/geekwise/2014/07/18/javascript-2-with-angularjs/">
-            Geekwise Academy: JavaScript II with AngularJS
-            <small class="text-muted pull-right">Jul 18, 2014</small>
-        </a>
-    </li>
-    
-</ul>
-
-        <h3>About Aaron</h3>
-Senior Software Developer at <a href="http://onfarm.com" target="_blank">OnFarm Systems</a> and instructor at <a href="http://geekwiseacademy.com" target="_blank">Geekwise Academy</a> specializing in the JavaScript <abbr title="MongoDB Express AngularJS and Node.js"><a href="http://mongodb.org" target="_blank">M</a><a href="http://expressjs.com" target="_blank">E</a><a href="http://angularjs.org">A</a><a href="http://nodejs.org" target="_blank">N</a></abbr> stack.
+    <article class="page-content">
+    <div class="col-sm-6 pull-right">
+    <div class="thumbnail">
+          <img src="/assets/images/speaking/visalia-gdg.png" alt="Aaron Roberson presenting on AngularJS" />
     </div>
 </div>
 
+<h3 id="devfest-fresno">Devfest Fresno</h3>
+<p>I will be presenting on AngularJS at <a href="http://gdgfresno.com/devfest/#/">DevFest Fresno</a> (updated site coming soon), an all-day developer conference full of learning about new technologies from Google. The conference will be held Saturday, October 18, 2014 from 9:00 AM to 5:00 PM.</p>
 
-<script type="text/javascript">
-    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-    var disqus_shortname = 'pixelpolished'; // required: replace example with your forum shortname
+<h4 id="more-information">More information</h4>
+<p><a href="http://www.eventbrite.com/e/fresno-devfest-2014-tickets-12537823969">Eventbrite tickets</a>
+<a href="http://fresno.eventful.com/events/fresno-devfest-2014-/E0-001-073663505-2">Eventful tickets</a></p>
 
-    /* * * DON'T EDIT BELOW THIS LINE * * */
-    (function() {
-        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
-</script>
+<p><a href="http://abc30.com/archive/9296048/">Media coverage</a> (from 2013 DevFest)</p>
 
+<h3 id="visalia-gdg-intro-to-angularjs">Visalia GDG: Intro to AngularJS</h3>
+
+<p>I will be presenting a high-level overview of AngularJS at the Visalia Google Developer Group Friday, August 29th at 6pm. Meeting will be held in the Kaweah building, room 204A at the College of the Sequia’s.</p>
+
+<h4 id="more-information-1">More information</h4>
+<p><a href="http://plus.google.com/u/0/events/cp3lha5a7gs7gekaljs4k1squ1g">Google Plus Event Page</a></p>
+
+<p><a href="http://www.meetup.com/GDG-Visalia-Google-Developer-Group/events/199150872/">Meetup.com</a></p>
+
+<h4 id="materials">Materials</h4>
+<p><a href="http://slides.com/aaronroberson/angularjs#/">Slide Presentation</a></p>
+
+<h3 id="fresno-gdg-intro-to-angularjs">Fresno GDG: Intro to AngularJS</h3>
+<p>I will be presenting a high-level overview and introduction to AngularJS, Google’s super-heroic JavaScript framework for thick front-end development. This meeting will be held at the Fresno City College Library Conference room on May 1st at 6pm.</p>
+
+<h4 id="more-information-2">More information</h4>
+<p><a href="http://www.meetup.com/googledevelopers/events/175338752/">Meetup.com</a></p>
+
+<h4 id="materials-1">Materials</h4>
+<p><a href="http://slides.com/aaronroberson/angularjs#/">Slide Presentation</a></p>
+
+    </article>
+
+</div>
         </div>
     </div>
 

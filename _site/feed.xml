@@ -5,13 +5,13 @@
     <description>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</description>
     <link>http://aaronroberson.github.io/</link>
     <atom:link href="http://aaronroberson.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 28 Aug 2014 22:00:07 -0700</pubDate>
-    <lastBuildDate>Thu, 28 Aug 2014 22:00:07 -0700</lastBuildDate>
+    <pubDate>Sat, 30 Aug 2014 12:14:33 -0700</pubDate>
+    <lastBuildDate>Sat, 30 Aug 2014 12:14:33 -0700</lastBuildDate>
     <generator>Jekyll v2.1.1</generator>
     
       <item>
         <title>Testing FOUC with AngularJS (Mac)</title>
-        <description>&lt;p&gt;At &lt;a href=&quot;http://onfarm.com&quot;&gt;OnFarm Systems&lt;/a&gt; we’ve made it a practice to favor the &lt;code&gt;ng-bind&lt;/code&gt; directive over “mustache” (double curly braces) bindings to avoid &lt;abbr title=&quot;Flash Of Un-styled Content&quot;&gt;FOUC&lt;/abbr&gt; in our application. In the agricultural industry it is not uncommon for farmers to access our app over a cellular connection on their touch pad device as they’re physically walking through the farm. &lt;/p&gt;
+        <description>&lt;p&gt;At &lt;a href=&quot;http://onfarm.com&quot;&gt;OnFarm Systems&lt;/a&gt; we’ve made it a practice to favor the &lt;a href=&quot;https://docs.angularjs.org/api/ng/directive/ngBind&quot;&gt;ngBind&lt;/a&gt; directive over “mustache” (double curly braces) bindings to avoid &lt;abbr title=&quot;Flash Of Un-styled Content&quot;&gt;FOUC&lt;/abbr&gt; in our application. In the agricultural industry it is not uncommon for farmers to access our app over a cellular connection on their touch pad device as they’re physically walking through the farm. &lt;/p&gt;
 
 &lt;p&gt;Recently, our development team received a bug and screen capture of one of our widgets with all of it’s braces “hanging out”. Turns out, the built-in template for the &lt;a href=&quot;http://angular-ui.github.io&quot;&gt;Angular UI&lt;/a&gt; &lt;a href=&quot;http://angular-ui.github.io/ng-grid/&quot;&gt;NG-Grid&lt;/a&gt; directive is using the “mustache” binding syntax.&lt;/p&gt;
 
@@ -55,7 +55,7 @@
 
 &lt;h2 id=&quot;summary&quot;&gt;Summary&lt;/h2&gt;
 
-&lt;p&gt;Unfortunately, the Angular UI team has not provided a templated and non-templated version of the NG-Grid directive as they’ve done with the &lt;a href=&quot;http://angular-ui.github.io/bootstrap/&quot;&gt;UI-Bootstrap&lt;/a&gt; library. To fix the FOUC, we had to download the unminified source update the templates. A pull-request will follow shortly.&lt;/p&gt;
+&lt;p&gt;Unfortunately, the Angular UI team has not provided both a templated and non-templated version of the NG-Grid directive as they’ve done with the &lt;a href=&quot;http://angular-ui.github.io/bootstrap/&quot;&gt;UI-Bootstrap&lt;/a&gt; library. To fix the FOUC, the &lt;a href=&quot;https://docs.angularjs.org/api/ng/directive/ngCloak&quot;&gt;ngCloack&lt;/a&gt; directive on the parent element was not sufficient.  We had to download the un-minified source, update the templates and then concatenate and minify a custom build. A pull-request to the NG-Grid repo will follow shortly.&lt;/p&gt;
 </description>
         <pubDate>Thu, 28 Aug 2014 00:00:00 -0700</pubDate>
         <link>http://aaronroberson.github.io/angularjs/2014/08/28/testing-fouc-angularjs-mac/</link>

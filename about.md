@@ -4,7 +4,7 @@ title: About
 permalink: /about/
 ---
 
-<div id="content" class="resume hresume">
+<div id="content" class="resume">
 
 <div class="section" id="profile-summary" style="display:block">
 <div class="content">
