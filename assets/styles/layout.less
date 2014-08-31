@@ -10,7 +10,6 @@ body {
   color: #423f37;
   overflow: auto;
   background: #ddd url(../images/shattered.png) repeat;
-  margin-bottom: @footer-height;
 
   > .container {
     padding: @navbar-height 15px 0;
@@ -71,7 +70,6 @@ header {
 
 .affix-bottom {
   position: absolute;
-  bottom: @footer-height;
 }
 
 .navbar-inverse {
@@ -160,11 +158,21 @@ header {
 }
 
 .footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  min-height: @footer-height;
-  line-height: @footer-height;
+  padding-bottom: @grid-gutter-width;
+
+  h3 {
+    padding-top: 13px;
+    padding-bottom: 14px;
+    border-bottom: 2px solid @black;
+  }
+
+  a {
+    color: #999;
+
+    &:hover {
+      color: @black;
+    }
+  }
 }
 
 .btn-twitter, .btn-linkedin, .btn-google-plus, .btn-github {

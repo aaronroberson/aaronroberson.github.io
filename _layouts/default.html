@@ -25,7 +25,10 @@
         $(document).ready(function(){
             $('#sidebar').affix({
                 offset: {
-                    top: 180
+                    top: 180,
+                    bottom: function () {
+                        return (this.bottom = $('.footer').outerHeight(true))
+                    }
                 }
             });
         });

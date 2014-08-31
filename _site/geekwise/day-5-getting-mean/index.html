@@ -1035,19 +1035,80 @@ ui-sref=&quot;product({id: item.id})&quot;
 
     <footer class="footer">
     <div class="container">
-        <span class="text-muted">&copy; 2014 Aaron Roberson. All rights reserved.</span>
-        <a class="btn btn-linkedin" href="https://linkedin.com/in/aaronrobes" title="LinkedIn">
-            <i class="fa fa-linkedin"></i>
+        <div class="row">
+            <div class="col-sm-4">
+                <h3>Aaron Roberson</h3>
+                <p class="text-muted">&copy; 2014 Aaron Roberson. All rights reserved.</p>
+                <a class="btn btn-linkedin" href="https://linkedin.com/in/aaronrobes" title="LinkedIn">
+                    <i class="fa fa-linkedin"></i>
+                </a>
+                <a class="btn btn-google-plus" href="" title="Google+">
+                    <i class="fa fa-google-plus"></i>
+                </a>
+                <a class="btn btn-twitter" href="https://twitter.com/aaronroberson" title="Twitter">
+                    <i class="fa fa-twitter"></i>
+                </a>
+                <a class="btn btn-github" href="https://github.com/aaronroberson" title="GitHub">
+                    <i class="fa fa-github"></i>
+                </a>
+            </div>
+            <div class="col-sm-4">
+                <h3>Posts <a href="/feed.xml" class="pull-right" target="_blank"><i class="fa fa-rss"></i></a></h3>
+
+<ul class="nav nav-stacked">
+    
+    <li>
+        <a href="/angularjs/2014/08/28/testing-fouc-angularjs-mac/">
+            Testing FOUC with AngularJS (Mac)
+            <small class="text-muted pull-right">Aug 28, 2014</small>
         </a>
-        <a class="btn btn-google-plus" href="" title="Google+">
-            <i class="fa fa-google-plus"></i>
+    </li>
+    
+    <li>
+        <a href="/geekwise/2014/07/18/javascript-2-with-angularjs/">
+            Geekwise Academy: JavaScript II with AngularJS
+            <small class="text-muted pull-right">Jul 18, 2014</small>
         </a>
-        <a class="btn btn-twitter" href="https://twitter.com/aaronroberson" title="Twitter">
-            <i class="fa fa-twitter"></i>
-        </a>
-        <a class="btn btn-github" href="https://github.com/aaronroberson" title="GitHub">
-            <i class="fa fa-github"></i>
-        </a>
+    </li>
+    
+</ul>
+            </div>
+            <div class="col-sm-4">
+                <h3>Mailing list</h3>
+                <div id="mc_embed_signup">
+                    <form action="http://pixelpolished.us8.list-manage1.com/subscribe/post?u=429c146ae2114b333686e6374&amp;id=990bceac24" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="mce-FNAME">
+                                        First Name <span class="asterisk">*</span></label>
+                                    <input type="text" class="form-control" name="FNAME" id="mce-FNAME" placeholder="Your first name" required="required" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="mce-LNAME">
+                                        Last Name <span class="asterisk">*</span></label>
+                                    <input type="text" class="form-control" name="LNAME" id="mce-LNAME" placeholder="Your last name" required="required" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="mce-EMAIL">
+                                        Email Address <span class="asterisk">*</span></label>
+                                    <div class="input-group">
+                                    <span class="input-group-addon"><span class="fa fa-envelope"></span>
+                                    </span>
+                                        <input type="email" class="form-control" name="EMAIL" id="mce-EMAIL" placeholder="Your email address" required="required" /></div>
+                                </div>
+                                <div id="mce-responses" class="clear">
+                                    <div class="response" id="mce-error-response" style="display:none"></div>
+                                    <div class="response" id="mce-success-response" style="display:none"></div>
+                                </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                                <div style="position: absolute; left: -5000px;"><input type="text" name="b_429c146ae2114b333686e6374_990bceac24" value=""></div>
+                                <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="btn btn-primary pull-right"></div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 </footer>
 
@@ -1059,7 +1120,10 @@ ui-sref=&quot;product({id: item.id})&quot;
         $(document).ready(function(){
             $('#sidebar').affix({
                 offset: {
-                    top: 180
+                    top: 180,
+                    bottom: function () {
+                        return (this.bottom = $('.footer').outerHeight(true))
+                    }
                 }
             });
         });
