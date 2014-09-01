@@ -7120,6 +7120,7 @@ header h1 {
 }
 .affix-bottom {
   position: absolute;
+  margin-bottom: 10px;
 }
 .navbar-inverse .navbar-toggle {
   color: #999;
@@ -7213,7 +7214,7 @@ header h1 {
 .footer h3 {
   padding-top: 13px;
   padding-bottom: 14px;
-  border-bottom: 2px solid #423f37;
+  border-bottom: 2px solid #999;
 }
 .footer a {
   color: #999;
