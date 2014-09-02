@@ -141,9 +141,3 @@ CartService.addItem(item);
 <div class="alert alert-info">
     <p>Be sure to commit your changes to Github!</p>
 </div>
-
-<p><a ui-sref="geek.page({page_id: 8})" class="btn btn-default">Continue to Day 8</a></p>
-
- 
-
-<div disqus="'geekwise0107'"></div>

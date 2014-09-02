@@ -199,9 +199,3 @@ app.factory('CartService', function($cookieStore, <strong>SwagService</strong>) 
 <div class="alert alert-info">
     <p>Be sure to commit your changes to Github!</p>
 </div>
-
-<p><a ui-sref="geek.page({page_id: 9})" class="btn btn-default">Continue to Day 9</a></p>
-
- 
-
-<div disqus="'geekwise0108'"></div>

@@ -65,9 +65,3 @@ angular.module('Swagwise', ['ngResource', 'ui.router', <bold>'ui.bootstrap'</bol
 <div class="alert alert-info">
     <p>Be sure to commit your changes to Github!</p>
 </div>
-
-<p><a ui-sref="geek.page({page_id: 7})" class="btn btn-default">Continue to Day 7</a></p>
-
- 
-
-<div disqus="'geekwise0106'"></div>

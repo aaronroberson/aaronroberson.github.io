@@ -209,9 +209,3 @@ angular.module('myModule', []);
 <p>Rather than a vanilla JavaScript function, you can register your controllers on the module like in the following example:</p>
 
 {% gist aaronroberson/c1b0edcf57916813dbe2 modular-controller %}
-
-<p><a ui-sref="geek.page({page_id: 3})" class="btn btn-default">Continue to Day 3</a></p>
-
- 
-
-<div disqus="'geekwise0102'"></div>

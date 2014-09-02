@@ -170,10 +170,3 @@ JSON is a data-interchange format akin to XML and SOAP. Unlike XML and SOAP, it 
 <div class="alert alert-info">
     Learn more about JSON at <a href="http://json.org" target="_blank">http://json.org</a>
 </div>
-
-<a ui-sref="geek.page({page_id: 2})" class="btn btn-default">Continue to Day 2</a>
-
- 
-
-<div disqus="'geekwise0101'"></div>
-

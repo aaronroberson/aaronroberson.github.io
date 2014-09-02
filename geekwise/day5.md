@@ -210,9 +210,3 @@ ui-sref=&quot;product({id: item.id})&quot;
 <div class="alert alert-info">
     <p>Be sure to commit your changes to Github!</p>
 </div>
-
-<p><a ui-sref="geek.page({page_id: 6})" class="btn btn-default">Continue to Day 6</a></p>
-
- 
-
-<div disqus="'geekwise0105'"></div>

@@ -1,6 +1,6 @@
 ---
 layout: geekwise
-title: Day 10 - User Authentication
+title: Day 9 - User Authentication
 permalink: /geekwise/day-9-user-authentication/
 tags: geekwise
 day: 9
@@ -132,8 +132,3 @@ npm install --save express-session passport passport-local bcrypt-nodejs
     <p>Remember to commit your changes to Github!</p>
 </div>
 
-<p><a ui-sref="geek.page({page_id: 11})" class="btn btn-default">Continue to Day 11</a></p>
-
- 
-
-<div disqus="'geekwise0109'"></div>
