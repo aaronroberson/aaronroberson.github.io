@@ -4,21 +4,17 @@ title: About
 permalink: /about/
 ---
 
-<div id="content" class="resume">
+Pixel Polished is the personal playground of Aaron Roberson, a JavaScript and AngularJS enthusiast specializing in the development of rich internet applications with a thick front-end. Aaron has been a web application developer since the year 2000 with over 5 years as a team lead, including:
 
-<div class="section" id="profile-summary" style="display:block">
-<div class="content">
-<p class=" description summary">
--More than 10 years of experience working as a web application developer and over 5 years as a team lead and project management, including:<br>
--Developing Object Oriented ColdFusion and PHP web applications using best practices and design patterns.<br>
--Extensive use of ColdBox (MVC framework), WireBox/LightWire/ColdSpring (dependency injection frameworks) and CF Hibernate/Transfer (ORM frameworks).<br>
--System Application Architecture design including MS SQL Server design and administration as well as MySQL.<br>
--Extensive experience using JQuery AJAX framework for interactive interface design<br>
--Cross-browser compliant CSS (and CSS3), XHTML (and HTML 5), XML, XSLT<br>
--Implimented Bank of America Merchant Gateway, Google Checkout and PayPal APIs.
-</p>
-</div>
-</div>
+* Designing and developing single-page applications using AngularJS.
+* Developing Object Oriented ColdFusion and PHP web applications using best practices and design patterns.
+* Extensive use of ColdBox (MVC framework), WireBox/LightWire/ColdSpring (dependency injection frameworks) and CF Hibernate/Transfer (ORM frameworks).
+* System Application Architecture design including MS SQL Server design and administration as well as MySQL.
+* Extensive experience using JQuery AJAX framework for interactive interface design.
+* Cross-browser compliant CSS (and CSS3), XHTML (and HTML 5), XML, XSLT.
+* Bank of America Merchant Gateway, Google Checkout, Stripe and PayPal implimentations.
+
+<div id="content" class="resume">
 
 <h2 class="section-title">Overview </h2>
 <dl id="overview">

@@ -7081,6 +7081,12 @@ a:hover {
   color: #423f37;
   text-decoration: none;
 }
+.blockquote {
+  padding: 20px;
+  border-radius: 3px;
+  border: 1px solid #999;
+  border-left-width: 5px;
+}
 .thumbnail {
   background-color: #d3d3d3;
 }
@@ -7091,6 +7097,11 @@ a:hover {
 }
 header h1 {
   padding-top: 20px;
+}
+@media (max-width: 767px) {
+  header .lead {
+    display: none !important;
+  }
 }
 .sidebar h3 {
   padding-top: 13px;
@@ -7236,7 +7247,7 @@ header h1 {
   width: 38px;
 }
 .btn-github:hover {
-  background-color: #444;
+  background-color: #999;
 }
 .highlight {
   padding: 7px 7px 7px 10px;
@@ -7579,10 +7590,12 @@ li[class*=" icon-"].icon-large:before {
   content: url(https://avatars2.githubusercontent.com/u/440189?s=90);
 }
 /* Post */
-.post a {
+.post a,
+.page a {
   color: #036;
 }
-.post img {
+.post img,
+.page img {
   max-width: 100%;
 }
 .post-header h1 {

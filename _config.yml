@@ -1,9 +1,9 @@
 # Site settings
 title: Aaron Roberson
 email: aaronaroberson@gmail.com
-description: "Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description."
+description: "Personal blog and speaking schedule of Aaron Roberson, a JavaScript and AngularJS enthusiast specializing in the development of rich internet applications with a thick front-end."
 baseurl: ""
-url: "http://aaronroberson.github.io"
+url: "http://pixelpolished.com"
 twitter_link: https://twitter.com/aaronroberson
 github_link:  https://github.com/aaronroberson
 googleplus_link: https://plus.google.com/+AaronRoberson
