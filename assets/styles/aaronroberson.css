@@ -7222,6 +7222,9 @@ header h1 {
 .footer a:hover {
   color: #423f37;
 }
+.nav-stacked a {
+  overflow: auto;
+}
 .btn-twitter,
 .btn-linkedin,
 .btn-google-plus,

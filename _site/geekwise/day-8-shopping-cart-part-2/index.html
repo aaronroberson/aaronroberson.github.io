@@ -1063,29 +1063,33 @@ app.factory('CartService', function($cookieStore, <strong>SwagService</strong>) 
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label for="mce-FNAME">
-                                        First Name <span class="asterisk">*</span></label>
-                                    <input type="text" class="form-control" name="FNAME" id="mce-FNAME" placeholder="Your first name" required="required" />
-                                </div>
-                                <div class="form-group">
-                                    <label for="mce-LNAME">
-                                        Last Name <span class="asterisk">*</span></label>
-                                    <input type="text" class="form-control" name="LNAME" id="mce-LNAME" placeholder="Your last name" required="required" />
-                                </div>
-                                <div class="form-group">
-                                    <label for="mce-EMAIL">
-                                        Email Address <span class="asterisk">*</span></label>
                                     <div class="input-group">
-                                    <span class="input-group-addon"><span class="fa fa-envelope"></span>
-                                    </span>
-                                        <input type="email" class="form-control" name="EMAIL" id="mce-EMAIL" placeholder="Your email address" required="required" /></div>
+                                        <input type="text" class="form-control input-sm" name="FNAME" id="mce-FNAME" placeholder="First name" required="required" />
+                                        <span class="input-group-addon"><span class="fa fa-user"></span></span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control input-sm" name="LNAME" id="mce-LNAME" placeholder="Last name" required="required" />
+                                        <span class="input-group-addon"><span class="fa fa-user"></span> </span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <input type="email" class="form-control input-sm" name="EMAIL" id="mce-EMAIL" placeholder="Email address" required="required" />
+                                        <span class="input-group-addon"><span class="fa fa-envelope"></span></span>
+                                    </div>
                                 </div>
                                 <div id="mce-responses" class="clear">
                                     <div class="response" id="mce-error-response" style="display:none"></div>
                                     <div class="response" id="mce-success-response" style="display:none"></div>
                                 </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-                                <div style="position: absolute; left: -5000px;"><input type="text" name="b_429c146ae2114b333686e6374_990bceac24" value=""></div>
-                                <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="btn btn-default pull-right"></div>
+                                <div style="position: absolute; left: -5000px;">
+                                    <input type="text" name="b_429c146ae2114b333686e6374_990bceac24" value="">
+                                </div>
+                                <div class="clear">
+                                    <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="btn btn-default btn-sm pull-right">
+                                </div>
                             </div>
                         </div>
                     </form>
