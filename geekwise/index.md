@@ -34,6 +34,7 @@ cV9ESEvof3CrzwKLgQPJLmraSstg9Z
 ###Course Resources
 
 <ul>
+    <li><a href="https://groups.google.com/forum/#!forum/gw-javascript-ii" target="_blank">JavaScript II Google Group</a></li>
     <li>The <a href="http://angularjs.org">AngularJS website</a></li>
     <li>The <a href="https://docs.angularjs.org/api">AngularJS API Docs</a></li>
     <li>The <a href="https://www.youtube.com/channel/UCbn1OgGei-DV7aSRo_HaAiw">Official AngualrJS YouTube channel</a></li>
