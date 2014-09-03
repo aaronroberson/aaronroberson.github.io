@@ -6,15 +6,14 @@ permalink: /speaking/
 
 I'm enthusiastic about the free exchange of information and enjoy every opportunity to share my knowledge and teach others what I love and am passionate about doing: Rapid Application Development (RAD) of internet applications using JavaScript and AngularJS. If you would like me to speak at your event or to hold a workshop, please reach out.
 
-<blockquote class="blockquote">
-    <p>"The best way to learn is to teach"</p>
-     <footer>Frank Oppenheimer in <cite>Some of My Favorite Sayings</cite></footer>
-</blockquote>
-
 <div class="col-sm-6 pull-right">
     <div class="thumbnail">
           <img src="/assets/images/speaking/visalia-gdg.png" alt="Aaron Roberson presenting on AngularJS">
     </div>
+    <blockquote class="blockquote">
+        <p>"The best way to learn is to teach."</p>
+         <footer>Frank Oppenheimer in <cite>Some of My Favorite Sayings</cite></footer>
+    </blockquote>
 </div>
 
 ###Devfest Fresno

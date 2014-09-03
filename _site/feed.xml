@@ -2,11 +2,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Aaron Roberson</title>
-    <description>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</description>
-    <link>http://aaronroberson.github.io/</link>
-    <atom:link href="http://aaronroberson.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 01 Sep 2014 21:20:11 -0700</pubDate>
-    <lastBuildDate>Mon, 01 Sep 2014 21:20:11 -0700</lastBuildDate>
+    <description>Personal blog and speaking schedule of Aaron Roberson, a JavaScript and AngularJS enthusiast specializing in the development of rich internet applications with a thick front-end.</description>
+    <link>http://pixelpolished.com/</link>
+    <atom:link href="http://pixelpolished.com/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Wed, 03 Sep 2014 16:43:40 -0700</pubDate>
+    <lastBuildDate>Wed, 03 Sep 2014 16:43:40 -0700</lastBuildDate>
     <generator>Jekyll v2.1.1</generator>
     
       <item>
@@ -58,8 +58,8 @@
 &lt;p&gt;Unfortunately, the Angular UI team has not provided both a templated and non-templated version of the NG-Grid directive as they’ve done with the &lt;a href=&quot;http://angular-ui.github.io/bootstrap/&quot;&gt;UI-Bootstrap&lt;/a&gt; library. To fix the FOUC, the &lt;a href=&quot;https://docs.angularjs.org/api/ng/directive/ngCloak&quot;&gt;ngCloack&lt;/a&gt; directive on the parent element was not sufficient.  We had to download the un-minified source, update the templates and then concatenate and minify a custom build. A pull-request to the NG-Grid repo will follow shortly.&lt;/p&gt;
 </description>
         <pubDate>Thu, 28 Aug 2014 00:00:00 -0700</pubDate>
-        <link>http://aaronroberson.github.io/angularjs/2014/08/28/testing-fouc-angularjs-mac/</link>
-        <guid isPermaLink="true">http://aaronroberson.github.io/angularjs/2014/08/28/testing-fouc-angularjs-mac/</guid>
+        <link>http://pixelpolished.com/angularjs/2014/08/28/testing-fouc-angularjs-mac/</link>
+        <guid isPermaLink="true">http://pixelpolished.com/angularjs/2014/08/28/testing-fouc-angularjs-mac/</guid>
         
         
         <category>angularjs</category>
@@ -73,8 +73,8 @@
 &lt;p&gt;Visit the &lt;a href=&quot;http://pixelpolished.com/geekwise/&quot;&gt;course overview&lt;/a&gt; page to learn more and get started learning!&lt;/p&gt;
 </description>
         <pubDate>Fri, 18 Jul 2014 08:11:05 -0700</pubDate>
-        <link>http://aaronroberson.github.io/geekwise/2014/07/18/javascript-2-with-angularjs/</link>
-        <guid isPermaLink="true">http://aaronroberson.github.io/geekwise/2014/07/18/javascript-2-with-angularjs/</guid>
+        <link>http://pixelpolished.com/geekwise/2014/07/18/javascript-2-with-angularjs/</link>
+        <guid isPermaLink="true">http://pixelpolished.com/geekwise/2014/07/18/javascript-2-with-angularjs/</guid>
         
         
         <category>geekwise</category>
