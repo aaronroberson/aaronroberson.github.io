@@ -24,10 +24,10 @@ permalink: /contact/
                           <label for="subject">
                               Subject</label>
                           <select id="subject" name="subject" class="form-control" required="required">
-                              <option value="na" selected="">Choose One:</option>
-                              <option value="service">Consulting</option>
-                              <option value="suggestions">Speaking</option>
-                              <option value="product">Other</option>
+                              <option value="" selected="">Choose One:</option>
+                              <option value="consulting">Consulting</option>
+                              <option value="speaking">Speaking</option>
+                              <option value="other">Other</option>
                           </select>
                       </div>
                   </div>
