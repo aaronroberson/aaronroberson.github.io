@@ -17,7 +17,10 @@ I'm enthusiastic about the free exchange of information and enjoy every opportun
 </div>
 
 ###Devfest Fresno
-I will be presenting on AngularJS at [DevFest Fresno](http://gdgfresno.com/devfest/#/) (updated site coming soon), an all-day developer conference full of learning about new technologies from Google. The conference will be held Saturday, October 18, 2014 from 9:00 AM to 5:00 PM.
+I will be presenting on AngularJS at [DevFest Fresno](http://devfest.gdgfresno.com), an all-day developer conference full of learning about new technologies from Google. The conference will be held Saturday, October 18, 2014 from 9:00 AM to 5:00 PM.
+
+#####AngularJS FTW!
+In a connected world, our greatest challenge in software development is cross-platform support. Discover Google's super-heroic JavaScript framework and how it can empower you to code your apps once, and deploy anywhere! AngularJS is suitable for super-fast prototyping of the smallest of projects, but excels in all the heavy-lifting and complex demands of a scalable, distributed and mission-critical enterprise application.
 
 ####More information
 [Eventbrite tickets](http://www.eventbrite.com/e/fresno-devfest-2014-tickets-12537823969)
