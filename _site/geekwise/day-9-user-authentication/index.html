@@ -45,11 +45,11 @@
                     
                 
                     
-                
-                    
                         
                         <li><a href="/contact/">Contact</a></li>
                         
+                    
+                
                     
                 
                     
@@ -540,7 +540,7 @@
                     <p class="lead text-muted">Rich internet applications with a thick front-end</p></h1>
             </div>
             <div class="col col-md-4 hidden-sm hidden-xs text-right">
-                <a href="/speaking/">
+                <a href="http://devfest.gdgfresno.com" target="_blank">
                     <img src="/assets/images/speaking/gdg-fresno-speaker.png" style="margin-top: 20px; width: 300px" alt="GDG DevFest Fresno Speaker">
                 </a>
             </div>
@@ -583,17 +583,100 @@
     <li>Adding <a href="http://passport.js" target="_blank">Passport</a> for user authentication in Express</li>
 </ul>
 
+<h3 id="installing-dependencies">Installing dependencies</h3>
+
+<p>Run the following command to install the cookieParser and bodyParser modules</p>
+
+<pre><code>npm install --save cookieParser bodyParser
+</code></pre>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// Insert in module dependencies</span>
+
+<span class="nx">cookieParser</span>  <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;cookie-parser&#39;</span><span class="p">)</span>
+<span class="nx">bodyParser</span>    <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;body-parser&#39;</span><span class="p">)</span>
+
+<span class="c1">// Insert before static reference</span>
+
+<span class="c1">// have the ability to simulate DELETE and PUT</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">bodyParser</span><span class="p">.</span><span class="nx">json</span><span class="p">());</span>
+<span class="c1">// have the ability to simulate DELETE and PUT</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">bodyParser</span><span class="p">.</span><span class="nx">urlencoded</span><span class="p">({</span> <span class="nx">extended</span><span class="o">:</span> <span class="kc">true</span> <span class="p">}));</span>
+<span class="c1">// have the ability to parse cookies</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">cookieParser</span><span class="p">());</span></code></pre></div>
+
 <h3>Adding the Authentication Service</h3>
 
 <p>Update the service.js file to include a new service named 'AuthService':</p>
 
-<script src="https://gist.github.com/aaronroberson/86391ce601dbaa001bb2.js?file=auth-service.js"> </script>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">angular</span><span class="p">)</span> <span class="p">{</span>
+	<span class="s2">&quot;use strict&quot;</span><span class="p">;</span>
+ 
+	<span class="kd">var</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;MyStore&#39;</span><span class="p">);</span>
+ 
+	<span class="nx">app</span><span class="p">.</span><span class="nx">factory</span><span class="p">(</span><span class="s1">&#39;Auth&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$http</span><span class="p">,</span> <span class="nx">$rootScope</span><span class="p">,</span> <span class="nx">$cookieStore</span><span class="p">)</span> <span class="p">{</span>
+ 
+		<span class="nx">$rootScope</span><span class="p">.</span><span class="nx">currentUser</span> <span class="o">=</span> <span class="nx">$cookieStore</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;user&#39;</span><span class="p">);</span>
+		<span class="nx">$cookieStore</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="s1">&#39;user&#39;</span><span class="p">);</span>
+ 
+		<span class="k">return</span> <span class="p">{</span>
+ 
+			<span class="nx">login</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">user</span><span class="p">,</span> <span class="nx">success</span><span class="p">,</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+				<span class="k">return</span> <span class="nx">$http</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">&#39;/api/login&#39;</span><span class="p">,</span> <span class="nx">user</span><span class="p">)</span>
+					<span class="p">.</span><span class="nx">success</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+						<span class="nx">$rootScope</span><span class="p">.</span><span class="nx">currentUser</span> <span class="o">=</span> <span class="nx">data</span><span class="p">;</span>
+ 
+						<span class="nx">success</span><span class="p">();</span>
+					<span class="p">})</span>
+					<span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+			<span class="p">},</span>
+ 
+			<span class="nx">signup</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">user</span><span class="p">,</span> <span class="nx">success</span><span class="p">,</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+				<span class="k">return</span> <span class="nx">$http</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">&#39;/api/signup&#39;</span><span class="p">,</span> <span class="nx">user</span><span class="p">)</span>
+					<span class="p">.</span><span class="nx">success</span><span class="p">(</span><span class="nx">success</span><span class="p">)</span>
+					<span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+			<span class="p">},</span>
+ 
+			<span class="nx">logout</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">success</span><span class="p">)</span> <span class="p">{</span>
+				<span class="k">return</span> <span class="nx">$http</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/api/logout&#39;</span><span class="p">).</span><span class="nx">success</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+ 
+					<span class="nx">$rootScope</span><span class="p">.</span><span class="nx">currentUser</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+					<span class="nx">$cookieStore</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="s1">&#39;user&#39;</span><span class="p">);</span>
+ 
+					<span class="nx">success</span><span class="p">();</span>
+				<span class="p">});</span>
+			<span class="p">}</span>
+		<span class="p">};</span>
+ 
+	<span class="p">});</span>
+ 
+<span class="p">})(</span><span class="nb">window</span><span class="p">.</span><span class="nx">angular</span><span class="p">);</span></code></pre></div>
 
 <h3>Adding the AppController</h3>
 
 <p>In the controllers.js file, add an 'AppController' for high-level application functions, such as the logout function:</p>
 
-<script src="https://gist.github.com/aaronroberson/86391ce601dbaa001bb2.js?file=app-controller.js"> </script>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">app</span><span class="p">.</span><span class="nx">controller</span><span class="p">(</span><span class="s1">&#39;AppController&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$scope</span><span class="p">,</span> <span class="nx">$state</span><span class="p">,</span> <span class="nx">$timeout</span><span class="p">,</span> <span class="nx">Auth</span><span class="p">)</span> <span class="p">{</span>
+ 
+ 
+		<span class="kd">function</span> <span class="nx">successCallback</span><span class="p">()</span> <span class="p">{</span>
+ 
+			<span class="nx">$state</span><span class="p">.</span><span class="nx">go</span><span class="p">(</span><span class="s1">&#39;login&#39;</span><span class="p">);</span>
+ 
+			<span class="nx">$scope</span><span class="p">.</span><span class="nx">alert</span> <span class="o">=</span> <span class="p">{</span>
+				<span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;success&#39;</span><span class="p">,</span>
+				<span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;You have been logged out.&#39;</span>
+			<span class="p">};</span>
+ 
+			<span class="nx">$timeout</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+				<span class="nx">$scope</span><span class="p">.</span><span class="nx">alert</span> <span class="o">=</span> <span class="kc">undefined</span><span class="p">;</span>
+ 
+			<span class="p">},</span> <span class="mi">3000</span><span class="p">);</span>
+		<span class="p">}</span>
+		<span class="nx">$scope</span><span class="p">.</span><span class="nx">logout</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+			<span class="nx">Auth</span><span class="p">.</span><span class="nx">logout</span><span class="p">(</span><span class="nx">successCallback</span><span class="p">);</span>
+		<span class="p">}</span>
+ 
+	<span class="p">});</span></code></pre></div>
 
 <p>Register the controller on the body tag in index.html:</p>
 
@@ -612,7 +695,12 @@
 
 <p>Register the ngMessages modules in app.js as a dependencies:</p>
 
-<script src="https://gist.github.com/aaronroberson/86391ce601dbaa001bb2.js?file=app.js"> </script>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">angular</span><span class="p">)</span> <span class="p">{</span>
+	<span class="s2">&quot;use strict&quot;</span><span class="p">;</span>
+ 
+	<span class="kd">var</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;MyStore&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;ngCookies&#39;</span><span class="p">,</span> <span class="s1">&#39;ngMessages&#39;</span><span class="p">,</span> <span class="s1">&#39;ui.router&#39;</span><span class="p">]);</span>
+ 
+<span class="p">})(</span><span class="nb">window</span><span class="p">.</span><span class="nx">angular</span><span class="p">);</span></code></pre></div>
 
 <h3>Update the navigation</h3>
 
@@ -631,11 +719,109 @@
 
 <p>Add the signup controller in the controllers.js file:</p>
 
-<script src="https://gist.github.com/aaronroberson/86391ce601dbaa001bb2.js?file=signup-controller.js"> </script>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">angular</span><span class="p">)</span> <span class="p">{</span>
+	<span class="s2">&quot;use strict&quot;</span><span class="p">;</span>
+ 
+	<span class="kd">var</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;MyStore&#39;</span><span class="p">);</span>
+ 
+	<span class="nx">app</span><span class="p">.</span><span class="nx">controller</span><span class="p">(</span><span class="s1">&#39;SignupController&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$scope</span><span class="p">,</span> <span class="nx">$state</span><span class="p">,</span> <span class="nx">$timeout</span><span class="p">,</span> <span class="nx">Auth</span><span class="p">)</span> <span class="p">{</span>
+ 
+		<span class="kd">function</span> <span class="nx">successCallback</span><span class="p">()</span> <span class="p">{</span>
+			<span class="nx">$scope</span><span class="p">.</span><span class="nx">alert</span> <span class="o">=</span> <span class="p">{</span>
+				<span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;success&#39;</span><span class="p">,</span>
+				<span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;Your account has been created.&#39;</span>
+			<span class="p">};</span>
+ 
+			<span class="nx">$timeout</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+ 
+				<span class="nx">$state</span><span class="p">.</span><span class="nx">go</span><span class="p">(</span><span class="s1">&#39;login&#39;</span><span class="p">);</span>
+ 
+				<span class="nx">$scope</span><span class="p">.</span><span class="nx">alert</span> <span class="o">=</span> <span class="kc">undefined</span><span class="p">;</span>
+ 
+			<span class="p">},</span> <span class="mi">3000</span><span class="p">);</span>
+		<span class="p">}</span>
+ 
+		<span class="kd">function</span> <span class="nx">errorCallback</span><span class="p">()</span> <span class="p">{</span>
+			<span class="nx">$scope</span><span class="p">.</span><span class="nx">alert</span> <span class="o">=</span> <span class="p">{</span>
+				<span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;danger&#39;</span><span class="p">,</span>
+				<span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;There was an error created your account. Please try again.&#39;</span>
+			<span class="p">};</span>
+ 
+			<span class="nx">$timeout</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+				<span class="nx">$scope</span><span class="p">.</span><span class="nx">alert</span> <span class="o">=</span> <span class="kc">undefined</span><span class="p">;</span>
+ 
+			<span class="p">},</span> <span class="mi">3000</span><span class="p">);</span>
+		<span class="p">}</span>
+ 
+		<span class="nx">$scope</span><span class="p">.</span><span class="nx">signup</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+			<span class="nx">Auth</span><span class="p">.</span><span class="nx">signup</span><span class="p">({</span>
+				<span class="nx">email</span>   <span class="o">:</span> <span class="nx">$scope</span><span class="p">.</span><span class="nx">email</span><span class="p">,</span>
+				<span class="nx">password</span><span class="o">:</span> <span class="nx">$scope</span><span class="p">.</span><span class="nx">password</span>
+			<span class="p">},</span> <span class="nx">successCallback</span><span class="p">,</span> <span class="nx">errorCallback</span><span class="p">);</span>
+		<span class="p">};</span>
+	<span class="p">});</span>
+ 
+<span class="p">})(</span><span class="nb">window</span><span class="p">.</span><span class="nx">angular</span><span class="p">);</span></code></pre></div>
 
 <p>Update the signup.html in the views directory:</p>
 
-<script src="https://gist.github.com/aaronroberson/86391ce601dbaa001bb2.js?file=signup.html"> </script>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="o">&lt;</span><span class="nx">div</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;row&quot;</span><span class="o">&gt;</span>
+	<span class="o">&lt;</span><span class="nx">div</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;col-md-4 col-md-offset-4&quot;</span><span class="o">&gt;</span>
+		<span class="o">&lt;</span><span class="nx">div</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;center-form panel&quot;</span><span class="o">&gt;</span>
+			<span class="o">&lt;</span><span class="nx">form</span> <span class="nx">method</span><span class="o">=</span><span class="s2">&quot;post&quot;</span> <span class="nx">ng</span><span class="o">-</span><span class="nx">submit</span><span class="o">=</span><span class="s2">&quot;signup()&quot;</span> <span class="nx">name</span><span class="o">=</span><span class="s2">&quot;signupForm&quot;</span><span class="o">&gt;</span>
+				<span class="o">&lt;</span><span class="nx">div</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;panel-body&quot;</span><span class="o">&gt;</span>
+					<span class="o">&lt;</span><span class="nx">h2</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;text-center&quot;</span><span class="o">&gt;</span><span class="nx">Sign</span> <span class="nx">up</span><span class="o">&lt;</span><span class="err">/h2&gt;</span>
+ 
+					<span class="o">&lt;</span><span class="nx">div</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;alert alert-&quot;</span> <span class="nx">ng</span><span class="o">-</span><span class="k">if</span><span class="o">=</span><span class="s2">&quot;alert&quot;</span> <span class="nx">ng</span><span class="o">-</span><span class="nx">bind</span><span class="o">=</span><span class="s2">&quot;alert.message&quot;</span><span class="o">&gt;&lt;</span><span class="err">/div&gt;</span>
+ 
+					<span class="o">&lt;</span><span class="nx">div</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;form-group&quot;</span>
+					     <span class="nx">ng</span><span class="o">-</span><span class="kr">class</span><span class="o">=</span><span class="s2">&quot;{ &#39;has-success&#39; : signupForm.email.$valid &amp;&amp; signupForm.email.$dirty, &#39;has-error&#39; : signupForm.email.$invalid &amp;&amp; signupForm.email.$dirty }&quot;</span><span class="o">&gt;</span>
+						<span class="o">&lt;</span><span class="nx">input</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;form-control input-lg&quot;</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&quot;email&quot;</span> <span class="nx">id</span><span class="o">=</span><span class="s2">&quot;email&quot;</span>
+						       <span class="nx">name</span><span class="o">=</span><span class="s2">&quot;email&quot;</span> <span class="nx">ng</span><span class="o">-</span><span class="nx">model</span><span class="o">=</span><span class="s2">&quot;email&quot;</span> <span class="nx">placeholder</span><span class="o">=</span><span class="s2">&quot;Email&quot;</span> <span class="nx">required</span>
+						       <span class="nx">autofocus</span><span class="o">&gt;</span>
+ 
+						<span class="o">&lt;</span><span class="nx">div</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;help-block text-danger&quot;</span> <span class="nx">ng</span><span class="o">-</span><span class="k">if</span><span class="o">=</span><span class="s2">&quot;signupForm.email.$dirty&quot;</span>
+						     <span class="nx">ng</span><span class="o">-</span><span class="nx">messages</span><span class="o">=</span><span class="s2">&quot;signupForm.email.$error&quot;</span><span class="o">&gt;</span>
+							<span class="o">&lt;</span><span class="nx">div</span> <span class="nx">ng</span><span class="o">-</span><span class="nx">message</span><span class="o">=</span><span class="s2">&quot;required&quot;</span><span class="o">&gt;</span><span class="nx">Your</span> <span class="nx">email</span> <span class="nx">address</span> <span class="nx">is</span> <span class="nx">required</span><span class="p">.</span><span class="o">&lt;</span><span class="err">/div&gt;</span>
+							<span class="o">&lt;</span><span class="nx">div</span> <span class="nx">ng</span><span class="o">-</span><span class="nx">message</span><span class="o">=</span><span class="s2">&quot;email&quot;</span><span class="o">&gt;</span><span class="nx">Your</span> <span class="nx">email</span> <span class="nx">address</span> <span class="nx">is</span> <span class="nx">invalid</span><span class="p">.</span><span class="o">&lt;</span><span class="err">/div&gt;</span>
+						<span class="o">&lt;</span><span class="err">/div&gt;</span>
+					<span class="o">&lt;</span><span class="err">/div&gt;</span>
+ 
+					<span class="o">&lt;</span><span class="nx">div</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;form-group&quot;</span>
+					     <span class="nx">ng</span><span class="o">-</span><span class="kr">class</span><span class="o">=</span><span class="s2">&quot;{ &#39;has-success&#39; : signupForm.password.$valid &amp;&amp; signupForm.password.$dirty, &#39;has-error&#39; : signupForm.password.$invalid &amp;&amp; signupForm.password.$dirty }&quot;</span><span class="o">&gt;</span>
+						<span class="o">&lt;</span><span class="nx">input</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;form-control input-lg&quot;</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&quot;password&quot;</span> <span class="nx">name</span><span class="o">=</span><span class="s2">&quot;password&quot;</span>
+						       <span class="nx">ng</span><span class="o">-</span><span class="nx">model</span><span class="o">=</span><span class="s2">&quot;password&quot;</span> <span class="nx">placeholder</span><span class="o">=</span><span class="s2">&quot;Password&quot;</span> <span class="nx">required</span><span class="o">&gt;</span>
+ 
+						<span class="o">&lt;</span><span class="nx">div</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;help-block text-danger&quot;</span>
+						     <span class="nx">ng</span><span class="o">-</span><span class="k">if</span><span class="o">=</span><span class="s2">&quot;signupForm.password.$dirty&quot;</span>
+						     <span class="nx">ng</span><span class="o">-</span><span class="nx">messages</span><span class="o">=</span><span class="s2">&quot;signupForm.password.$error&quot;</span><span class="o">&gt;</span>
+							<span class="o">&lt;</span><span class="nx">div</span> <span class="nx">ng</span><span class="o">-</span><span class="nx">message</span><span class="o">=</span><span class="s2">&quot;required&quot;</span><span class="o">&gt;</span><span class="nx">Password</span> <span class="nx">is</span> <span class="nx">required</span><span class="p">.</span><span class="o">&lt;</span><span class="err">/div&gt;</span>
+						<span class="o">&lt;</span><span class="err">/div&gt;</span>
+					<span class="o">&lt;</span><span class="err">/div&gt;</span>
+ 
+					<span class="o">&lt;</span><span class="nx">div</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;form-group&quot;</span>
+					     <span class="nx">ng</span><span class="o">-</span><span class="kr">class</span><span class="o">=</span><span class="s2">&quot;{ &#39;has-success&#39; : signupForm.confirmPassword.$valid &amp;&amp; signupForm.confirmPassword.$dirty, &#39;has-error&#39; : signupForm.confirmPassword.$invalid &amp;&amp; signupForm.confirmPassword.$dirty }&quot;</span><span class="o">&gt;</span>
+						<span class="o">&lt;</span><span class="nx">input</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;form-control input-lg&quot;</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&quot;password&quot;</span>
+						       <span class="nx">name</span><span class="o">=</span><span class="s2">&quot;confirmPassword&quot;</span> <span class="nx">ng</span><span class="o">-</span><span class="nx">model</span><span class="o">=</span><span class="s2">&quot;confirmPassword&quot;</span>
+						       <span class="nx">repeat</span><span class="o">-</span><span class="nx">password</span><span class="o">=</span><span class="s2">&quot;password&quot;</span> <span class="nx">placeholder</span><span class="o">=</span><span class="s2">&quot;Confirm Password&quot;</span>
+						       <span class="nx">required</span><span class="o">&gt;</span>
+ 
+						<span class="o">&lt;</span><span class="nx">div</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;help-block text-danger my-special-animation&quot;</span>
+						     <span class="nx">ng</span><span class="o">-</span><span class="k">if</span><span class="o">=</span><span class="s2">&quot;signupForm.confirmPassword.$dirty&quot;</span>
+						     <span class="nx">ng</span><span class="o">-</span><span class="nx">messages</span><span class="o">=</span><span class="s2">&quot;signupForm.confirmPassword.$error&quot;</span><span class="o">&gt;</span>
+							<span class="o">&lt;</span><span class="nx">div</span> <span class="nx">ng</span><span class="o">-</span><span class="nx">message</span><span class="o">=</span><span class="s2">&quot;required&quot;</span><span class="o">&gt;</span><span class="nx">You</span> <span class="nx">must</span> <span class="nx">confirm</span> <span class="nx">password</span><span class="p">.</span><span class="o">&lt;</span><span class="err">/div&gt;</span>
+							<span class="o">&lt;</span><span class="nx">div</span> <span class="nx">ng</span><span class="o">-</span><span class="nx">message</span><span class="o">=</span><span class="s2">&quot;repeat&quot;</span><span class="o">&gt;</span><span class="nx">Passwords</span> <span class="k">do</span> <span class="nx">not</span> <span class="nx">match</span><span class="p">.</span><span class="o">&lt;</span><span class="err">/div&gt;</span>
+						<span class="o">&lt;</span><span class="err">/div&gt;</span>
+					<span class="o">&lt;</span><span class="err">/div&gt;</span>
+ 
+					<span class="o">&lt;</span><span class="nx">button</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&quot;submit&quot;</span> <span class="nx">ng</span><span class="o">-</span><span class="nx">disabled</span><span class="o">=</span><span class="s2">&quot;signupForm.$invalid&quot;</span>
+					        <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;btn btn-lg btn-block btn-primary&quot;</span><span class="o">&gt;</span><span class="nx">Create</span> <span class="nx">Account</span>
+					<span class="o">&lt;</span><span class="err">/button&gt;</span>
+				<span class="o">&lt;</span><span class="err">/div&gt;</span>
+			<span class="o">&lt;</span><span class="err">/form&gt;</span>
+		<span class="o">&lt;</span><span class="err">/div&gt;</span>
+	<span class="o">&lt;</span><span class="err">/div&gt;</span>
+<span class="o">&lt;</span><span class="err">/div&gt;</span></code></pre></div>
 
 <p>Update the 'signup' state in '/app/states.js' and register the controller and view above on the state.</p>
 
@@ -643,25 +829,146 @@
 
 <p>Add the login controller to the 'controllers.js':</p>
 
-<script src="https://gist.github.com/aaronroberson/86391ce601dbaa001bb2.js?file=login-controller.js"> </script>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">angular</span><span class="p">)</span> <span class="p">{</span>
+ 
+	<span class="kd">var</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;MyStore&#39;</span><span class="p">);</span>
+ 
+	<span class="nx">app</span><span class="p">.</span><span class="nx">controller</span><span class="p">(</span><span class="s1">&#39;LoginController&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$scope</span><span class="p">,</span> <span class="nx">$state</span><span class="p">,</span> <span class="nx">$timeout</span><span class="p">,</span> <span class="nx">Auth</span><span class="p">)</span> <span class="p">{</span>
+ 
+		<span class="kd">function</span> <span class="nx">successCallback</span><span class="p">()</span> <span class="p">{</span>
+			<span class="nx">$scope</span><span class="p">.</span><span class="nx">alert</span> <span class="o">=</span> <span class="p">{</span>
+				<span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;success&#39;</span><span class="p">,</span>
+				<span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;You have successfully logged in.&#39;</span>
+			<span class="p">};</span>
+ 
+			<span class="nx">$timeout</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+ 
+				<span class="nx">$state</span><span class="p">.</span><span class="nx">go</span><span class="p">(</span><span class="s1">&#39;home&#39;</span><span class="p">);</span>
+ 
+				<span class="nx">$scope</span><span class="p">.</span><span class="nx">alert</span> <span class="o">=</span> <span class="kc">undefined</span><span class="p">;</span>
+ 
+			<span class="p">},</span> <span class="mi">3000</span><span class="p">);</span>
+		<span class="p">}</span>
+ 
+		<span class="kd">function</span> <span class="nx">errorCallback</span><span class="p">()</span> <span class="p">{</span>
+			<span class="nx">$scope</span><span class="p">.</span><span class="nx">alert</span> <span class="o">=</span> <span class="p">{</span>
+				<span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;danger&#39;</span><span class="p">,</span>
+				<span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;Invalid username and/or password&#39;</span>
+			<span class="p">};</span>
+ 
+			<span class="nx">$timeout</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+				<span class="nx">$scope</span><span class="p">.</span><span class="nx">alert</span> <span class="o">=</span> <span class="kc">undefined</span><span class="p">;</span>
+ 
+			<span class="p">},</span> <span class="mi">3000</span><span class="p">);</span>
+		<span class="p">}</span>
+ 
+		<span class="nx">$scope</span><span class="p">.</span><span class="nx">login</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+ 
+			<span class="nx">Auth</span><span class="p">.</span><span class="nx">login</span><span class="p">({</span>
+				<span class="nx">email</span><span class="o">:</span> <span class="nx">$scope</span><span class="p">.</span><span class="nx">email</span><span class="p">,</span>
+				<span class="nx">password</span><span class="o">:</span> <span class="nx">$scope</span><span class="p">.</span><span class="nx">password</span>
+			<span class="p">},</span> <span class="nx">successCallback</span><span class="p">,</span> <span class="nx">errorCallback</span><span class="p">);</span>
+ 
+		<span class="p">};</span>
+ 
+	<span class="p">});</span>
+ 
+<span class="p">})(</span><span class="nb">window</span><span class="p">.</span><span class="nx">angular</span><span class="p">);</span></code></pre></div>
 
 <p>Update login.html in the views directory:</p>
 
-<script src="https://gist.github.com/aaronroberson/86391ce601dbaa001bb2.js?file=login.html"> </script>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="o">&lt;</span><span class="nx">div</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;row&quot;</span><span class="o">&gt;</span>
+	<span class="o">&lt;</span><span class="nx">div</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;col-md-4 col-md-offset-4&quot;</span><span class="o">&gt;</span>
+		<span class="o">&lt;</span><span class="nx">div</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;center-form panel&quot;</span><span class="o">&gt;</span>
+			<span class="o">&lt;</span><span class="nx">div</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;panel-body&quot;</span><span class="o">&gt;</span>
+				<span class="o">&lt;</span><span class="nx">h2</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;text-center&quot;</span><span class="o">&gt;</span><span class="nx">Login</span><span class="o">&lt;</span><span class="err">/h2&gt;</span>
+ 
+				<span class="o">&lt;</span><span class="nx">div</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;alert alert-&quot;</span> <span class="nx">ng</span><span class="o">-</span><span class="k">if</span><span class="o">=</span><span class="s2">&quot;alert&quot;</span> <span class="nx">ng</span><span class="o">-</span><span class="nx">bind</span><span class="o">=</span><span class="s2">&quot;alert.message&quot;</span><span class="o">&gt;&lt;</span><span class="err">/div&gt;</span>
+ 
+				<span class="o">&lt;</span><span class="nx">form</span> <span class="nx">method</span><span class="o">=</span><span class="s2">&quot;post&quot;</span> <span class="nx">ng</span><span class="o">-</span><span class="nx">submit</span><span class="o">=</span><span class="s2">&quot;login()&quot;</span> <span class="nx">name</span><span class="o">=</span><span class="s2">&quot;loginForm&quot;</span><span class="o">&gt;</span>
+ 
+					<span class="o">&lt;</span><span class="nx">div</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;form-group&quot;</span><span class="o">&gt;</span>
+						<span class="o">&lt;</span><span class="nx">input</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;form-control input-lg&quot;</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&quot;text&quot;</span> <span class="nx">name</span><span class="o">=</span><span class="s2">&quot;email&quot;</span>
+						       <span class="nx">ng</span><span class="o">-</span><span class="nx">model</span><span class="o">=</span><span class="s2">&quot;email&quot;</span> <span class="nx">placeholder</span><span class="o">=</span><span class="s2">&quot;Email&quot;</span> <span class="nx">required</span> <span class="nx">autofocus</span><span class="o">&gt;</span>
+					<span class="o">&lt;</span><span class="err">/div&gt;</span>
+ 
+					<span class="o">&lt;</span><span class="nx">div</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;form-group&quot;</span><span class="o">&gt;</span>
+						<span class="o">&lt;</span><span class="nx">input</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;form-control input-lg&quot;</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&quot;password&quot;</span> <span class="nx">name</span><span class="o">=</span><span class="s2">&quot;password&quot;</span>
+						       <span class="nx">ng</span><span class="o">-</span><span class="nx">model</span><span class="o">=</span><span class="s2">&quot;password&quot;</span> <span class="nx">placeholder</span><span class="o">=</span><span class="s2">&quot;Password&quot;</span> <span class="nx">required</span><span class="o">&gt;</span>
+					<span class="o">&lt;</span><span class="err">/div&gt;</span>
+ 
+					<span class="o">&lt;</span><span class="nx">button</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&quot;submit&quot;</span> <span class="nx">ng</span><span class="o">-</span><span class="nx">disabled</span><span class="o">=</span><span class="s2">&quot;loginForm.$invalid&quot;</span>
+					        <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;btn btn-lg btn-block btn-success&quot;</span><span class="o">&gt;</span><span class="nx">Sign</span> <span class="nx">In</span>
+					<span class="o">&lt;</span><span class="err">/button&gt;</span>
+				<span class="o">&lt;</span><span class="err">/form&gt;</span>
+			<span class="o">&lt;</span><span class="err">/div&gt;</span>
+		<span class="o">&lt;</span><span class="err">/div&gt;</span>
+	<span class="o">&lt;</span><span class="err">/div&gt;</span>
+<span class="o">&lt;</span><span class="err">/div&gt;</span></code></pre></div>
 
 <p>Update the 'login' state in '/app/states.js' and register the controller and view above on the state.</p>
 
 <h3>Add the User model</h3>
+<h3>Add the User model</h3>
 
 <p>Create a new file named User.js in the '/models' directory:</p>
 
-<script src="https://gist.github.com/aaronroberson/86391ce601dbaa001bb2.js?file=User.js"> </script>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// Require mongoose dependency</span>
+<span class="kd">var</span> <span class="nx">mongoose</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;mongoose&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">bcrypt</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;bcrypt-nodejs&#39;</span><span class="p">);</span>
+ 
+<span class="kd">var</span> <span class="nx">userSchema</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">Schema</span><span class="p">({</span>
+	<span class="nx">email</span><span class="o">:</span> <span class="p">{</span> <span class="nx">type</span><span class="o">:</span> <span class="nb">String</span><span class="p">,</span> <span class="nx">unique</span><span class="o">:</span> <span class="kc">true</span> <span class="p">},</span>
+	<span class="nx">password</span><span class="o">:</span> <span class="nb">String</span>
+<span class="p">});</span>
+ 
+<span class="kd">var</span> <span class="nx">User</span> <span class="o">=</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">model</span><span class="p">(</span><span class="s1">&#39;User&#39;</span><span class="p">,</span> <span class="nx">userSchema</span><span class="p">);</span>
+ 
+<span class="nx">userSchema</span><span class="p">.</span><span class="nx">pre</span><span class="p">(</span><span class="s1">&#39;save&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">next</span><span class="p">)</span> <span class="p">{</span>
+	<span class="kd">var</span> <span class="nx">user</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
+	<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">user</span><span class="p">.</span><span class="nx">isModified</span><span class="p">(</span><span class="s1">&#39;password&#39;</span><span class="p">))</span> <span class="k">return</span> <span class="nx">next</span><span class="p">();</span>
+	<span class="nx">bcrypt</span><span class="p">.</span><span class="nx">genSalt</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">salt</span><span class="p">)</span> <span class="p">{</span>
+		<span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="k">return</span> <span class="nx">next</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+		<span class="nx">bcrypt</span><span class="p">.</span><span class="nx">hash</span><span class="p">(</span><span class="nx">user</span><span class="p">.</span><span class="nx">password</span><span class="p">,</span> <span class="nx">salt</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">hash</span><span class="p">)</span> <span class="p">{</span>
+			<span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="k">return</span> <span class="nx">next</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+			<span class="nx">user</span><span class="p">.</span><span class="nx">password</span> <span class="o">=</span> <span class="nx">hash</span><span class="p">;</span>
+			<span class="nx">next</span><span class="p">();</span>
+		<span class="p">});</span>
+	<span class="p">});</span>
+<span class="p">});</span></code></pre></div>
 
 <h3>Add API routes</h3>
 
 <p>Add the login and logout API routes to '/routes.js', including the dependency to passport:</p>
 
-<script src="https://gist.github.com/aaronroberson/86391ce601dbaa001bb2.js?file=routes.js"> </script>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// Add the dependency to passport after the mongoose require declaration</span>
+	<span class="kd">var</span> <span class="nx">passport</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;passport&#39;</span><span class="p">);</span>
+ 
+<span class="c1">// Add the following routes after the products routes</span>
+<span class="c1">// logout API route</span>
+	<span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/api/logout&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">{</span>
+		<span class="nx">req</span><span class="p">.</span><span class="nx">logout</span><span class="p">();</span>
+		<span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="mi">200</span><span class="p">);</span>
+	<span class="p">});</span>
+ 
+	<span class="c1">// login API route</span>
+	<span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">&#39;/api/login&#39;</span><span class="p">,</span> <span class="nx">passport</span><span class="p">.</span><span class="nx">authenticate</span><span class="p">(</span><span class="s1">&#39;local&#39;</span><span class="p">),</span> <span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+		<span class="nx">res</span><span class="p">.</span><span class="nx">cookie</span><span class="p">(</span><span class="s1">&#39;user&#39;</span><span class="p">,</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">user</span><span class="p">));</span>
+		<span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">user</span><span class="p">);</span>
+	<span class="p">});</span>
+ 
+	<span class="c1">// signup API route</span>
+	<span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">&#39;/api/signup&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">{</span>
+		<span class="kd">var</span> <span class="nx">User</span> <span class="o">=</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">model</span><span class="p">(</span><span class="s1">&#39;User&#39;</span><span class="p">);</span>
+		<span class="kd">var</span> <span class="nx">user</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">User</span><span class="p">({</span>
+			<span class="nx">email</span><span class="o">:</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">email</span><span class="p">,</span>
+			<span class="nx">password</span><span class="o">:</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">password</span>
+		<span class="p">});</span>
+		<span class="nx">user</span><span class="p">.</span><span class="nx">save</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+			<span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="k">return</span> <span class="nx">next</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+			<span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="mi">200</span><span class="p">);</span>
+		<span class="p">});</span>
+	<span class="p">});</span></code></pre></div>
 
 <h3>Add Node.js Dependencies</h3>
 
@@ -674,7 +981,59 @@ npm install --save express-session passport passport-local bcrypt-nodejs
 
 <p>Update the server.js file to include the dependencies from above and to configure them:</p>
 
-<script src="https://gist.github.com/aaronroberson/86391ce601dbaa001bb2.js?file=server.js"> </script>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// Add the following to the dependencies (after bodyParser)</span>
+ 
+<span class="kd">var</span> <span class="nx">passport</span>     <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;passport&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">session</span>      <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;express-session&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">LocalStrategy</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;passport-local&#39;</span><span class="p">).</span><span class="nx">Strategy</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">bcrypt</span>        <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;bcrypt-nodejs&#39;</span><span class="p">);</span>
+ 
+<span class="c1">// Add the following after the MODELS</span>
+ 
+<span class="c1">// ===================== PASSPORT ========================= /</span>
+<span class="nx">passport</span><span class="p">.</span><span class="nx">serializeUser</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">user</span><span class="p">,</span> <span class="nx">done</span><span class="p">)</span> <span class="p">{</span>
+	<span class="nx">done</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="nx">user</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+<span class="p">});</span>
+ 
+<span class="nx">passport</span><span class="p">.</span><span class="nx">deserializeUser</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">id</span><span class="p">,</span> <span class="nx">done</span><span class="p">)</span> <span class="p">{</span>
+	<span class="kd">var</span> <span class="nx">User</span> <span class="o">=</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">model</span><span class="p">(</span><span class="s1">&#39;User&#39;</span><span class="p">);</span>
+ 
+	<span class="nx">User</span><span class="p">.</span><span class="nx">findById</span><span class="p">(</span><span class="nx">id</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">user</span><span class="p">)</span> <span class="p">{</span>
+		<span class="nx">done</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">user</span><span class="p">);</span>
+	<span class="p">});</span>
+<span class="p">});</span>
+ 
+<span class="nx">passport</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="k">new</span> <span class="nx">LocalStrategy</span><span class="p">({</span> <span class="nx">usernameField</span><span class="o">:</span> <span class="s1">&#39;email&#39;</span> <span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">email</span><span class="p">,</span> <span class="nx">password</span><span class="p">,</span> <span class="nx">done</span><span class="p">)</span> <span class="p">{</span>
+	<span class="kd">var</span> <span class="nx">User</span> <span class="o">=</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">model</span><span class="p">(</span><span class="s1">&#39;User&#39;</span><span class="p">);</span>
+ 
+	<span class="nx">User</span><span class="p">.</span><span class="nx">findOne</span><span class="p">({</span> <span class="nx">email</span><span class="o">:</span> <span class="nx">email</span> <span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">user</span><span class="p">)</span> <span class="p">{</span>
+		<span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="k">return</span> <span class="nx">done</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+		<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">user</span><span class="p">)</span> <span class="k">return</span> <span class="nx">done</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span>
+ 
+		<span class="kd">function</span> <span class="nx">cb</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">isMatch</span><span class="p">)</span> <span class="p">{</span>
+			<span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="k">return</span> <span class="nx">done</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+			<span class="k">if</span> <span class="p">(</span><span class="nx">isMatch</span><span class="p">)</span> <span class="k">return</span> <span class="nx">done</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="nx">user</span><span class="p">);</span>
+			<span class="k">return</span> <span class="nx">done</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span>
+		<span class="p">}</span>
+		<span class="nx">bcrypt</span><span class="p">.</span><span class="nx">compare</span><span class="p">(</span><span class="nx">password</span><span class="p">,</span> <span class="nx">user</span><span class="p">.</span><span class="nx">password</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">isMatch</span><span class="p">)</span> <span class="p">{</span>
+			<span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="k">return</span> <span class="nx">cb</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+			<span class="nx">cb</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="nx">isMatch</span><span class="p">);</span>
+		<span class="p">});</span>
+	<span class="p">});</span>
+<span class="p">}));</span>
+ 
+<span class="c1">// Add the following after express.static in module section</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">session</span><span class="p">({</span> <span class="nx">secret</span><span class="o">:</span> <span class="s1">&#39;blackwidow straw&#39;</span> <span class="p">}));</span>                       <span class="c1">// Encryption key/salt</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">passport</span><span class="p">.</span><span class="nx">initialize</span><span class="p">());</span>                                         <span class="c1">// Initializes passport</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">passport</span><span class="p">.</span><span class="nx">session</span><span class="p">());</span>                                            <span class="c1">// Creates a passport session</span>
+ 
+<span class="c1">// Add the following after express.static</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">{</span>
+	<span class="k">if</span> <span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">user</span><span class="p">)</span> <span class="p">{</span>
+		<span class="nx">res</span><span class="p">.</span><span class="nx">cookie</span><span class="p">(</span><span class="s1">&#39;user&#39;</span><span class="p">,</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">user</span><span class="p">));</span>
+	<span class="p">}</span>
+	<span class="nx">next</span><span class="p">();</span>
+<span class="p">});</span></code></pre></div>
 
 <div class="alert alert-info">
     <p>Remember to commit your changes to Github!</p>

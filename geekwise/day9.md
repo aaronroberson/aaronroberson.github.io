@@ -40,13 +40,14 @@ comments: true
 Run the following command to install the cookieParser and bodyParser modules
 
     npm install --save cookieParser bodyParser
+    
 {% highlight JavaScript %}
-/* Insert in module dependencies */
+// Insert in module dependencies
 
 cookieParser  = require('cookie-parser')
 bodyParser    = require('body-parser')
 
-/* Insert before static reference */
+// Insert before static reference
 
 // have the ability to simulate DELETE and PUT
 app.use(bodyParser.json());
@@ -54,6 +55,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 // have the ability to parse cookies
 app.use(cookieParser());
+{% endhighlight %}
 
 
 <h3>Adding the Authentication Service</h3>
@@ -370,10 +372,11 @@ app.controller('AppController', function($scope, $state, $timeout, Auth) {
 		</div>
 	</div>
 </div>
-{% highlight JavaScript %}
+{% endhighlight %}
 
 <p>Update the 'login' state in '/app/states.js' and register the controller and view above on the state.</p>
 
+<h3>Add the User model</h3>
 <h3>Add the User model</h3>
 
 <p>Create a new file named User.js in the '/models' directory:</p>
@@ -409,10 +412,10 @@ userSchema.pre('save', function(next) {
 <p>Add the login and logout API routes to '/routes.js', including the dependency to passport:</p>
 
 {% highlight JavaScript %}
-/* Add the dependency to passport after the mongoose require decleration */
+// Add the dependency to passport after the mongoose require declaration
 	var passport = require('passport');
  
-/* Add the following routes after the products routes */
+// Add the following routes after the products routes
 // logout API route
 	app.get('/api/logout', function(req, res, next) {
 		req.logout();
@@ -451,16 +454,16 @@ npm install --save express-session passport passport-local bcrypt-nodejs
 <p>Update the server.js file to include the dependencies from above and to configure them:</p>
 
 {% highlight JavaScript %}
-/* Add the following to the depenecies (after bodyParser) */
+// Add the following to the dependencies (after bodyParser)
  
 var passport     = require('passport');
 var session      = require('express-session');
 var LocalStrategy = require('passport-local').Strategy;
 var bcrypt        = require('bcrypt-nodejs');
  
-/* Add the following after the MODELS */
+// Add the following after the MODELS
  
-/* ===================== PASSPORT ========================= */
+// ===================== PASSPORT ========================= /
 passport.serializeUser(function(user, done) {
 	done(null, user.id);
 });
@@ -492,19 +495,19 @@ passport.use(new LocalStrategy({ usernameField: 'email' }, function(email, passw
 	});
 }));
  
-/* Add the following after express.static in module section */
+// Add the following after express.static in module section
 app.use(session({ secret: 'blackwidow straw' }));                       // Encryption key/salt
 app.use(passport.initialize());                                         // Initializes passport
 app.use(passport.session());                                            // Creates a passport session
  
-/* Add the following after express.static */
+// Add the following after express.static
 app.use(function(req, res, next) {
 	if (req.user) {
 		res.cookie('user', JSON.stringify(req.user));
 	}
 	next();
 });
-(% endhighlight %}
+{% endhighlight %}
 
 <div class="alert alert-info">
     <p>Remember to commit your changes to Github!</p>
