@@ -74,41 +74,109 @@ npm install stripe
 
 <p>Go to <a href="http://stripe.com" target="_blank">http://stripe.com</a> and sign up for a FREE account.</p>
 
-<p>In the server.js file, add 'stripe' module as a dependency and pass in your merechant key:</p>
+<p>In the routes.js file, add 'stripe' module as a dependency and pass in your merechant key:</p>
 
 <pre>
 stripe       = require('stripe')('your_key_here');
 </pre>
 
-<p>After the routes definitions, add the following stripe charge:</p>
+Update the '/api/signup' route to create a new stripe user and save their stripe customer id to the database:
 
-<pre>
-stripe.charges.create({
-amount: 400,
-currency: "usd",
-card: {
-    number: '4242424242424242',
-    exp_month: 07,
-    exp_year: 2015,
-    name: 'BB Thorton',
-    "brand": "Visa",
-    "funding": "credit",
-    "country": "US",
-    "address_line1": null,
-    "address_line2": null,
-    "address_city": null,
-    "address_state": null,
-    "address_zip": null,
-    "address_country": null,
-    "cvc_check": null,
-    "address_line1_check": null,
-    "address_zip_check": null,
-    "customer": null
-}
-}, function(err, charge) {
-console.log(charge);
+{% highlight JavaScript %}
+// Create a customer
+stripe.customers.create({
+
+    email: email
+
+}, function(err, customer){
+
+    if(err) return next(err);
+
+    var user = new User({
+        email: email,
+        password: req.body.password,
+        customer_id: customer.id
+    });
+
+    user.save(function(err) {
+        if (err) return next(err);
+
+        res.send(200);
+    });
+
 });
-</pre>
+{% endhighlight %}
+
+Add the checkout route
+
+{% highlight JavaScript %}
+/* ========================= CHECK OUT ROUTES ======================= */
+app.route('/api/checkout')
+    .post(function(req, res, next) {
+
+        var charge = {
+            amount: parseInt(req.body.amount) * 100,
+            currency: "usd",
+            card: {
+                number: parseInt(req.body.number),
+                exp_month: parseInt(req.body.month),
+                exp_year: parseInt(req.body.year),
+                name: req.body.name,
+                cvc: parseInt(req.body.cvv),
+                customer: req.body.customer_id || null
+            }
+        };
+
+        stripe.charges.create(charge, function(err, order) {
+
+            if(err) return next(err);
+
+            res.send(order);
+
+        });
+
+    });
+{% endhighlight %}
+
+Update the CartService to include the $state dependency and update the checkout function to navigate the user to the checkout state:
+
+{% highlight JavaScript %}
+$scope.checkout = function() {
+    $state.go('checkout');
+};
+{% endhighlight %}
+
+Add the checkout controller
+
+{% highlight JavaScript %}
+.controller('CheckoutController', function($scope, CartService) {
+
+    // Add a card object to the scope
+    $scope.card = {};
+
+    // Add a checkout function
+    $scope.checkout = function() {
+        // Checkout using CartService
+        CartService.checkout($scope.card);
+
+    };
+
+});
+{% endhighlight %}
+
+Add the checkout view:
+
+<a href="https://github.com/aaronroberson/swagwise-skeleton/blob/Completed/app/views/checkout.html" target="_blank">checkout html</a>
+
+Add the checkout state:
+
+{% highlight JavaScript %}
+.state('checkout', {
+    url: '/checkout',
+    controller: 'CheckoutController',
+    templateUrl: 'views/checkout.html'
+})
+{% endhighlight %}
 
 <div class="alert alert-info">
     <p>Remember to commit your changes to Github!</p>
