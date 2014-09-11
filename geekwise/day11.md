@@ -1,13 +1,13 @@
 ---
 layout: geekwise
-title: Day 11 - HTTPS and Stripe
+title: Day 10 - HTTPS and Stripe
 permalink: /geekwise/day-11-https-and-stripe/
 tags: geekwise
-day: 11
+day: 10
 comments: true
 ---
 
-<h1>Day 11 - HTTPS and Stripe</h1>
+<h1>Day 10 - HTTPS and Stripe</h1>
 
 <p>In tonight's class you will:</p>
 
@@ -113,9 +113,3 @@ console.log(charge);
 <div class="alert alert-info">
     <p>Remember to commit your changes to Github!</p>
 </div>
-
-<!--p><a ui-sref="geek.page({page_id: 10})" class="btn btn-default">Continue to Day 11</a></p-->
-
- 
-
-<div disqus="'geekwise0111'"></div>
