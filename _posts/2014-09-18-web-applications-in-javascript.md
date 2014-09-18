@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "Web Applications in JavaScript"
+title: "Geekwise Academy: Web Applications in JavaScript"
 date: 2014-09-18
 author: Aaron Roberson
-categories: angularjs
+categories: geekwise
 short: New course beginning October 27th, 2014 covering the core concepts for building functional web applications using the MEAN stack.
 comments: true
 ---
