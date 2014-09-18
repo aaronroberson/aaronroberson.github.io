@@ -514,6 +514,46 @@
         
     
 
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            <li><a href="/geekwise/day-11-https-and-stripe/">Day 10 - HTTPS and Stripe</a></li>
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
                     </ul>
                 </li>
             </ul>
@@ -621,41 +661,99 @@ npm install stripe
 
 <p>Go to <a href="http://stripe.com" target="_blank">http://stripe.com</a> and sign up for a FREE account.</p>
 
-<p>In the server.js file, add 'stripe' module as a dependency and pass in your merechant key:</p>
+<p>In the routes.js file, add 'stripe' module as a dependency and pass in your merechant key:</p>
 
 <pre>
 stripe       = require('stripe')('your_key_here');
 </pre>
 
-<p>After the routes definitions, add the following stripe charge:</p>
+<p>Update the ‘/api/signup’ route to create a new stripe user and save their stripe customer id to the database:</p>
 
-<pre>
-stripe.charges.create({
-amount: 400,
-currency: "usd",
-card: {
-    number: '4242424242424242',
-    exp_month: 07,
-    exp_year: 2015,
-    name: 'BB Thorton',
-    "brand": "Visa",
-    "funding": "credit",
-    "country": "US",
-    "address_line1": null,
-    "address_line2": null,
-    "address_city": null,
-    "address_state": null,
-    "address_zip": null,
-    "address_country": null,
-    "cvc_check": null,
-    "address_line1_check": null,
-    "address_zip_check": null,
-    "customer": null
-}
-}, function(err, charge) {
-console.log(charge);
-});
-</pre>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// Create a customer</span>
+<span class="nx">stripe</span><span class="p">.</span><span class="nx">customers</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
+
+    <span class="nx">email</span><span class="o">:</span> <span class="nx">email</span>
+
+<span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">customer</span><span class="p">){</span>
+
+    <span class="k">if</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="k">return</span> <span class="nx">next</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+
+    <span class="kd">var</span> <span class="nx">user</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">User</span><span class="p">({</span>
+        <span class="nx">email</span><span class="o">:</span> <span class="nx">email</span><span class="p">,</span>
+        <span class="nx">password</span><span class="o">:</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">password</span><span class="p">,</span>
+        <span class="nx">customer_id</span><span class="o">:</span> <span class="nx">customer</span><span class="p">.</span><span class="nx">id</span>
+    <span class="p">});</span>
+
+    <span class="nx">user</span><span class="p">.</span><span class="nx">save</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="k">return</span> <span class="nx">next</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+
+        <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="mi">200</span><span class="p">);</span>
+    <span class="p">});</span>
+
+<span class="p">});</span></code></pre></div>
+
+<p>Add the checkout route</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="cm">/* ========================= CHECK OUT ROUTES ======================= */</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">route</span><span class="p">(</span><span class="s1">&#39;/api/checkout&#39;</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">{</span>
+
+        <span class="kd">var</span> <span class="nx">charge</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="nx">amount</span><span class="o">:</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">amount</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span>
+            <span class="nx">currency</span><span class="o">:</span> <span class="s2">&quot;usd&quot;</span><span class="p">,</span>
+            <span class="nx">card</span><span class="o">:</span> <span class="p">{</span>
+                <span class="nx">number</span><span class="o">:</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">number</span><span class="p">),</span>
+                <span class="nx">exp_month</span><span class="o">:</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">month</span><span class="p">),</span>
+                <span class="nx">exp_year</span><span class="o">:</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">year</span><span class="p">),</span>
+                <span class="nx">name</span><span class="o">:</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">name</span><span class="p">,</span>
+                <span class="nx">cvc</span><span class="o">:</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">cvv</span><span class="p">),</span>
+                <span class="nx">customer</span><span class="o">:</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">customer_id</span> <span class="o">||</span> <span class="kc">null</span>
+            <span class="p">}</span>
+        <span class="p">};</span>
+
+        <span class="nx">stripe</span><span class="p">.</span><span class="nx">charges</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">charge</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">order</span><span class="p">)</span> <span class="p">{</span>
+
+            <span class="k">if</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="k">return</span> <span class="nx">next</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+
+            <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">order</span><span class="p">);</span>
+
+        <span class="p">});</span>
+
+    <span class="p">});</span></code></pre></div>
+
+<p>Update the CartService to include the $state dependency and update the checkout function to navigate the user to the checkout state:</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$scope</span><span class="p">.</span><span class="nx">checkout</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">$state</span><span class="p">.</span><span class="nx">go</span><span class="p">(</span><span class="s1">&#39;checkout&#39;</span><span class="p">);</span>
+<span class="p">};</span></code></pre></div>
+
+<p>Add the checkout controller</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="p">.</span><span class="nx">controller</span><span class="p">(</span><span class="s1">&#39;CheckoutController&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$scope</span><span class="p">,</span> <span class="nx">CartService</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="c1">// Add a card object to the scope</span>
+    <span class="nx">$scope</span><span class="p">.</span><span class="nx">card</span> <span class="o">=</span> <span class="p">{};</span>
+
+    <span class="c1">// Add a checkout function</span>
+    <span class="nx">$scope</span><span class="p">.</span><span class="nx">checkout</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// Checkout using CartService</span>
+        <span class="nx">CartService</span><span class="p">.</span><span class="nx">checkout</span><span class="p">(</span><span class="nx">$scope</span><span class="p">.</span><span class="nx">card</span><span class="p">);</span>
+
+    <span class="p">};</span>
+
+<span class="p">});</span></code></pre></div>
+
+<p>Add the checkout view:</p>
+
+<p><a href="https://github.com/aaronroberson/swagwise-skeleton/blob/Completed/app/views/checkout.html" target="_blank">checkout html</a></p>
+
+<p>Add the checkout state:</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="p">.</span><span class="nx">state</span><span class="p">(</span><span class="s1">&#39;checkout&#39;</span><span class="p">,</span> <span class="p">{</span>
+    <span class="nx">url</span><span class="o">:</span> <span class="s1">&#39;/checkout&#39;</span><span class="p">,</span>
+    <span class="nx">controller</span><span class="o">:</span> <span class="s1">&#39;CheckoutController&#39;</span><span class="p">,</span>
+    <span class="nx">templateUrl</span><span class="o">:</span> <span class="s1">&#39;views/checkout.html&#39;</span>
+<span class="p">})</span></code></pre></div>
 
 <div class="alert alert-info">
     <p>Remember to commit your changes to Github!</p>
@@ -1072,6 +1170,46 @@ console.log(charge);
         
     
 
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            <li><a href="/geekwise/day-11-https-and-stripe/">Day 10 - HTTPS and Stripe</a></li>
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
         </ul>
 
     </div>
@@ -1116,6 +1254,13 @@ console.log(charge);
                 <h3>Posts <a href="/feed.xml" class="pull-right" target="_blank"><i class="fa fa-rss"></i></a></h3>
 
 <ul class="nav nav-stacked">
+    
+    <li>
+        <a href="/angularjs/2014/09/18/web-applications-in-javascript/">
+            Web Applications in JavaScript
+            <small class="text-muted pull-right">Sep 18, 2014</small>
+        </a>
+    </li>
     
     <li>
         <a href="/angularjs/2014/08/28/testing-fouc-angularjs-mac/">

@@ -5,9 +5,54 @@
     <description>Personal blog and speaking schedule of Aaron Roberson, a JavaScript and AngularJS enthusiast specializing in the development of rich internet applications with a thick front-end.</description>
     <link>http://pixelpolished.com/</link>
     <atom:link href="http://pixelpolished.com/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Wed, 10 Sep 2014 18:07:22 -0700</pubDate>
-    <lastBuildDate>Wed, 10 Sep 2014 18:07:22 -0700</lastBuildDate>
+    <pubDate>Thu, 18 Sep 2014 12:40:34 -0700</pubDate>
+    <lastBuildDate>Thu, 18 Sep 2014 12:40:34 -0700</lastBuildDate>
     <generator>Jekyll v2.1.1</generator>
+    
+      <item>
+        <title>Web Applications in JavaScript</title>
+        <description>&lt;p&gt;In the course, Web Applications in JavaScript, we’ll be covering the core concepts for building functional web applications using the MEAN stack: MongoDB, Express.js, AngularJS, and Node.js.&lt;/p&gt;
+
+&lt;p&gt;We are going to spend the first few classes learning noSQL database concepts and MongoDB. We’ll install and run MongoDB on our local machines and will cover the following:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Shell commands&lt;/li&gt;
+  &lt;li&gt;Database methods&lt;/li&gt;
+  &lt;li&gt;Collection methods including CRUD (Create, Read, Update, Delete) operations&lt;/li&gt;
+  &lt;li&gt;MongoDB Utilities&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Next, we’ll spend a few classes on &lt;a href=&quot;http://nodejs.org&quot;&gt;Node.js&lt;/a&gt; and &lt;a href=&quot;http://epxressjs.com&quot;&gt;Express.js&lt;/a&gt; learning the following concepts:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Server-side routing&lt;/li&gt;
+  &lt;li&gt;RESTful APIs using the &lt;a href=&quot;http://mongoosejs.com&quot;&gt;Mongoose ODM&lt;/a&gt; middleware library&lt;/li&gt;
+  &lt;li&gt;OAuth (Facebook, Google, Twitter, etc.) and email/password authentication using &lt;a href=&quot;http://passportjs.org&quot;&gt;Passport.js&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Role-based security. &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://stripe.com&quot;&gt;Stripe&lt;/a&gt; integration (customer, billing and order history)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;The remaining portion of the class will be spent learning and using &lt;a href=&quot;http://angularjs.org&quot;&gt;Google’s AngularJS&lt;/a&gt; MVC/MVVM framework to:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Perform client-side routing&lt;/li&gt;
+  &lt;li&gt;Client-side, role-based authentication&lt;/li&gt;
+  &lt;li&gt;Create a user profile module where users will be able to manage their account profile including their billing and shipping addresses, credit card information and order history.&lt;/li&gt;
+  &lt;li&gt;Create an admin module where application admins will be able to manage site users, orders and products (adding, updating and deleting products).&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Finally, we’ll deploy our application to the cloud using a PaaS (Platform as a Service) solution such as &lt;a href=&quot;http://openshift.com&quot;&gt;OpenShift&lt;/a&gt;, &lt;a href=&quot;http://heroku.com&quot;&gt;Heroku&lt;/a&gt;, &lt;a href=&quot;https://azure.microsoft.com/en-us/&quot;&gt;Microsoft Azure&lt;/a&gt; or the service of your choice.&lt;/p&gt;
+
+&lt;p&gt;The course will take place at the &lt;a href=&quot;http://bitwiseindustries.com&quot;&gt;Bitwise Industries&lt;/a&gt; facilities and will include 36-hours of in-person instruction. If you haven’t already, &lt;a href=&quot;http://geekwiseacademy.com/courses&quot;&gt;enroll now!&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Thu, 18 Sep 2014 00:00:00 -0700</pubDate>
+        <link>http://pixelpolished.com/angularjs/2014/09/18/web-applications-in-javascript/</link>
+        <guid isPermaLink="true">http://pixelpolished.com/angularjs/2014/09/18/web-applications-in-javascript/</guid>
+        
+        
+        <category>angularjs</category>
+        
+      </item>
     
       <item>
         <title>Testing FOUC with AngularJS (Mac)</title>
