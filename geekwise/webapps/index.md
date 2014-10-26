@@ -1,6 +1,6 @@
 ---
 layout: webapps
-title: Web Applications in JavaScript Course Overview
+title: Course Overview
 permalink: /geekwise/webapps/
 tags: webapps
 day: 0
