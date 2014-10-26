@@ -14,16 +14,19 @@
                 {% for page in site.pages %}
                     {% if page.title %}
                         {% unless page.tags contains 'geekwise' %}
-                        <li><a href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a></li>
+	                        {% unless page.tags contains 'webapps' %}
+                            <li><a href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a></li>
+	                        {% endunless %}
                         {% endunless %}
                     {% endif %}
                 {% endfor %}
             </ul>
             <ul class="nav navbar-right navbar-nav">
                 <li class="dropdown">
-                    <a href="/geekwise/" class="dropdown-toggle" data-toggle="dropdown">Geekwise <span class="caret"></span></a>
+                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">Geekwise <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
-                        {% include geekwise_menu.html %}
+                        <li><a href="/geekwise/webapps">Web Apps in JavaScript</a></li>
+	                    <li><a href="/geekwise/jsangular">JavaScript II with AngularJS</a></li>
                     </ul>
                 </li>
             </ul>

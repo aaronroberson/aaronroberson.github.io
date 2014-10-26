@@ -4,11 +4,11 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Testing FOUC with AngularJS (Mac)</title>
+    <title>Web Applications in JavaScript Course Overview</title>
     <meta name="viewport" content="width=device-width">
     <meta name="description" content="Personal blog and speaking schedule of Aaron Roberson, a JavaScript and AngularJS enthusiast specializing in the development of rich internet applications with a thick front-end.">
     <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
-    <link rel="canonical" href="http://pixelpolished.com/angularjs/2014/08/28/testing-fouc-angularjs-mac/">
+    <link rel="canonical" href="http://pixelpolished.com/geekwise/webapps/">
 
     <!-- Custom CSS -->
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
@@ -164,98 +164,651 @@
 
         <div class="row">
             <div class="col col-sm-9">
-    <div class="post">
-
-        <header class="post-header">
-            <h1>Testing FOUC with AngularJS (Mac)</h1>
-            <p class="meta">Aug 28, 2014 • Aaron Roberson</p>
-        </header>
-
-        <article class="post-content">
-            <p>At <a href="http://onfarm.com">OnFarm Systems</a> we’ve made it a practice to favor the <a href="https://docs.angularjs.org/api/ng/directive/ngBind">ngBind</a> directive over “mustache” (double curly braces) bindings to avoid <abbr title="Flash Of Un-styled Content">FOUC</abbr> in our application. In the agricultural industry it is not uncommon for farmers to access our app over a cellular connection on their touch pad device as they’re physically walking through the farm. </p>
-
-<p>Recently, our development team received a bug and screen capture of one of our widgets with all of it’s braces “hanging out”. Turns out, the built-in template for the <a href="http://angular-ui.github.io">Angular UI</a> <a href="http://angular-ui.github.io/ng-grid/">NG-Grid</a> directive is using the “mustache” binding syntax.</p>
-
-<p>The following steps are the ones I took to reproduce the error on an otherwise decent internet connection.</p>
-
-<h2 id="step-1-clear-the-cache">Step 1: Clear the cache</h2>
-
-<p>Angular somewhat aggressively caches template partials using the <a href="https://docs.angularjs.org/api/ng/service/$templateCache">$templateCache</a> service. I found that disabling caching (while DevTools is open) was not enough to bust the cache and assist in reproducing the error. In retrospect, I’m giving you the instructions for clearing the file cache history as the first step.</p>
-
-<p>Navigate to <a href="chrome://settings/clearBrowserData">chrome://settings/clearBrowserData</a> in Chrome. Select “the beginning of time” and check the “Cached images and files” checkbox. Click “Clear browsing data” to clear the cache:</p>
-
-<p><img src="/assets/images/posts/fouc/chrome-clear-cache.png" title="Clear Chrome cache" /></p>
-
-<h2 id="step-2-download-hardware-io-tools">Step 2: Download Hardware IO Tools</h2>
-
-<p>If you haven’t downloaded and installed <a href="https://developer.apple.com/xcode/downloads/">Xcode</a>, do so now. With Xcode installed, you will need to install the additional Hardware IO tools. Open Xcode, go to Xcode &gt; Open Developer Tool &gt; More Developer Tools. . . select “Hardware IO Tools for Xcode”. From the Apple Developers downloads page, select and download the Hardware IO Tools disk image:</p>
-
-<p><img src="/assets/images/posts/fouc/hardware-io-download.png" alt="Hardware IO download" /></p>
-
-<h2 id="step-3-install-the-network-link-conditioner">Step 3: Install the Network Link Conditioner</h2>
-
-<p>Once you’ve downloaded the disk image, double click and mount it. Select the Network Link Conditioner.prefPane installer as shown below:</p>
-
-<p><img src="/assets/images/posts/fouc/hardware-io-dmg.png" alt="Hardware IO installation" /></p>
-
-<p>The Network Link Conditioner and link to it in System Preferences will be installed and will automatically open the Network Link Conditioner as shown below:</p>
-
-<p><img src="/assets/images/posts/fouc/network-high-latency.png" alt="Network High Latency" /></p>
-
-<h2 id="step-4-select-or-create-a-profile">Step 4: Select or create a profile</h2>
-
-<p>I wasn’t able to reproduce the error using the 3G or network latency profile so I created a custom “Dial-up” profile. Standard Dial-up download speeds are about 52,000 b/s (52K) in perfect laboratory conditions and about 40,000 b/s if you’re close to the telephone office. As distance increases, speed decreases. Upload speeds average about 6 Kb/s and I’ve given a generous packet drop rate of 10%. You can view my profile options below:</p>
-
-<p><img src="/assets/images/posts/fouc/network-custom-dial-up.png" alt="Network Dial-up" /></p>
-
-<h1 id="step-5-turn-on-the-network-link-conditioner">Step 5: Turn on the Network Link Conditioner</h1>
-
-<p>Using the Dial-up profile was a bit overkill, but it successfully reproduced the FOUC originally reported:</p>
-
-<p><img src="/assets/images/posts/fouc/crop-protection.png" alt="FOUC" /></p>
-
-<h2 id="summary">Summary</h2>
-
-<p>Unfortunately, the Angular UI team has not provided both a templated and non-templated version of the NG-Grid directive as they’ve done with the <a href="http://angular-ui.github.io/bootstrap/">UI-Bootstrap</a> library. To fix the FOUC, the <a href="https://docs.angularjs.org/api/ng/directive/ngCloak">ngCloack</a> directive on the parent element was not sufficient.  We had to download the un-minified source, update the templates and then concatenate and minify a custom build. A pull-request to the NG-Grid repo will follow shortly.</p>
-
-        </article>
-
-    </div>
-
-    <div id="disqus_thread" class="comments"></div>
     
-</div>
-<div class="col col-sm-3">
-    <div id="sidebar" class="sidebar">
-        <h3>Posts <a href="/feed.xml" class="pull-right" target="_blank"><i class="fa fa-rss"></i></a></h3>
+    <section class="post">
+        <h1 id="web-applications-in-javascript">Web Applications in JavaScript</h1>
 
-<ul class="nav nav-stacked">
-    
-    <li>
-        <a href="/geekwise/2014/09/18/web-applications-in-javascript/">
-            Geekwise Academy: Web Applications in JavaScript
-            <small class="text-muted pull-right">Sep 18, 2014</small>
-        </a>
-    </li>
-    
-    <li>
-        <a href="/angularjs/2014/08/28/testing-fouc-angularjs-mac/">
-            Testing FOUC with AngularJS (Mac)
-            <small class="text-muted pull-right">Aug 28, 2014</small>
-        </a>
-    </li>
-    
-    <li>
-        <a href="/geekwise/2014/07/18/javascript-2-with-angularjs/">
-            Geekwise Academy: JavaScript II with AngularJS
-            <small class="text-muted pull-right">Jul 18, 2014</small>
-        </a>
-    </li>
-    
+<p>In this course we’ll be covering the core concepts of building functional web applications using the MEAN stack: <a href="http://mongodb.com">MongoDB</a>, <a href="http://epxressjs.com">Express.js</a>, <a href="http://angularjs.org">AngularJS</a>, and <a href="http://nodejs.org">Node.js</a>.</p>
+
+<h2 id="course-description">Course Description*</h2>
+
+<p>We are going to spend the first few classes learning NoSQL database concepts and <a href="http://mongodb.com">MongoDB</a>. We’ll install and run MongoDB on our local machines and will cover the following:</p>
+
+<ol>
+  <li>Shell commands</li>
+  <li>Database methods</li>
+  <li>Collection methods including CRUD (Create, Read, Update, Delete) operations</li>
+  <li>MongoDB Utilities</li>
+</ol>
+
+<p>Next, we’ll spend a few classes on <a href="http://nodejs.org">Node.js</a> and <a href="http://epxressjs.com">Express.js</a> learning the following concepts:</p>
+
+<ol>
+  <li>Server-side routing</li>
+  <li>RESTful APIs using the <a href="http://mongoosejs.com">Mongoose ODM</a> middleware library</li>
+  <li>OAuth (Facebook, Google, Twitter, etc.) and email/password authentication using <a href="http://passportjs.org">Passport.js</a></li>
+  <li>Role-based security. </li>
+  <li><a href="http://stripe.com">Stripe</a> integration (customer, billing and order history)</li>
+</ol>
+
+<p>The remaining portion of the class will be spent learning and using <a href="http://angularjs.org">AngularJS</a> MVC/MVVM framework to:</p>
+
+<ol>
+  <li>Perform client-side routing</li>
+  <li>Client-side, role-based authentication</li>
+  <li>Create a user profile module where users will be able to manage their account profile including their billing and shipping addresses, credit card information and order history.</li>
+  <li>Create an admin module where application admins will be able to manage site users, orders and products (adding, updating and deleting products).</li>
+</ol>
+
+<p>Finally, we’ll deploy our application to the cloud using a PaaS (Platform as a Service) solution such as <a href="http://openshift.com">OpenShift</a>, <a href="http://heroku.com">Heroku</a>, <a href="https://azure.microsoft.com/en-us/">Microsoft Azure</a> or the service of your choice.</p>
+
+<h2 id="pre-requisites">Pre-requisites</h2>
+
+<p>Here are what I would consider to be the basic pre-requisites:</p>
+
+<ol>
+  <li>Good understanding of HTML and CSS</li>
+  <li>Working understanding of the DOM (Document Object Model)</li>
+  <li>Basic programming concepts (data types, syntax, data structures, control structures, and control flow)</li>
+  <li>Beginning to intermediate JavaScript</li>
+  <li>Familiarity with AngularJS</li>
+</ol>
+
+<p>Great to have but not required:</p>
+
+<ol>
+  <li>Familiarity with MVC/MVVM design pattern/frameworks</li>
+  <li>JavaScript debugging</li>
+  <li>Familiarity with source control (Git/SVN)</li>
+</ol>
+
+<p>Below are some resources for a basic understanding of the aforementioned concepts, languages and frameworks:</p>
+
+<p><a href="https://www.codeschool.com/courses/javascript-road-trip-part-1">JavaScript Roadtrip</a> (FREE)</p>
+
+<p><a href="https://www.codeschool.com/courses/javascript-road-trip-part-2">JavaScript Roadtrip Part 2</a> or equivalent </p>
+
+<p><a href="https://www.codeschool.com/courses/shaping-up-with-angular-js">Shaping up with AngularJS</a> (FREE)</p>
+
+<p>Great to have (but not required): </p>
+
+<p><a href="https://www.codeschool.com/courses/discover-devtools">Discover DevTools</a> (FREE) </p>
+
+<p><a href="https://www.codeschool.com/courses/try-git">Try Git</a> (FREE)</p>
+
+<h3 id="editors">Editors</h3>
+
+<p>Students are welcome to use the text editor or their choice. If you’re more comfortable with <a href="http://www.vim.org/">vim</a>, <a href="http://www.nano-editor.org/">nano</a> or any other command line editor you are welcome to use it. Some developers prefer an editor with additional support for syntax highlighting, intelli-sense and code-completion but are still weary of using a full <abbr title="Integrated Development Environment">IDE</abbr>. For these individuals, <a href="http://www.sublimetext.com/">Sublime Text</a>, <a href="http://brackets.io/">Brakets</a> or <a href="https://atom.io/">Atom</a> may be the editor of choice. However, for those of us who like to focus on rapid application development, finding every opportunity to automate mundane processes and be more productive, I’ve secured an educational license of <a href="http://www.jetbrains.com/webstorm/">WebStorm</a> from the gracious folks at JetBrains:</p>
+
+<pre>
+User Name: Geekwise Academy
+
+===== LICENSE BEGIN =====
+672085-05062014
+00000Nswrs2g"V9nFRZOlZf1s9"2fr
+cV9ESEvof3CrzwKLgQPJLmraSstg9Z
+49JSA22X74ldzxV9zFhnKs3UIkV1t3
+===== LICENSE END =====
+</pre>
+
+<h3 id="additional-resources">Additional Resources</h3>
+
+<ul>
+    <li><a href="https://groups.google.com/forum/#!forum/gw-javascript-ii" target="_blank">JavaScript II Google Group</a></li>
+    <li>The <a href="http://angularjs.org">AngularJS website</a></li>
+    <li>The <a href="https://docs.angularjs.org/api">AngularJS API Docs</a></li>
+    <li>The <a href="https://www.youtube.com/channel/UCbn1OgGei-DV7aSRo_HaAiw">Official AngualrJS YouTube channel</a></li>
+    <li>O'Reilly's <a href="http://it-ebooks.info/book/2076/">AngularJS PDF book</a></li>
+    <li>Learn AngularJS with <a href="https://egghead.io/">Egghead.io video tutorials</a></li>
+    <li>Douglas Crawford's, <a href="http://it-ebooks.info/book/274/">"JavaScript: The Good Parts"</a></li>
+    <li><a href="http://eloquentjavascript.net/">Elloquent JavaScript</a> by Marijn Haverbeke</li>
+    <li>The Mozilla Developer Network <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">JavaScript Reference</a></li>
+    <li><a href="http://www.jshint.com/">JSHint</a> code quality tool</li>
+    <li>Online <a href="http://www.jsoneditoronline.org/">JSON Editor</a></li>
+    <li>Chrome <a href="https://chrome.google.com/webstore/detail/jsonview/chklaanhfefbnpoihckbnefhakgolnmc?hl=en">JSONView</a> extension.</li>
+    <li>Firefox <a href="https://addons.mozilla.org/en-us/firefox/addon/jsonview/">JSONView</a> add-on.</li>
 </ul>
 
-        <h3>About Aaron</h3>
-Senior Software Developer at <a href="http://onfarm.com" target="_blank">OnFarm Systems</a> and instructor at <a href="http://geekwiseacademy.com" target="_blank">Geekwise Academy</a> specializing in the JavaScript <abbr title="MongoDB Express AngularJS and Node.js"><a href="http://mongodb.org" target="_blank">M</a><a href="http://expressjs.com" target="_blank">E</a><a href="http://angularjs.org">A</a><a href="http://nodejs.org" target="_blank">N</a></abbr> stack.
+<p>Additional resource will be referenced throughout the course.</p>
+
+<p>*Course description and syllabus is subject to change at anytime and will be adjusted too accommodate the median skill level demonstrated by the students enrolled in the course.</p>
+
+    </section>
+
+    <div id="disqus_thread" class="comments"></div>
+</div>
+
+<div class="col col-sm-3">
+    <div id="sidebar" class="sidebar">
+
+        <h3>Schedule</h3>
+        <ul class="nav nav-list">
+            
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+	        
+	            <li><a href="/geekwise/webapps/">Web Applications in JavaScript Course Overview</a></li>
+	        
+		
+    
+		
+    
+		
+    
+
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+	        
+		
+    
+		
+    
+		
+    
+
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+	        
+		
+    
+		
+    
+		
+    
+
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+	        
+		
+    
+		
+    
+		
+    
+
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+	        
+		
+    
+		
+    
+		
+    
+
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+	        
+		
+    
+		
+    
+		
+    
+
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+	        
+		
+    
+		
+    
+		
+    
+
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+	        
+		
+    
+		
+    
+		
+    
+
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+	        
+		
+    
+		
+    
+		
+    
+
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+	        
+		
+    
+		
+    
+		
+    
+
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+	        
+		
+    
+		
+    
+		
+    
+
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+	        
+		
+    
+		
+    
+		
+    
+
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+    
+		
+	        
+		
+    
+		
+    
+		
+    
+
+
+        </ul>
+
     </div>
 </div>
 
@@ -271,6 +824,7 @@ Senior Software Developer at <a href="http://onfarm.com" target="_blank">OnFarm 
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     })();
 </script>
+
 
         </div>
     </div>

@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Day 1 - JavaScript Objects</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="Personal blog and speaking schedule of Aaron Roberson, a JavaScript and AngularJS enthusiast specializing in the development of rich internet applications with a thick front-end.">
+    <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+    <link rel="canonical" href="http://pixelpolished.com/geekwise/jsangular/day-1-javascript-objects/">
+
+    <!-- Custom CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/styles/aaronroberson.css">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+
+    <body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Pixel Polished</a>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                
+                    
+                        
+	                        
+                            <li><a href="/about/">About</a></li>
+	                        
+                        
+                    
+                
+                    
+                        
+	                        
+                            <li><a href="/contact/">Contact</a></li>
+	                        
+                        
+                    
+                
+                    
+                
+                    
+                        
+                    
+                
+                    
+                        
+                    
+                
+                    
+                        
+                    
+                
+                    
+                        
+                    
+                
+                    
+                        
+                    
+                
+                    
+                        
+                    
+                
+                    
+                        
+                    
+                
+                    
+                        
+                    
+                
+                    
+                        
+                    
+                
+                    
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                        
+	                        
+                        
+                    
+                
+                    
+                        
+                    
+                
+                    
+                        
+	                        
+                            <li><a href="/speaking/">Speaking</a></li>
+	                        
+                        
+                    
+                
+            </ul>
+            <ul class="nav navbar-right navbar-nav">
+                <li class="dropdown">
+                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">Geekwise <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="/geekwise/webapps">Web Apps in JavaScript</a></li>
+	                    <li><a href="/geekwise/jsangular">JavaScript II with AngularJS</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>
+
+
+    <div class="container">
+
+        <header class="masthead">
+    <div class="container">
+        <div class="row">
+            <div class="col col-sm-12 col-md-8">
+                <div class="social">
+                    <div class="rounded center icon-share"></div>
+                    <div class="share-container rounded">
+                        <a class="share-btn tl icon-google-plus" href='https://plus.google.com/+AaronRoberson'></a>
+                        <a class="share-btn tr icon-twitter" href='https://twitter.com/aaronroberson'></a>
+                        <a class="share-btn bl icon-github" href='https://github.com/aaronroberson'></a>
+                        <a class="share-btn br icon-linkedin" href='https://linkedin.com/in/aaronrobes'></a>
+                    </div>
+                </div>​
+                <h1><a href="/">Aaron Roberson</a>
+                    <p class="lead text-muted">Rich internet applications with a thick front-end</p></h1>
+            </div>
+            <div class="col col-md-4 hidden-sm hidden-xs text-right">
+                <a href="http://devfest.gdgfresno.com" target="_blank">
+                    <img src="/assets/images/speaking/gdg-fresno-speaker.png" style="margin-top: 20px; width: 300px" alt="GDG DevFest Fresno Speaker">
+                </a>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+        <div class="row">
+            <div class="col col-sm-9">
+    
+    <section class="post">
+        <h1 id="day-1---javascript-objects">Day 1 - JavaScript Objects</h1>
+
+<p>In this class you will:</p>
+
+<ul>
+  <li>Review JavaScript types</li>
+  <li>Function scope</li>
+  <li>Callbacks and closures</li>
+  <li>Immediately Invoked Function Expressions (IIFE)</li>
+  <li>Constructor functions</li>
+  <li>Object literals</li>
+  <li>JSON (JavaScript Object Notation)</li>
+</ul>
+
+<h2 id="javascript-types">JavaScript Types</h2>
+
+<p>The name ‘JavaScript’ was decided upon to capitalize on the popularity of Sun Microsystem’s Java language, but has very little in common with Java except that both are object-oriented languages.
+		The JavaScript syntax is modeled after the Java and C languages, meaning that many of the structures from Java and C apply to JavaScript as well.
+		JavaScript has types and operators, core objects and methods. JavaScript types include:</p>
+
+<ul>
+    <li><a href="http://developer.mozilla.org/En/Core_JavaScript_1.5_Reference/Global_Objects/Number" target="_blank" title="Number">Numbers</a></li>
+    <li><a href="http://developer.mozilla.org/En/Core_JavaScript_1.5_Reference/Global_Objects/String" target="_blank" title="String">Strings</a></li>
+    <li><a href="http://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" target="_blank" title="Boolean">Booleans</a></li>
+    <li><a href="http://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" target="_blank" title="Object">Objects</a>
+        <ul>
+            <li><a href="http://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" target="_blank" title="Function">Functions</a></li>
+            <li><a href="http://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array" target="_blank" title="Array">Arrays</a></li>
+            <li><a href="http://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Date" target="_blank" title="Date">Date</a></li>
+            <li><a href="http://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/RegExp" target="_blank" title="Regular Expressions">Regular Expressions</a></li>
+        </ul>
+    </li>
+    <li>Null</li>
+    <li>Undefined</li>
+    <li><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Error" target="_blank" title="Errors">Errors</a></li>
+</ul>
+
+<h2 id="function-scope">Function scope</h2>
+
+<p>Unlike traditional programming languages such as C, JavaScript does NOT have block level scope.
+	JavaScript has function scope, meaning that variables defined within a function body are not accessible outside of the function body:</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="lineno">1</span> <span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+<span class="lineno">2</span> <span class="kd">function</span> <span class="nx">hello</span><span class="p">()</span> <span class="p">{</span>
+<span class="lineno">3</span> 	<span class="kd">var</span> <span class="nx">y</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+<span class="lineno">4</span> 	<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">x</span><span class="p">);</span> <span class="c1">// logs 10</span>
+<span class="lineno">5</span> <span class="p">}</span>
+<span class="lineno">6</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">y</span><span class="p">);</span> <span class="c1">// throws undefined exception</span></code></pre></div>
+
+<p>In the code above, the variable <code>y</code> which is defined within the function body is not accessible outside of the function.</p>
+
+<h2 id="callbacks-and-closures">Callbacks and closures</h2>
+
+<p>A closure in JavaScript provides a convenient way to share function scope between two ore more functions:</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="lineno">1</span> <span class="kd">function</span> <span class="nx">hello</span><span class="p">()</span> <span class="p">{</span>
+<span class="lineno">2</span> 	<span class="kd">var</span> <span class="nx">y</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+<span class="lineno">3</span> 	<span class="k">return</span> <span class="nx">y</span><span class="p">;</span>
+<span class="lineno">4</span> <span class="p">}</span>
+<span class="lineno">5</span> <span class="kd">function</span> <span class="nx">world</span><span class="p">(</span><span class="nx">callback</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">6</span> 	<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">callback</span><span class="p">());</span>
+<span class="lineno">7</span> <span class="p">}</span>
+<span class="lineno">8</span> <span class="nx">world</span><span class="p">(</span><span class="nx">hello</span><span class="p">);</span> <span class="c1">// throws undefined exception</span></code></pre></div>
+
+<h2 id="immediately-invoked-function-expressions">Immediately Invoked Function Expressions</h2>
+
+<p>In JavaScript, the default scope for all variables and functions is the global scope, which is the DOM <code>window</code>.
+		When developing large applications, you should limit what is added to the global scope.
+		To do that, you can create a function that immediately invokes itself, otherwise known as an <abbr title="Immediately Invoked Function Expression">IIFE</abbr>:</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="lineno">1</span> <span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+<span class="lineno">2</span> 
+<span class="lineno">3</span> <span class="p">})();</span></code></pre></div>
+
+<h2 id="constructor-functions">Constructor Functions</h2>
+
+<p>Unlike Java and C, JavaScript does not have classes. In JavaScript, functions are objects that can encapsulate executable code and be inherited and extended:</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="lineno">1</span> <span class="kd">function</span> <span class="nx">Vehicle</span><span class="p">(</span><span class="nx">make</span><span class="p">,</span> <span class="nx">model</span><span class="p">,</span> <span class="nx">doorCount</span><span class="p">,</span> <span class="nx">color</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">2</span>     <span class="k">this</span><span class="p">.</span><span class="nx">make</span> <span class="o">=</span> <span class="nx">make</span><span class="p">;</span>
+<span class="lineno">3</span>     <span class="k">this</span><span class="p">.</span><span class="nx">model</span> <span class="o">=</span> <span class="nx">model</span><span class="p">;</span>
+<span class="lineno">4</span>     <span class="k">this</span><span class="p">.</span><span class="nx">doors</span> <span class="o">=</span> <span class="nx">doorCount</span><span class="p">;</span>
+<span class="lineno">5</span>     <span class="k">this</span><span class="p">.</span><span class="nx">color</span> <span class="o">=</span> <span class="nx">color</span><span class="p">;</span>
+<span class="lineno">6</span> <span class="p">}</span>
+<span class="lineno">7</span> 
+<span class="lineno">8</span> <span class="kd">var</span> <span class="nx">truck</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Vehicle</span><span class="p">(</span><span class="s1">&#39;Toyota&#39;</span><span class="p">,</span> <span class="s1">&#39;Tacoma&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;grey&#39;</span><span class="p">);</span></code></pre></div>
+
+<p>The keyword <code>this</code> inside the function refers to the current object.
+		By assigning variables using <code>this</code> you are adding properties to the object that will exist for every instance of the object.</p>
+
+<div class="alert alert-info">
+    Learn more about the <code>this</code> keyword, <a href="http://toddmotto.com/understanding-the-this-keyword-in-javascript/" target="_blank">Understanding the 'this' keyword in JavaScript</a>
+</div>
+
+<p>The <code>new</code> operator creates an instance of a user-defined object type or of one of the built-in object types that has a constructor function.</p>
+
+<div class="alert alert-info">
+    Learn more about the <code>new</code> operator on the <a href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/new" target="_blank">Mozilla Developer Network</a>
+</div>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="lineno">1</span> <span class="kd">var</span> <span class="nx">truck</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Vehicle</span><span class="p">(</span><span class="s1">&#39;Toyota&#39;</span><span class="p">,</span> <span class="s1">&#39;Tacoma&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;grey&#39;</span><span class="p">);</span>
+<span class="lineno">2</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">truck</span><span class="p">.</span><span class="nx">model</span><span class="p">);</span> <span class="c1">// Outputs Tacoma</span>
+<span class="lineno">3</span> <span class="kd">var</span> <span class="nx">car</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Vehicle</span><span class="p">(</span><span class="s1">&#39;Honda&#39;</span><span class="p">,</span> <span class="s1">&#39;Accord&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;white&#39;</span><span class="p">);</span>
+<span class="lineno">4</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">car</span><span class="p">.</span><span class="nx">model</span><span class="p">);</span> <span class="c1">// Outputs Honda</span></code></pre></div>
+
+<h2 id="object-literals">Object literals</h2>
+
+<p>JavaScript objects, particularly object literals, can be thought of as collections of name-value pairs which are similar to:</p>
+
+<ul>
+  <li>Dictionaries in Python</li>
+  <li>Hashes in Perl and Ruby</li>
+  <li>Hash tables in C and C++</li>
+  <li>HashMaps in Java</li>
+  <li>Associative arrays in PHP</li>
+</ul>
+
+<p>The name (in name-value pair) consists of a JavaScript string, while the value can be any JavaScript value. For example:</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="lineno">1</span> <span class="kd">var</span> <span class="nx">Vehicle</span> <span class="o">=</span> <span class="p">{</span>
+<span class="lineno">2</span>     <span class="nx">make</span><span class="o">:</span> <span class="s1">&#39;Toyota&#39;</span><span class="p">,</span>
+<span class="lineno">3</span>     <span class="nx">model</span><span class="o">:</span> <span class="s1">&#39;Tacoma&#39;</span><span class="p">,</span>
+<span class="lineno">4</span>     <span class="nx">doors</span><span class="o">:</span> <span class="mi">4</span><span class="p">,</span>
+<span class="lineno">5</span>     <span class="nx">color</span><span class="o">:</span> <span class="s1">&#39;grey&#39;</span><span class="p">,</span>
+<span class="lineno">6</span> 	<span class="nx">startEngine</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+<span class="lineno">7</span> 		<span class="k">this</span><span class="p">.</span><span class="nx">engine</span> <span class="o">=</span> <span class="s1">&#39;running&#39;</span><span class="p">;</span>
+<span class="lineno">8</span> 	<span class="p">}</span>
+<span class="lineno">9</span> <span class="p">};</span></code></pre></div>
+
+<p>Once an Object literal has been created, it’s properties can be accessed in one of two ways. The first is the ‘dot’ notation:</p>
+
+<pre class="prettyprint">
+var manufacturer = Vehicle.make;
+</pre>
+
+<p>Or through the ‘array’ or ‘bracket’ notation:</p>
+
+<pre class="prettyprint">
+var manufacturer = Vehicle['make'];
+</pre>
+
+<p>The advantage of the ‘dot’ notation is that is it convenient and easy to read. However, the advantage of the ‘bracket’ notation is that the string can be calculated at run-time which is helpful when looping through properties of an array or escaping <a href="https://developer.mozilla.org/en/JavaScript/Reference/Reserved_Words" target="_blank">reserved words</a>:</p>
+
+<pre class="prettyprint">
+obj.for = "Aaron"; // Syntax error, because 'for' is a reserved word
+obj["for"] = "Aaron"; // works fine
+</pre>
+
+<h2 id="json">JSON</h2>
+
+<p>JSON is a data-interchange format akin to XML and SOAP. Unlike XML and SOAP, it is extremely light-weight and is based upon Object literals in Javascript.</p>
+
+<div class="alert alert-info">
+    Learn more about JSON at <a href="http://json.org" target="_blank">http://json.org</a>
+</div>
+
+    </section>
+
+    <div id="disqus_thread" class="comments"></div>
+</div>
+
+<div class="col col-sm-3">
+    <div id="sidebar" class="sidebar">
+
+        <h3>Schedule</h3>
+        <ul class="nav nav-list">
+            
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            <li><a href="/geekwise/webapps/">Web Applications in JavaScript Course Overview</a></li>
+        
+    
+        
+            <li><a href="/geekwise/jsangular/">Course overview</a></li>
+        
+    
+        
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+            <li><a href="/geekwise/jsangular/day-1-javascript-objects/">Day 1 - JavaScript Objects</a></li>
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            <li><a href="/geekwise/jsangular/day-2-intro-to-angularjs/">Day 2 - Intro to AngularJS</a></li>
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            <li><a href="/geekwise/jsangular/day-3-get-your-swag-on/">Day 3 - Get your swagger on!</a></li>
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            <li><a href="/geekwise/jsangular/day-4-product-listing/">Day 4 - Product Listing</a></li>
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            <li><a href="/geekwise/jsangular/day-5-getting-mean/">Day 5 - Getting MEAN</a></li>
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            <li><a href="/geekwise/jsangular/day-6-directives/">Day 6 - Directives</a></li>
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            <li><a href="/geekwise/jsangular/day-7-shopping-cart-part-1/">Day 7 - Shopping Cart Part 1</a></li>
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            <li><a href="/geekwise/jsangular/day-8-shopping-cart-part-2/">Day 8 - Shopping Cart Part 2</a></li>
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            <li><a href="/geekwise/jsangular/day-9-user-authentication/">Day 9 - User Authentication</a></li>
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            <li><a href="/geekwise/jsangular/day-11-https-and-stripe/">Day 10 - HTTPS and Stripe</a></li>
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        </ul>
+
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'pixelpolished'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+
+        </div>
+    </div>
+
+    <footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <h3>Aaron Roberson</h3>
+                <p class="text-muted">&copy; 2014 Aaron Roberson. All rights reserved.</p>
+                <a class="btn btn-linkedin" href="https://linkedin.com/in/aaronrobes" title="LinkedIn">
+                    <i class="fa fa-linkedin"></i>
+                </a>
+                <a class="btn btn-google-plus" href="" title="Google+">
+                    <i class="fa fa-google-plus"></i>
+                </a>
+                <a class="btn btn-twitter" href="https://twitter.com/aaronroberson" title="Twitter">
+                    <i class="fa fa-twitter"></i>
+                </a>
+                <a class="btn btn-github" href="https://github.com/aaronroberson" title="GitHub">
+                    <i class="fa fa-github"></i>
+                </a>
+            </div>
+            <div class="col-sm-4">
+                <h3>Posts <a href="/feed.xml" class="pull-right" target="_blank"><i class="fa fa-rss"></i></a></h3>
+
+<ul class="nav nav-stacked">
+    
+    <li>
+        <a href="/geekwise/2014/09/18/web-applications-in-javascript/">
+            Geekwise Academy: Web Applications in JavaScript
+            <small class="text-muted pull-right">Sep 18, 2014</small>
+        </a>
+    </li>
+    
+    <li>
+        <a href="/angularjs/2014/08/28/testing-fouc-angularjs-mac/">
+            Testing FOUC with AngularJS (Mac)
+            <small class="text-muted pull-right">Aug 28, 2014</small>
+        </a>
+    </li>
+    
+    <li>
+        <a href="/geekwise/2014/07/18/javascript-2-with-angularjs/">
+            Geekwise Academy: JavaScript II with AngularJS
+            <small class="text-muted pull-right">Jul 18, 2014</small>
+        </a>
+    </li>
+    
+</ul>
+            </div>
+            <div class="col-sm-4">
+                <h3>Mailing list</h3>
+                <div id="mc_embed_signup">
+                    <form action="http://pixelpolished.us8.list-manage1.com/subscribe/post?u=429c146ae2114b333686e6374&amp;id=990bceac24" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control input-sm" name="FNAME" id="mce-FNAME" placeholder="First name" required="required" />
+                                        <span class="input-group-addon"><span class="fa fa-user"></span></span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control input-sm" name="LNAME" id="mce-LNAME" placeholder="Last name" required="required" />
+                                        <span class="input-group-addon"><span class="fa fa-user"></span> </span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <input type="email" class="form-control input-sm" name="EMAIL" id="mce-EMAIL" placeholder="Email address" required="required" />
+                                        <span class="input-group-addon"><span class="fa fa-envelope"></span></span>
+                                    </div>
+                                </div>
+                                <div id="mce-responses" class="clear">
+                                    <div class="response" id="mce-error-response" style="display:none"></div>
+                                    <div class="response" id="mce-success-response" style="display:none"></div>
+                                </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                                <div style="position: absolute; left: -5000px;">
+                                    <input type="text" name="b_429c146ae2114b333686e6374_990bceac24" value="">
+                                </div>
+                                <div class="clear">
+                                    <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="btn btn-default btn-sm pull-right">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('#sidebar').affix({
+                offset: {
+                    top: 180,
+                    bottom: function () {
+                        return (this.bottom = $('.footer').outerHeight(true))
+                    }
+                }
+            });
+        });
+        window.analytics=window.analytics||[],window.analytics.methods=["identify","group","track","page","pageview","alias","ready","on","once","off","trackLink","trackForm","trackClick","trackSubmit"],window.analytics.factory=function(t){return function(){var a=Array.prototype.slice.call(arguments);return a.unshift(t),window.analytics.push(a),window.analytics}};for(var i=0;i<window.analytics.methods.length;i++){var key=window.analytics.methods[i];window.analytics[key]=window.analytics.factory(key)}window.analytics.load=function(t){if(!document.getElementById("analytics-js")){var a=document.createElement("script");a.type="text/javascript",a.id="analytics-js",a.async=!0,a.src=("https:"===document.location.protocol?"https://":"http://")+"cdn.segment.io/analytics.js/v1/"+t+"/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(a,n)}},window.analytics.SNIPPET_VERSION="2.0.9",
+                window.analytics.load("kqe985dobm");
+        window.analytics.page();
+    </script>
+    </body>
+</html>

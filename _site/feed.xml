@@ -5,15 +5,17 @@
     <description>Personal blog and speaking schedule of Aaron Roberson, a JavaScript and AngularJS enthusiast specializing in the development of rich internet applications with a thick front-end.</description>
     <link>http://pixelpolished.com/</link>
     <atom:link href="http://pixelpolished.com/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 18 Sep 2014 12:40:34 -0700</pubDate>
-    <lastBuildDate>Thu, 18 Sep 2014 12:40:34 -0700</lastBuildDate>
-    <generator>Jekyll v2.1.1</generator>
+    <pubDate>Sun, 26 Oct 2014 11:28:20 -0700</pubDate>
+    <lastBuildDate>Sun, 26 Oct 2014 11:28:20 -0700</lastBuildDate>
+    <generator>Jekyll v2.4.0</generator>
     
       <item>
-        <title>Web Applications in JavaScript</title>
-        <description>&lt;p&gt;In the course, Web Applications in JavaScript, we’ll be covering the core concepts for building functional web applications using the MEAN stack: MongoDB, Express.js, AngularJS, and Node.js.&lt;/p&gt;
+        <title>Geekwise Academy: Web Applications in JavaScript</title>
+        <description>&lt;p&gt;In this course we’ll be covering the core concepts for building functional web applications using the MEAN stack: &lt;a href=&quot;http://mongodb.com&quot;&gt;MongoDB&lt;/a&gt;, &lt;a href=&quot;http://epxressjs.com&quot;&gt;Express.js&lt;/a&gt;, &lt;a href=&quot;http://angularjs.org&quot;&gt;AngularJS&lt;/a&gt;, and &lt;a href=&quot;http://nodejs.org&quot;&gt;Node.js&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;We are going to spend the first few classes learning noSQL database concepts and MongoDB. We’ll install and run MongoDB on our local machines and will cover the following:&lt;/p&gt;
+&lt;h2 id=&quot;course-description&quot;&gt;Course Description&lt;/h2&gt;
+
+&lt;p&gt;We are going to spend the first few classes learning noSQL database concepts and &lt;a href=&quot;http://mongodb.com&quot;&gt;MongoDB&lt;/a&gt;. We’ll install and run MongoDB on our local machines and will cover the following:&lt;/p&gt;
 
 &lt;ol&gt;
   &lt;li&gt;Shell commands&lt;/li&gt;
@@ -32,7 +34,7 @@
   &lt;li&gt;&lt;a href=&quot;http://stripe.com&quot;&gt;Stripe&lt;/a&gt; integration (customer, billing and order history)&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;The remaining portion of the class will be spent learning and using &lt;a href=&quot;http://angularjs.org&quot;&gt;Google’s AngularJS&lt;/a&gt; MVC/MVVM framework to:&lt;/p&gt;
+&lt;p&gt;The remaining portion of the class will be spent learning and using &lt;a href=&quot;http://angularjs.org&quot;&gt;AngularJS&lt;/a&gt; MVC/MVVM framework to:&lt;/p&gt;
 
 &lt;ol&gt;
   &lt;li&gt;Perform client-side routing&lt;/li&gt;
@@ -43,14 +45,48 @@
 
 &lt;p&gt;Finally, we’ll deploy our application to the cloud using a PaaS (Platform as a Service) solution such as &lt;a href=&quot;http://openshift.com&quot;&gt;OpenShift&lt;/a&gt;, &lt;a href=&quot;http://heroku.com&quot;&gt;Heroku&lt;/a&gt;, &lt;a href=&quot;https://azure.microsoft.com/en-us/&quot;&gt;Microsoft Azure&lt;/a&gt; or the service of your choice.&lt;/p&gt;
 
+&lt;h2 id=&quot;pre-requisites&quot;&gt;Pre-requisites&lt;/h2&gt;
+
+&lt;p&gt;Here are what I would consider to be the basic pre-requisites:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Good understanding of HTML and CSS&lt;/li&gt;
+  &lt;li&gt;Working understanding of the DOM (Document Object Model)&lt;/li&gt;
+  &lt;li&gt;Basic programming concepts (data types, syntax, data structures, control structures, and control flow)&lt;/li&gt;
+  &lt;li&gt;Beginning to intermediate JavaScript&lt;/li&gt;
+  &lt;li&gt;Familiarity with AngularJS&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Great to have but not required:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Familiarity with MVC/MVVM design pattern/frameworks&lt;/li&gt;
+  &lt;li&gt;JavaScript debugging&lt;/li&gt;
+  &lt;li&gt;Familiarity with source control (Git/SVN)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Below are some resources for a basic understanding of the aforementioned concepts, languages and frameworks:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.codeschool.com/courses/javascript-road-trip-part-1&quot;&gt;JavaScript Roadtrip&lt;/a&gt; (FREE)&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.codeschool.com/courses/javascript-road-trip-part-2&quot;&gt;JavaScript Roadtrip Part 2&lt;/a&gt; or equivalent &lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.codeschool.com/courses/shaping-up-with-angular-js&quot;&gt;Shaping up with AngularJS&lt;/a&gt; (FREE)&lt;/p&gt;
+
+&lt;p&gt;Great to have (but not required): &lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.codeschool.com/courses/discover-devtools&quot;&gt;Discover DevTools&lt;/a&gt; (FREE) &lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.codeschool.com/courses/try-git&quot;&gt;Try Git&lt;/a&gt; (FREE)&lt;/p&gt;
+
 &lt;p&gt;The course will take place at the &lt;a href=&quot;http://bitwiseindustries.com&quot;&gt;Bitwise Industries&lt;/a&gt; facilities and will include 36-hours of in-person instruction. If you haven’t already, &lt;a href=&quot;http://geekwiseacademy.com/courses&quot;&gt;enroll now!&lt;/a&gt;&lt;/p&gt;
 </description>
         <pubDate>Thu, 18 Sep 2014 00:00:00 -0700</pubDate>
-        <link>http://pixelpolished.com/angularjs/2014/09/18/web-applications-in-javascript/</link>
-        <guid isPermaLink="true">http://pixelpolished.com/angularjs/2014/09/18/web-applications-in-javascript/</guid>
+        <link>http://pixelpolished.com/geekwise/2014/09/18/web-applications-in-javascript/</link>
+        <guid isPermaLink="true">http://pixelpolished.com/geekwise/2014/09/18/web-applications-in-javascript/</guid>
         
         
-        <category>angularjs</category>
+        <category>geekwise</category>
         
       </item>
     

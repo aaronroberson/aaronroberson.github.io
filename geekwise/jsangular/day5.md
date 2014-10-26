@@ -1,0 +1,212 @@
+---
+layout: geekwise
+title: Day 5 - Getting MEAN
+permalink: /geekwise/jsangular/day-5-getting-mean/
+tags: geekwise
+day: 5
+comments: true
+---
+
+<h1>Day 5 - Getting MEAN</h1>
+
+<p>In this class you will be:</p>
+<ul>
+    <li>Creating a MongoDB database</li>
+    <li>Adding Mongoose <abbr title="Object Document Mapper">ODM</abbr> to Express</li>
+    <li>Creating a RESTful <abbr title="Application Programming Interface">API</abbr></li>
+    <li>Updating the SwagService</li>
+    <li>Learning Angular $resource</li>
+    <li>Create a product details state</li>
+    <li>Create a product details controller</li>
+    <li>Bind a product to the details view</li>
+</ul>
+
+<h2>What is MEAN?</h2>
+<p>MEAN is an acronym for MongoDB, Express.js, AngularJS and Node.js.
+    Similar to MAMP, LAMP or WAMP (Mac/Linux/Windows, Apache, MySQL and Php), MEAN is a front-end and backed-end stack for dynamic web application development.</p>
+
+<h2>Adding the M in MEAN</h2>
+<p>The Swagwise application will be using a third-party, cloud hosted database to serve up it's data.
+    Go to <a href="http://mongolab.com" target="_blank">http://mongolab.com</a> and create a FREE sandbox account.
+    After verifying your account from the email verification link, log into your new mongolab account and follow the steps below:</p>
+<ol>
+    <li>Click the "Create new" button to create a new MongoDB instance</li>
+    <li>Select the Google Cloud Platform</li>
+    <li>Select the Single-node (development) plan</li>
+    <li>Give your database a name (such as 'swagwise')</li>
+    <li>Click Create new MongoDB deployment</li>
+</ol>
+<p>Congratulations, you just created a new MongoDB instance in the cloud!</p>
+
+<h3>Add a database user</h3>
+<p>With the new database instance selected, click the 'Users' tab and then click the 'Add database user' button.
+    Enter a username and password (different than your mongolab account credentials). You will use this in the mongoose connection string later.
+
+<div class="alert alert-info">
+    <p>The connection string to your Mongolab instance is displayed on the database page in the Mongolab website.<br/>
+        mongodb://[dbuser]:[dbpassword]@[host]:[port]/[database]</p>
+</div>
+
+<div class="alert alert-warning">
+    Since your source code is hosted using a public account on github.com, use a generic database user password that is unrelated to any real accounts you may have elsewhere on the internet.
+</div>
+
+<h2>Create the swag collection</h2>
+<p>With the new database instance selected, click the 'Add collection" button and create a new collection named 'swag'.
+    Click the 'Add document' button. Paste in a single product from the '/app/assets/json/swag.json' file.
+    Repeat the last two steps above to enter each product as a document in the collection.</p>
+
+
+<h2>Adding MongoDB and Mongoose dependencies</h2>
+<p>Enter the following command to install the mongodb drivers globally:</p>
+<pre class="prettyprint">
+npm install -g mongodb
+</pre>
+
+<p>Now enter the following command to install the mongoose dependencies to the Swagwise application:</p>
+<pre class="prettyprint">
+npm install -S mongoose mongodb-uri
+</pre>
+
+<p>The <code>-S</code> flag informs node to update the package.json file with the dependencies.</p>
+
+<p>Require the mongoose and mongodb-uri middleware in the module depenency section at the top of the file in server.js:</p>
+
+<pre class="prettyprint">
+var mongoose     = require('mongoose');
+var uriUtil      = require('mongodb-uri');
+</pre>
+
+<p>Add the Mongoose ODM connector to the 'server.js' file: </p>
+{% gist aaronroberson/74e27e57013e467c0fde mongoose.js %}
+
+<div class="alert alert-info">
+    Learn more about <a href="http://mongoosejs.com/" target="_blank">mongoose</a>
+</div>
+
+<h2>Adding a Model</h2>
+<p>Mongoose needs a database model and schema to fetch the data from our MongoDB.
+    Create a new directory under the application root and name it 'models'.
+    Create a new file named 'Swag.js' and add the following:</p>
+{% gist aaronroberson/74e27e57013e467c0fde Swag.js %}
+
+<p>Include the model in the server.js using the following:</p>
+{% gist aaronroberson/74e27e57013e467c0fde models.js %}
+
+<h2>Adding an API to the routes</h2>
+
+<p>Update the 'routes.js' file by creating the following additional rest points:</p>
+{% gist aaronroberson/74e27e57013e467c0fde routes.js %}
+
+<h2>Updating the SwagService</h2>
+<p>Update the SwagService so that it no longer uses the products.json file.
+    Use the new route to the API you created in the step above:</p>
+{% gist aaronroberson/74e27e57013e467c0fde services.js %}
+
+<h2>Angular $resource</h2>
+<p>Angular $resource creates a resource object that lets you interact with a RESTful API.
+    The returned object has action methods that use HTTP verbs (GET, POST, PUT, DELETE and JSONP) to interact with the server.
+    The resource is not a part of the core of Angular and must be declared as an application dependency.</p>
+<p>Add angular-resource to the index.html view:
+<pre class="prettyprint">
+&lt;script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.13/angular-resource.min.js"&gt;&lt;/script&gt;
+</pre>
+<p>Update app.js to include ngResource as a dependency:</p>
+{% gist aaronroberson/74e27e57013e467c0fde app.js %}
+
+<p>Update the SwagService, removing the '$http' service as a dependency and adding $resource in its place.
+    Remove the object literal and have the SwagService return the $resource directly:</p>
+{% gist aaronroberson/74e27e57013e467c0fde resource.js %}
+
+<div class="alert alert-info">
+    Learn more about <a href="https://docs.angularjs.org/api/ngResource/service/$resource" target="_blank">$resource</a>
+</div>
+
+<h2>Updating the SwagController</h2>
+<p>Instead of unwrapping the promise returned from the SwagService.swag method, update the SwagController to use the $resource service using the convenience 'query' method</p>
+
+<pre class="prettyprint">
+...
+app.controller('SwagController', function($scope, SwagService) {
+
+    $scope.swagSearch = '';
+
+    $scope.swag = SwagService.query();
+
+});
+...
+</pre>
+
+<h2>Adding Product Details</h2>
+
+<h3>Creating a product details state</h3>
+<p>Update the states.js file to include an additional state for the product detail page:</p>
+<pre class="prettyprint lang-javascript">
+...
+.state('product', {
+url: '/product/:id',
+controller: 'ProductDetail'
+templateUrl: 'detail.html'
+})
+...
+</pre>
+<p>In the code above, you've added a state named 'product' and specified the url, controller and templateUrl.
+    You've also included a URL parameter named 'id' by adding <code>:id</code> to the url property of the state.</p>
+<div class="alert alert-info">Learn more about <a href="https://github.com/angular-ui/ui-router/wiki/URL-Routing">URL Routing in Angular UI-Router</a>.</div>
+
+<h3>Adding the product detail controller</h3>
+<p>Add the 'ProductDetail' controller to the controllers.js file':</p>
+<pre class="prettyprint lang-javascript">
+(function(angular) {
+...
+app.controller('ProductDetail', function($scope) {
+
+});
+...
+</pre>
+<p>Because the product detail page will be displaying information for a single product, the controller needs to know which product to display.</p>
+<h3>UI-Router $stateParams</h3>
+<p>The UI-Router module contains an additional service named $stateParams.
+    The $stateParams service is an object that will have one key per url parameter.
+    The $stateParams is a perfect way to provide your controllers or other services with the individual parts of the navigated url.</p>
+<div class="alert alert-info">Learn more about the <a href="https://github.com/angular-ui/ui-router/wiki/URL-Routing">URL Routing and the $stateParams service</a>.</div>
+<p>Update the ProductDetail controller with the $stateParams service and the SwagService injected into it:</p>
+<pre class="prettyprint lang-javascript">
+...
+app.controller('ProductDetail', function($scope, <strong>$stateParams, SwagService</strong>) {
+
+    // Set the id from the $stateParams to a local product id variable
+    var product_id = $stateParams.id;
+
+});
+...
+</pre>
+<p>Because of the inclusion of an <code>:id</code> parameter in the product detail state, the $stateParams object contains an <code>id</code> property (or key) when the product detail state is activated.</p>
+<p>Using the product id passed in from the URL, get the product matching the URL from the SwagService:</p>
+<pre class="prettyprint lang-javascript">
+...
+app.controller('ProductDetail', function($scope, $stateParams, SwagService</strong>) {
+
+    // Set the id from the $stateParams to a local product_guid variable
+    var product_id = $stateParams.id;
+
+    // Initialize an empty product variable on the scope
+    $scope.product = SwagService.get({id: product_id});
+
+});
+...
+</pre>
+
+<h2>Updating the detail view</h2>
+<p>On your own (but in class) update the detail.html page, binding the product to the view.
+    Then, update the list view by finding the 'View details' link and adding the <code>ui-sref</code> directive, linking it to the detail page for that product.
+The <code>ui-sref</code> directive will accept the name of a state as a function with the url parameters passed in as an object:</p>
+<pre class="prettyprint lang-html">
+ui-sref=&quot;product({id: item.id})&quot;
+</pre>
+
+<p>In the browser, navigate to the products page and click the 'details' button to view the details for the selected product.</p>
+
+<div class="alert alert-info">
+    <p>Be sure to commit your changes to Github!</p>
+</div>
