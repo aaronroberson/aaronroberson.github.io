@@ -7,6 +7,8 @@ day: 1
 comments: true
 ---
 
+#Day 1: NoSQL and MongoDB
+
 ##NoSQL 
 
 NoSQL stands for "Not only SQL", meaning that it can be used along side of existing SQL database implementations or replace them completely.
