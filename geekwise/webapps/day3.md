@@ -119,6 +119,17 @@ The conversation gets even more interesting when you consider embedded documents
 
 There's no hard rule (well, aside from 16MB). Play with different approaches and you'll get a sense of what does and does not feel right.
 
+## Importing ##
+If you have a JSON file with documents(rows in SQL) already created, you can import that JSON file as a collection into your database. If you want to do this, be sure you run the following command in a separate terminal window (not inside your mongo shell):
+
+	mongoimport --db swagwise --collection products --type json --file swag.json --jsonArray
+
+A little explanation of the above command: 'swagwise' is the name of the database you're importing this into. 'products' is the name of the collection you're creating with this import. 'swag.json' is the name of the JSON file that you are importing (if this file is in another location other than the current folder you're in, be sure to include the correct path to that file e.g. /git-repos/mongo-practice/swag.json). 
+
+If you try to run the import within your mongo shell, you will get this error: 
+
+	SyntaxError: Unexpected identifier
+
 ## Backups and Restore ##
 Within the MongoDB `bin` folder is a `mongodump` executable. Simply executing `mongodump` will connect to localhost and backup all of your databases to a `dump` subfolder. You can type `mongodump --help` to see additional options. Common options are `--db DBNAME` to back up a specific database and `--collection COLLECTIONNAME` to back up a specific collection. You can then use the `mongorestore` executable, located in the same `bin` folder, to restore a previously made backup. Again, the `--db` and `--collection` can be specified to restore a specific database and/or collection.  `mongodump` and `mongorestore` operate on BSON, which is MongoDB's native format.
 
