@@ -7,6 +7,10 @@ day: 3
 comments: true
 ---
 
+## Swagwise JSON
+
+[Products](https://gist.githubusercontent.com/aaronroberson/9dee9b49de40302a58d6/raw/swag.json)
+
 Let's shift gears and have a more abstract conversation about MongoDB. Explaining a few new terms and some new syntax is a trivial task. Having a conversation about modeling with a new paradigm isn't as easy. The truth is that most of us are still finding out what works and what doesn't when it comes to modeling with these new technologies. It's a conversation we can start having, but ultimately you'll have to practice and learn on real code.
 
 Out of all NoSQL databases, document-oriented databases are probably the most similar to relational databases - at least when it comes to modeling. However, the differences that exist are important.
