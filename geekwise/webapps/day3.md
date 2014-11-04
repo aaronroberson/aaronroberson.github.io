@@ -1,6 +1,6 @@
 ---
 layout: webapps
-title: Day 1 - MongoDB Data Modeling
+title: Day 3 - MongoDB Data Modeling
 permalink: /geekwise/webapps/day3-mongodb-data-modeling/
 tags: webapps
 day: 3
