@@ -1,6 +1,6 @@
 ---
 layout: webapps
-title: Day 1 - NoSQL and MongoDB
+title: Day 2 - NoSQL and MongoDB
 permalink: /geekwise/webapps/day1-nosql-mongodb/
 tags: webapps
 day: 2
