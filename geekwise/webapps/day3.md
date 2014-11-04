@@ -119,4 +119,29 @@ The conversation gets even more interesting when you consider embedded documents
 
 There's no hard rule (well, aside from 16MB). Play with different approaches and you'll get a sense of what does and does not feel right.
 
-This content was stolen wholesale from [Chapter 4 of the Little Mongo Book](https://github.com/karlseguin/the-little-mongodb-book/blob/master/en/mongodb.markdown)
+## Backups and Restore ##
+Within the MongoDB `bin` folder is a `mongodump` executable. Simply executing `mongodump` will connect to localhost and backup all of your databases to a `dump` subfolder. You can type `mongodump --help` to see additional options. Common options are `--db DBNAME` to back up a specific database and `--collection COLLECTIONNAME` to back up a specific collection. You can then use the `mongorestore` executable, located in the same `bin` folder, to restore a previously made backup. Again, the `--db` and `--collection` can be specified to restore a specific database and/or collection.  `mongodump` and `mongorestore` operate on BSON, which is MongoDB's native format.
+
+For example, to back up our `learn` database to a `backup` folder, we'd execute (this is its own executable which you run in a command/terminal window, not within the mongo shell itself):
+
+	mongodump --db learn --out backup
+
+To restore only the `unicorns` collection, we could then do:
+
+	mongorestore --db learn --collection unicorns \
+		backup/learn/unicorns.bson
+
+It's worth pointing out that `mongoexport` and `mongoimport` are two other executables which can be used to export and import data from JSON or CSV. For example, we can get a JSON output by doing:
+
+	mongoexport --db learn --collection unicorns
+
+And a CSV output by doing:
+
+	mongoexport --db learn \
+		--collection unicorns \
+		--csv --fields name,weight,vampires
+
+Note that `mongoexport` and `mongoimport` cannot always represent your data. Only `mongodump` and `mongorestore` should ever be used for actual backups.  You can read more about [your backup options](http://docs.mongodb.org/manual/core/backups/) in the MongoDB Manual.
+
+
+This content was stolen wholesale from [Little Mongo Book](https://github.com/karlseguin/the-little-mongodb-book/blob/master/en/mongodb.markdown)
