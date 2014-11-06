@@ -53,3 +53,57 @@ To tell the server that the response has completed, call the `end()` method on t
 
 Create a new file named `app.js` and use the code above to create your first HTTP server. In the response, `write` the message "Hello world".
 
+#Express
+
+Express is the `E` in `MEAN` and represents the HTTP framework built on top of Node.js for faster, more robust support of building web servers.
+
+##Getting started with Express
+
+First, create a directory to hold your application, if you haven't already done so, and make that your working directory.
+
+    $ mkdir sandbox
+    $ cd sandbox
+
+Create a package.json file in the directory of interest, if it does not exist already, with the npm init command.
+
+    $ npm init
+    
+Install Express in the app directory and save it in the dependecies list:
+
+    $ npm install express --save
+    
+To install Express temporarily, and not add it to the dependecies list, omit the --save option:
+
+    $ npm install express
+
+###Basic HTTP server in Express
+
+Here is an example of a very basic Express app.
+
+    var express = require('express')
+    var app = express()
+    
+    app.get('/', function (req, res) {
+      res.send('Hello World!')
+    });
+    
+    var server = app.listen(3000, function () {
+    
+      var host = server.address().address
+      var port = server.address().port
+    
+      console.log('Example app listening at http://%s:%s', host, port)
+    
+    });
+    
+Save the code in a file named app.js and run it with the following command.
+
+    $ node app.js
+    
+Then, load [http://localhost:3000/](http://localhost:3000/) in a browser to see the output.
+
+##Resources
+
+[Read-Eval-Print-Loop](http://nodejs.org/api/repl.html)
+
+[NPM - Node Package Manager](Cheat sheet http://browsenpm.org/help)
