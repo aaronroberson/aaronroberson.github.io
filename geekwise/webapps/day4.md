@@ -117,3 +117,5 @@ Then, load [http://localhost:3000/](http://localhost:3000/) in a browser to see 
 [Read-Eval-Print-Loop](http://nodejs.org/api/repl.html)
 
 [NPM - Node Package Manager](Cheat sheet http://browsenpm.org/help)
+
+[Understanding Module Exports](http://www.sitepoint.com/understanding-module-exports-exports-node-js/)
