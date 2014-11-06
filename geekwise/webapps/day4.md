@@ -1,13 +1,13 @@
 ---
 layout: webapps
-title: Day 4 - Intro to Node.js
-permalink: /geekwise/webapps/day4-intro-to-nodejs/
+title: Day 4 - Intro to Node and Express
+permalink: /geekwise/webapps/day4-intro-to-node-and-express/
 tags: webapps
 day: 4
 comments: true
 ---
 
-## Introduction to Node.js
+## Introduction to Node and Express
 
 The `N` in `MEAN` stands for Node.js, and can be thought of as a replacement for the `A` in `LAMP`, otherwise known as Apache. The Node.js website describes it as "...a platform built on Chrome's JavaScript runtime for easily building fast, scalable network applications. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient, perfect for data-intensive real-time applications that run across distributed devices." 
 
