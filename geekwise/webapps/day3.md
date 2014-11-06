@@ -155,4 +155,4 @@ And a CSV output by doing:
 Note that `mongoexport` and `mongoimport` cannot always represent your data. Only `mongodump` and `mongorestore` should ever be used for actual backups.  You can read more about [your backup options](http://docs.mongodb.org/manual/core/backups/) in the MongoDB Manual.
 
 
-This content was stolen wholesale from [Little Mongo Book](https://github.com/karlseguin/the-little-mongodb-book/blob/master/en/mongodb.markdown)
+95% of this content was taken from [Little Mongo Book](https://github.com/karlseguin/the-little-mongodb-book/blob/master/en/mongodb.markdown)
