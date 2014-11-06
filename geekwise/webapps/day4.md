@@ -53,6 +53,16 @@ To tell the server that the response has completed, call the `end()` method on t
 
 Create a new file named `app.js` and use the code above to create your first HTTP server. In the response, `write` the message "Hello world".
 
+##NodeMon
+
+Starting and restarting your server is a pain in the ass. If we want to make changes without having to constantly press ctrl + c (or cmd + c for mac) and then press 'node app.js', let's install a package called nodemon.
+  
+      npm install -g nodemon
+
+Npm stands for Node Package Manager. The '-g' flag tells your computer to install this package globally. 
+
+Now that we've got nodemon installed, go back to your terminal and type 'nodemon app.js'. Now when you make changes to your code, nodemon will automatically pick those up and you can refresh your browser to see those changes without having to stop and restart your server.
+
 #Express
 
 Express is the `E` in `MEAN` and represents the HTTP framework built on top of Node.js for faster, more robust support of building web servers.
