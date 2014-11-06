@@ -7,7 +7,7 @@ day: 4
 comments: true
 ---
 
-## Introduction to Node and Express
+# Introduction to Node and Express
 
 The `N` in `MEAN` stands for Node.js, and can be thought of as a replacement for the `A` in `LAMP`, otherwise known as Apache. The Node.js website describes it as "...a platform built on Chrome's JavaScript runtime for easily building fast, scalable network applications. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient, perfect for data-intensive real-time applications that run across distributed devices." 
 
@@ -57,25 +57,34 @@ The `listen` method also accepts a call-back function that will be invoked once 
         console.log('Example app listening at http://localhost:9001');
     });
       
-##First http server
+###Hello World Node App
 
 Create a new file named `app.js` and use the code above to create your first HTTP server. In the response, `write` the message "Hello world".
 
-##NodeMon
+To run your hello world application, change directories to the location of `app.js` and enter the following command:
 
-Starting and restarting your server is a pain in the ass. If we want to make changes without having to constantly press ctrl + c (or cmd + c for mac) and then issue the command 'node app.js', let's install a package called nodemon.
+    $ node app.js
+    
+Then, load [http://localhost:9001/](http://localhost:9001/){:target="_blank"} in a browser to see the output.
+
+###NodeMon
+
+Stopping and restarting your server (by pressing `ctrl + c` or `cmd + c` for mac and then re-issuing the command `node app.js`) every time you make a change is a pain in the ass. To make changes without having to constantly terminate the process, install the [nodemon](http://nodemon.io/){:target="_blank"} package:
   
-      npm install -g nodemon
+      $ npm install -g nodemon
 
-Npm stands for [Node Package Modules](https://www.npmjs.org/){:target="_blank"}. The '-g' flag tells your computer to install this package globally. 
+Npm stands for [Node Package Modules](https://www.npmjs.org/){:target="_blank"}. The `-g` flag tells your npm to install this package globally as opposed to the default of installing packages in a `node_modules` directory in the current location. 
 
-Now that we've got nodemon installed, go back to your terminal and type 'nodemon app.js'. Now when you make changes to your code, nodemon will automatically pick those up and you can refresh your browser to see those changes without having to stop and restart your server.
+Now that we've got nodemon installed, go back to your terminal and issue the following command:
+    $ nodemon app.js
+    
+Now when you make changes to your code, nodemon will automatically pick those up and you can refresh your browser to see those changes without having to stop and restart your server manually.
 
-#Express
+##Express
 
 Express is the `E` in `MEAN` and represents the HTTP framework built on top of Node.js for faster, more robust support of building web servers.
 
-##Getting started with Express
+###Getting started with Express
 
 First, create a directory to hold your application, if you haven't already done so, and make that your working directory.
 
