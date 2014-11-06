@@ -13,11 +13,11 @@ The `N` in `MEAN` stands for Node.js, and can be thought of as a replacement for
 
 In this class, we will be using Node.js to:
  
-** Run an HTTP server
-** Build out a RESTful API for managing the data within our mongoDB server
-** Secure protected routes that require authentication
-** Support OAuth credentials for Google, Facebook and Twitter
-** More. . .
+* Run an HTTP server
+* Build out a RESTful API for managing the data within our mongoDB server
+* Secure protected routes that require authentication
+* Support OAuth credentials for Google, Facebook and Twitter
+* More. . .
 
 For a more in-depth overview of Node.js from it's creator, Ryan Dhal, view the following video:
 
