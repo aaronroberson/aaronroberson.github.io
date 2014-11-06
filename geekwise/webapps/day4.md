@@ -47,7 +47,7 @@ To tell the server that the response has completed, call the `end()` method on t
      
 Because Node (and JavaScript) are non-blocking and asynchronous in nature, the response will remain open until explicitly closed. This makes the use of web sockets and real-time collaboration extremely easy in node (for more on web sockets, check out [socket.io](http://socket.io/){:target="_blank"}).
      
-Even though the server was created, it will not run until we tell it which port to run on. Finally, we tell the server what port to listen on:
+Even though the server was created, it will not run until we tell it which port to listen on:
 
       server.listen(9001);
       
@@ -139,4 +139,4 @@ Then, load [http://localhost:3000/](http://localhost:3000/){:target="_blank"} in
 
 [Front-end Job Interview Questions](https://github.com/darcyclarke/Front-end-Developer-Interview-Questions){:target="_blank"}
 
-Secrets of the JavaScript Ninja by John Resig - [Free book](http://it-ebooks.info/book/2274/){:target="_blank"} [Interactive tutorial=(http://ejohn.org/apps/learn/){:target="_blank"}
+Secrets of the JavaScript Ninja by John Resig - [Free book](http://it-ebooks.info/book/2274/){:target="_blank"} [Interactive tutorial](http://ejohn.org/apps/learn/){:target="_blank"}
