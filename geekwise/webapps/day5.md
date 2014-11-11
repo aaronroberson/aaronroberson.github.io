@@ -17,7 +17,44 @@ To connect to your local database, install the [mongoose ODM](http://mongoosejs.
 
 Read the [Getting started guide](http://mongoosejs.com/docs/index.html) to get familiar with Mongoose and connecting to a local mongo database instance.
 
-For reference: ODM(Object Document Mapper)  ORM(Object Role Modeling)
+    var mongoose = require('mongoose');
+    mongoose.connect('mongodb://localhost/test');
+    
+    var db = mongoose.connection;
+    
+    var kittySchema = mongoose.Schema({
+        name: String
+    });
+    
+    kittySchema.methods.speak = function () {
+      var greeting = this.name
+        ? "Meow name is " + this.name
+        : "I don't have a name"
+      console.log(greeting);
+    }
+    
+    var Kitten = mongoose.model('Mouse', kittySchema);
+    
+    var silence = new Kitten({ name: 'Silence' });
+    	console.log(silence.name) // 'Silence'
+    
+    var fluffy = new Kitten({ name: 'fluffy' });
+    fluffy.speak() // "Meow name is fluffy"
+    
+    db.on('error', console.error.bind(console, 'connection error:'));
+    db.once('open', function callback () {
+    
+    	fluffy.save(function (err, fluffy) {
+    		if (err) return console.error(err);
+    		fluffy.speak();
+    
+    		Kitten.find(function (err, kittens) {
+    			  if (err) return console.error(err);
+    			  console.log(kittens)
+    		});
+    	});
+    
+    });
 
 ## Todo MVC
 
@@ -161,6 +198,7 @@ Create a new directory named controllers and inside it create a file named `todo
     ];
 
     module.exports = controller;
+    
 Because we are going to be doing some CRUD operations over the wire, we need to register the following utilities with our Express app:
 
     app.use(express.json());
