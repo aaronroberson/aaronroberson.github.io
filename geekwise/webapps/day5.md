@@ -13,9 +13,11 @@ comments: true
 
 To connect to your local database, install the [mongoose ODM](http://mongoosejs.com/){:target="_blank"} module using npm:
 
-    npm install mongoose -g
+    npm install mongoose
 
 Read the [Getting started guide](http://mongoosejs.com/docs/index.html) to get familiar with Mongoose and connecting to a local mongo database instance.
+
+For reference: ODM(Object Document Mapper)  ORM(Object Role Modeling)
 
 ## Todo MVC
 
