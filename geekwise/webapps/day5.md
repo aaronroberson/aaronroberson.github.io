@@ -79,7 +79,7 @@ Create a new directory named 'models' and create a Todo.js file in it. Create a 
     mongoose.model('todo',TodoSchema);
 
 
-Next, we're going to tell Express that we want to use the Jade template engine to render our views:
+Next, we're going to tell Express that we want to use the EJS template engine to render our views:
 
 app.set('view engine','ejs');
 
