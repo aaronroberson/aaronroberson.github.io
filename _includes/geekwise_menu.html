@@ -1,7 +1,9 @@
 {% for day in (0..10) %}
     {% for page in site.pages %}
-        {% if page.day == day  %}
-            <li><a href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a></li>
+		{% if page.tags == 'geekwise' %}
+	        {% if page.day == day  %}
+	            <li><a href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a></li>
+			{% endif %}
         {% endif %}
     {% endfor %}
 {% endfor %}
