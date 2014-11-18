@@ -17,13 +17,13 @@ comments: true
 
 <a href="http://expressjs.com/starter/basic-routing.html" target="_blank">http://expressjs.com/starter/basic-routing.html</a>
 
-    Learn more about the [Express Router](http://expressjs.com/4x/api.html#router)
+<p>Learn more about the <a href="http://expressjs.com/4x/api.html#router">Express Router</a></p>
 
 <h3>REST</h3>
 
 <p>Take a moment in class to read, <a href="http://www.looah.com/source/view/2284" target="_blank">How I Explained REST to My Wife</a></p>.
 
-    Learn more about creating a [RESTful API using Node and Express 4](http://scotch.io/tutorials/javascript/build-a-restful-api-using-node-and-express-4)
+<p>Learn more about creating a <a href="http://scotch.io/tutorials/javascript/build-a-restful-api-using-node-and-express-4">RESTful API using Node and Express 4</a></p>
 
 <h2>Client-side URL Routing</h2>
 <p>The Swagwise application will be a <abbr title="Single Page Application">SPA</abbr>.
