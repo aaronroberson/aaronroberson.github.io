@@ -25,6 +25,71 @@ comments: true
 
 <p>Learn more about creating a <a href="http://scotch.io/tutorials/javascript/build-a-restful-api-using-node-and-express-4">RESTful API using Node and Express 4</a></p>
 
+###Exercise
+
+Create a directory named `intro-to-node' directory. Create a new file named `app.js`
+
+    // This is the same as server = require('http')
+    var express = require('express');
+    // This is the same/similar as server.createServer()
+    var app = express();
+    var bodyParser = require('body-parser');
+    
+    // Middleware
+    app.use(bodyParser.urlencoded({
+    	extended: true
+    }));
+    app.use(bodyParser.json());
+    
+    // Routes
+    require('./routes')(app);
+    
+    
+    app.listen(9001, function() {
+    	console.log('Express server running on http://localhost:9001');
+    });
+
+In the same directory, create a new file named routes.js
+
+    module.exports = function(app) {
+    
+        /* Routes */
+    	app.route('/contacts')
+    		.get(function(req, res){
+    			res.send('A form to present');
+    			res.end();
+    		})
+    		.put(function(req, res) {
+    			res.send({status: 'success', message: 'Entity updated successfully'});
+    			res.end();
+    		})
+    		.post(function(req, res) {
+    			console.log(req.body);
+    			res.send({status: 'success', message: 'Form submitted successfully'});
+    			res.end();
+    		})
+    		.delete(function(req, res) {
+    			res.send({status: 'success', message: 'Entity deleted successfully'});
+    			res.end();
+    		});
+    
+        /* Old school */
+    	app.get('/', function(request, response) {
+    		response.send('<blockquote>Life is like a box of chocolate</blockquote>');
+    		response.end();
+    	});
+    
+    	app.get('/hello', function(req, res) {
+    		res.send("<h1>Hello world!</h1>");
+    		res.end();
+    	});
+    
+    	app.get('/goodbye', function(req, res) {
+    		res.send("<h1>Farewell world</h1>");
+    		res.end();
+    	});
+    };
+
 <h3>body-parser</h3>
 <p>want to register on entire app because we want entire app to be able to parse JSON and parse the URL.</p>
 <p>Install it by typing this command</p>
