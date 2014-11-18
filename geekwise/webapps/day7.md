@@ -25,6 +25,12 @@ comments: true
 
     Learn more about creating a [RESTful API using Node and Express 4](http://scotch.io/tutorials/javascript/build-a-restful-api-using-node-and-express-4)
 
+<h3>body-parser</h3>
+<p>want to register on entire app because we want entire app to be able to parse JSON and parse the URL.</p>
+<p>Install it by typing this command</p>
+    
+    npm install body-parser
+
 <h2>Client-side URL Routing</h2>
 <p>The Swagwise application will be a <abbr title="Single Page Application">SPA</abbr>.
     In short, this means that you 'll have a single index.html page that our other pages (or templates) get injected into.
