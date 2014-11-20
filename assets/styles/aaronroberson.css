@@ -7592,7 +7592,7 @@ li[class*=" icon-"].icon-large:before {
 /* Post */
 .post a,
 .page a {
-  color: #036;
+  color: #f00;
 }
 .post img,
 .page img {
