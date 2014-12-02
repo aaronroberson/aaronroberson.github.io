@@ -1,6 +1,6 @@
 ---
 layout: webapps
-title: Day 8 - RESTful APIs
+title: Day 9 - RESTful APIs
 permalink: /geekwise/webapps/day9-restful-apis/
 tags: webapps
 day: 9
