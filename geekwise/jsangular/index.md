@@ -9,20 +9,9 @@ comments: false
 
 #JavaScript II with AngularJS
 
-###Webstorm
+###Editors
 
-It is recommended that you install and use <a href="http://www.jetbrains.com/webstorm/" target="_blank">JetBrain's WebStorm</a> IDE with the following 1-year educational license:
-
-<pre>
-User Name: Geekwise Academy
-
-===== LICENSE BEGIN =====
-672085-05062014
-00000Nswrs2g"V9nFRZOlZf1s9"2fr
-cV9ESEvof3CrzwKLgQPJLmraSstg9Z
-49JSA22X74ldzxV9zFhnKs3UIkV1t3
-===== LICENSE END =====
-</pre>
+Students are welcome to use the text editor or their choice. If you're more comfortable with [vim](http://www.vim.org/), [nano](http://www.nano-editor.org/) or any other command line editor you are welcome to use it. Some developers prefer an editor with additional support for syntax highlighting, intelli-sense and code-completion but are still weary of using a full <abbr title="Integrated Development Environment">IDE</abbr>. For these individuals, [Sublime Text](http://www.sublimetext.com/), [Brakets](http://brackets.io/) or [Atom](https://atom.io/) may be the editor of choice. However, for those of us who like to focus on rapid application development, finding every opportunity to automate mundane processes and be more productive, I've secured an educational license of [WebStorm](http://www.jetbrains.com/webstorm/) from the gracious folks at JetBrains. Please see me for the license that can be used for your student course work.
 
 ###CodeSchool
 
