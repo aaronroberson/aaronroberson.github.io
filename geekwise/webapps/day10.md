@@ -84,6 +84,12 @@ Update the references to `app.route` in both files to `router.route`, whilst rem
     // admin-router.js
     app.use('/api', router);
     
+##Create Admin User
+
+In the mongo shell, switch to the `swagewise` database (using `use swagewise` command) and then update a document with the `isAdmin` property, like below:
+
+    db.users.update({email:'admin@swagwise.com'}, {$set:{isAdmin:true}});
+    
 ##User CRUD routes
  
 We will add CRUD methods to our admin user routes for managing users. You've already mastered listing collection and single documents using Express and Mongoose. Update the users route to return all Users on the response, like so:
