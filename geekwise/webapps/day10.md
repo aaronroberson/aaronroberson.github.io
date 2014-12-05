@@ -128,5 +128,5 @@ Your homework this weekend is to go through the following tutorials and complete
 
 1. [Facebook Authentication](http://scotch.io/tutorials/javascript/easy-node-authentication-facebook)
 2. [Twitter Authentication](http://scotch.io/tutorials/javascript/easy-node-authentication-twitter)
-3. [Facebook Authentication](http://scotch.io/tutorials/javascript/easy-node-authentication-google)
+3. [Google Authentication](http://scotch.io/tutorials/javascript/easy-node-authentication-google)
 4. [Linking All Accounts Together](http://scotch.io/tutorials/javascript/easy-node-authentication-linking-all-accounts-together)
